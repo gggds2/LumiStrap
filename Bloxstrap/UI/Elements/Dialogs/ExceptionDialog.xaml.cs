@@ -1,4 +1,5 @@
 ﻿using System.Media;
+using System.Net.Sockets;
 using System.Web;
 using System.Windows;
 using System.Windows.Interop;
@@ -22,9 +23,13 @@ namespace Bloxstrap.UI.Elements.Dialogs
         {
             InitializeComponent();
             AddException(exception);
+            FriendlyExplanationTextBlock.Text = GetFriendlyExplanation(exception);
 
             if (!App.Logger.Initialized)
+            {
                 LocateLogFileButton.Content = Strings.Dialog_Exception_CopyLogContents;
+                LocateLogFileButton.Visibility = Visibility.Collapsed;
+            }
 
             string repoUrl = String.IsNullOrWhiteSpace(App.ProjectRepository) ? String.Empty : $"https://github.com/{App.ProjectRepository}";
             string wikiUrl = App.ProjectHelpLink;
@@ -60,8 +65,20 @@ namespace Bloxstrap.UI.Elements.Dialogs
             {
                 if (App.Logger.Initialized && !String.IsNullOrEmpty(App.Logger.FileLocation))
                     Utilities.ShellExecute(App.Logger.FileLocation);
-                else
+            };
+
+            CopyLogButton.Click += delegate
+            {
+                try
+                {
                     Clipboard.SetDataObject(App.Logger.AsDocument);
+                    Frontend.ShowMessageBox(Strings.Dialog_Exception_LogCopied, MessageBoxImage.Information);
+                }
+                catch (Exception ex)
+                {
+                    App.Logger.WriteException("ExceptionDialog::CopyLog", ex);
+                    Frontend.ShowMessageBox(Strings.Dialog_Exception_CopyLogFailed, MessageBoxImage.Error);
+                }
             };
 
             CloseButton.Click += delegate
@@ -89,6 +106,28 @@ namespace Bloxstrap.UI.Elements.Dialogs
             ErrorRichTextBox.Selection.Text += $"\n\n[Inner Exception]\n{exception.InnerException.GetType()}: {exception.InnerException.Message}";
 
             AddException(exception.InnerException, true);
+        }
+
+        private static string GetFriendlyExplanation(Exception exception)
+        {
+            Exception rootException = exception.GetBaseException();
+
+            if (rootException is ChecksumFailedException)
+                return Strings.Dialog_Exception_ExplainChecksum;
+
+            if (rootException is UnauthorizedAccessException)
+                return Strings.Dialog_Exception_ExplainPermission;
+
+            if (rootException is HttpRequestException or WebException or SocketException or InvalidHTTPResponseException)
+                return Strings.Dialog_Exception_ExplainNetwork;
+
+            if (rootException is OperationCanceledException)
+                return Strings.Dialog_Exception_ExplainCanceled;
+
+            if (rootException is IOException)
+                return Strings.Dialog_Exception_ExplainFile;
+
+            return Strings.Dialog_Exception_ExplainGeneral;
         }
     }
 }

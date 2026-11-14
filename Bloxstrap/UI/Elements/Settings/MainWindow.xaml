@@ -77,13 +77,12 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <ui:AutoSuggestBox x:Name="SettingsSearchBox" Grid.Row="0" Width="380" Height="36"
+                <ui:TextBox x:Name="SettingsSearchBox" Grid.Row="0" Width="380" Height="36"
                                    Margin="0,0,0,8" HorizontalAlignment="Right"
                                    PlaceholderText="{x:Static resources:Strings.Menu_Search_Placeholder}"
-                                   MaxDropDownHeight="260"
                                    ToolTip="{x:Static resources:Strings.Menu_Search_Placeholder}"
                                    AutomationProperties.Name="{x:Static resources:Strings.Menu_Search_Placeholder}"
-                                   SuggestionChosen="SettingsSearchBox_SuggestionChosen" />
+                            KeyDown="SettingsSearchBox_KeyDown" />
                 <ui:Breadcrumb Grid.Row="1" Margin="0,0,0,5" Navigation="{Binding ElementName=RootNavigation}" />
                 <Frame x:Name="RootFrame" Grid.Row="2" />
             </Grid>

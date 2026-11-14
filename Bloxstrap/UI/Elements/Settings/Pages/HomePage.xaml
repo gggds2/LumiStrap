@@ -97,6 +97,15 @@
                                Text="{x:Static resources:Strings.Menu_Shortcuts_Description}" />
                 </StackPanel>
             </ui:CardAction>
+            <ui:CardAction Margin="0,0,8,8" Icon="WrenchScrewdriver20" Tag="lumistrap"
+                           Click="NavigateToSection" KeyboardNavigation.TabIndex="6">
+                <StackPanel>
+                    <TextBlock FontSize="14" FontWeight="Medium" Text="{x:Static resources:Strings.Menu_LumiFix_Title}" />
+                    <TextBlock Margin="0,4,0,0" FontSize="12" TextWrapping="Wrap"
+                               Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                               Text="{x:Static resources:Strings.Menu_LumiFix_Description}" />
+                </StackPanel>
+            </ui:CardAction>
         </UniformGrid>
     </StackPanel>
 </ui:UiPage>

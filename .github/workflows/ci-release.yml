@@ -39,6 +39,8 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/v')
 
     steps:
+      - uses: actions/checkout@v6
+
       - name: Download build artifact
         uses: actions/download-artifact@v8
         with:
@@ -54,6 +56,7 @@ jobs:
           draft: true
           files: LumiStrap-${{ github.ref_name }}.exe
           name: LumiStrap ${{ github.ref_name }}
+          body_path: RELEASE_NOTES.md
 
   release-test:
     needs: build
