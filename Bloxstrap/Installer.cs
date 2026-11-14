@@ -27,7 +27,7 @@ namespace Bloxstrap
 
         public bool CreateStartMenuShortcuts = true;
 
-        public bool EnableAnalytics = true;
+        public bool EnableAnalytics = false;
 
         public bool IsImplicitInstall = false;
 
@@ -455,7 +455,7 @@ namespace Bloxstrap
 
             // update migrations
 
-            if (existingVer is not null)
+            if (existingVer is not null && App.ProjectName.StartsWith("Bloxstrap", StringComparison.Ordinal))
             {
                 if (Utilities.CompareVersions(existingVer, "2.2.0") == VersionComparison.LessThan)
                 {
@@ -630,7 +630,8 @@ namespace Bloxstrap
                         releaseNoteVersion = currentVer;
                     }
 
-                    Utilities.ShellExecute($"https://github.com/{App.ProjectRepository}/wiki/Release-notes-for-Bloxstrap-v{releaseNoteVersion}");
+                    if (!String.IsNullOrWhiteSpace(App.ProjectRepository))
+                        Utilities.ShellExecute($"https://github.com/{App.ProjectRepository}/wiki/Release-notes-for-LumiStrap-v{releaseNoteVersion}");
                 }
 #pragma warning restore CS0162 // Unreachable code detected
             }

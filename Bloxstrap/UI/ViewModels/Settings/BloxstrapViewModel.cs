@@ -16,11 +16,15 @@ namespace Bloxstrap.UI.ViewModels.Settings
             set => App.Settings.Prop.CheckForUpdates = value;
         }
 
+        public Visibility UpdateCheckingVisibility => String.IsNullOrWhiteSpace(App.ProjectRepository) ? Visibility.Collapsed : Visibility.Visible;
+
         public bool AnalyticsEnabled
         {
             get => App.Settings.Prop.EnableAnalytics;
             set => App.Settings.Prop.EnableAnalytics = value;
         }
+
+        public Visibility AnalyticsVisibility => String.IsNullOrWhiteSpace(App.ProjectRepository) ? Visibility.Collapsed : Visibility.Visible;
 
         public WebEnvironment WebEnvironment
         {
@@ -42,7 +46,7 @@ namespace Bloxstrap.UI.ViewModels.Settings
 
             var dialog = new SaveFileDialog 
             { 
-                FileName = $"Bloxstrap-export-{timestamp}.zip",
+                FileName = $"LumiStrap-export-{timestamp}.zip",
                 Filter = $"{Strings.FileTypes_ZipArchive}|*.zip" 
             };
 

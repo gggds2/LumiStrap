@@ -3610,5 +3610,60 @@ namespace Bloxstrap.Resources {
                 return ResourceManager.GetString("Uninstaller.Uninstall", resourceCulture);
             }
         }
+
+        public static string Menu_Profiles_Title {
+            get { return ResourceManager.GetString("Menu.Profiles.Title", resourceCulture); }
+        }
+        public static string Menu_Profiles_Description {
+            get { return ResourceManager.GetString("Menu.Profiles.Description", resourceCulture); }
+        }
+        public static string Menu_Profiles_Name {
+            get { return ResourceManager.GetString("Menu.Profiles.Name", resourceCulture); }
+        }
+        public static string Menu_Profiles_Save {
+            get { return ResourceManager.GetString("Menu.Profiles.Save", resourceCulture); }
+        }
+        public static string Menu_Profiles_SavedProfiles {
+            get { return ResourceManager.GetString("Menu.Profiles.SavedProfiles", resourceCulture); }
+        }
+        public static string Menu_Profiles_Apply {
+            get { return ResourceManager.GetString("Menu.Profiles.Apply", resourceCulture); }
+        }
+        public static string Menu_Profiles_Delete {
+            get { return ResourceManager.GetString("Menu.Profiles.Delete", resourceCulture); }
+        }
+        public static string Menu_Profiles_NameRequired {
+            get { return ResourceManager.GetString("Menu.Profiles.NameRequired", resourceCulture); }
+        }
+        public static string Menu_Profiles_DuplicateName {
+            get { return ResourceManager.GetString("Menu.Profiles.DuplicateName", resourceCulture); }
+        }
+        public static string Menu_Profiles_Saved {
+            get { return ResourceManager.GetString("Menu.Profiles.Saved", resourceCulture); }
+        }
+        public static string Menu_Profiles_SaveFailed {
+            get { return ResourceManager.GetString("Menu.Profiles.SaveFailed", resourceCulture); }
+        }
+        public static string Menu_Profiles_ApplyPrompt {
+            get { return ResourceManager.GetString("Menu.Profiles.ApplyPrompt", resourceCulture); }
+        }
+        public static string Menu_Profiles_Applied {
+            get { return ResourceManager.GetString("Menu.Profiles.Applied", resourceCulture); }
+        }
+        public static string Menu_Profiles_ApplyFailed {
+            get { return ResourceManager.GetString("Menu.Profiles.ApplyFailed", resourceCulture); }
+        }
+        public static string Menu_Profiles_DeletePrompt {
+            get { return ResourceManager.GetString("Menu.Profiles.DeletePrompt", resourceCulture); }
+        }
+        public static string Menu_Profiles_DeleteFailed {
+            get { return ResourceManager.GetString("Menu.Profiles.DeleteFailed", resourceCulture); }
+        }
+        public static string Dialog_Exception_Info_2_LumiStrap {
+            get { return ResourceManager.GetString("Dialog.Exception.Info.2.LumiStrap", resourceCulture); }
+        }
+        public static string Installer_Welcome_LumiStrap {
+            get { return ResourceManager.GetString("Installer.Welcome.LumiStrap", resourceCulture); }
+        }
     }
 }
