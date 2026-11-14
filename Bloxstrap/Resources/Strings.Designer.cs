@@ -3665,5 +3665,47 @@ namespace Bloxstrap.Resources {
         public static string Installer_Welcome_LumiStrap {
             get { return ResourceManager.GetString("Installer.Welcome.LumiStrap", resourceCulture); }
         }
+        public static string Menu_Home_Title {
+            get { return ResourceManager.GetString("Menu.Home.Title", resourceCulture); }
+        }
+        public static string Menu_Home_NavTitle {
+            get { return ResourceManager.GetString("Menu.Home.NavTitle", resourceCulture); }
+        }
+        public static string Menu_Home_Description {
+            get { return ResourceManager.GetString("Menu.Home.Description", resourceCulture); }
+        }
+        public static string Menu_Home_QuickAccess {
+            get { return ResourceManager.GetString("Menu.Home.QuickAccess", resourceCulture); }
+        }
+        public static string Menu_Search_Placeholder {
+            get { return ResourceManager.GetString("Menu.Search.Placeholder", resourceCulture); }
+        }
+        public static string Menu_Search_Home {
+            get { return ResourceManager.GetString("Menu.Search.Home", resourceCulture); }
+        }
+        public static string Menu_Search_Integrations {
+            get { return ResourceManager.GetString("Menu.Search.Integrations", resourceCulture); }
+        }
+        public static string Menu_Search_Behaviour {
+            get { return ResourceManager.GetString("Menu.Search.Behaviour", resourceCulture); }
+        }
+        public static string Menu_Search_FastFlags {
+            get { return ResourceManager.GetString("Menu.Search.FastFlags", resourceCulture); }
+        }
+        public static string Menu_Search_Appearance {
+            get { return ResourceManager.GetString("Menu.Search.Appearance", resourceCulture); }
+        }
+        public static string Menu_Search_Profiles {
+            get { return ResourceManager.GetString("Menu.Search.Profiles", resourceCulture); }
+        }
+        public static string Menu_Search_Shortcuts {
+            get { return ResourceManager.GetString("Menu.Search.Shortcuts", resourceCulture); }
+        }
+        public static string Menu_Search_LumiStrap {
+            get { return ResourceManager.GetString("Menu.Search.LumiStrap", resourceCulture); }
+        }
+        public static string Menu_Profiles_Empty {
+            get { return ResourceManager.GetString("Menu.Profiles.Empty", resourceCulture); }
+        }
     }
 }

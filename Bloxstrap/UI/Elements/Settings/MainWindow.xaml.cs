@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 using Wpf.Ui.Controls.Interfaces;
 using Wpf.Ui.Mvvm.Contracts;
@@ -26,6 +27,18 @@ namespace Bloxstrap.UI.Elements.Settings
             DataContext = viewModel;
             
             InitializeComponent();
+
+            SettingsSearchBox.ItemsSource = new[]
+            {
+                Strings.Menu_Search_Home,
+                Strings.Menu_Search_Integrations,
+                Strings.Menu_Search_Behaviour,
+                Strings.Menu_Search_FastFlags,
+                Strings.Menu_Search_Appearance,
+                Strings.Menu_Search_Profiles,
+                Strings.Menu_Search_Shortcuts,
+                Strings.Menu_Search_LumiStrap
+            };
 
             App.Logger.WriteLine("MainWindow", "Initializing settings window");
 
@@ -78,6 +91,40 @@ namespace Bloxstrap.UI.Elements.Settings
         public void CloseWindow() => Close();
 
         #endregion INavigationWindow methods
+
+        private void SettingsSearchBox_SuggestionChosen(object sender, RoutedEventArgs e)
+        {
+            if (sender is not Wpf.Ui.Controls.AutoSuggestBox searchBox)
+                return;
+
+            Type? pageType = searchBox.Text switch
+            {
+                var value when value == Strings.Menu_Search_Home => typeof(Pages.HomePage),
+                var value when value == Strings.Menu_Search_Integrations => typeof(Pages.IntegrationsPage),
+                var value when value == Strings.Menu_Search_Behaviour => typeof(Pages.BehaviourPage),
+                var value when value == Strings.Menu_Search_FastFlags => typeof(Pages.FastFlagsPage),
+                var value when value == Strings.Menu_Search_Appearance => typeof(Pages.AppearancePage),
+                var value when value == Strings.Menu_Search_Profiles => typeof(Pages.ProfilesPage),
+                var value when value == Strings.Menu_Search_Shortcuts => typeof(Pages.ShortcutsPage),
+                var value when value == Strings.Menu_Search_LumiStrap => typeof(Pages.BloxstrapPage),
+                _ => null
+            };
+
+            if (pageType is not null)
+                Navigate(pageType);
+
+            searchBox.Text = String.Empty;
+            searchBox.IsSuggestionListOpen = false;
+        }
+
+        private void WpfUiWindow_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.K && Keyboard.Modifiers.HasFlag(ModifierKeys.Control))
+            {
+                SettingsSearchBox.Focus();
+                e.Handled = true;
+            }
+        }
 
         private void WpfUiWindow_Closing(object sender, CancelEventArgs e)
         {

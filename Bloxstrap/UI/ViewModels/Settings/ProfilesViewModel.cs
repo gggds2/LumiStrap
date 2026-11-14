@@ -41,8 +41,11 @@ namespace Bloxstrap.UI.ViewModels.Settings
 
                 _selectedProfile = value;
                 OnPropertyChanged(nameof(SelectedProfile));
+                OnPropertyChanged(nameof(IsProfileSelected));
             }
         }
+
+        public bool IsProfileSelected => SelectedProfile is not null;
 
         public ICommand SaveProfileCommand => new RelayCommand(SaveProfile);
         public ICommand ApplyProfileCommand => new RelayCommand(ApplyProfile);

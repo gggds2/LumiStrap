@@ -1461,4 +1461,46 @@ Revirtiendo al tema {1}.</value>
   <data name="Menu.FastFlagEditor.AllowlistInformation" xml:space="preserve">
     <value>Debido a la [actualización de la lista de Fast Flags permitidos]({0}), la mayoría de las Fast Flags personalizadas no tendrán efecto en el cliente de Roblox.</value>
   </data>
+  <data name="Menu.Home.Title" xml:space="preserve">
+    <value>Bienvenido a LumiStrap</value>
+  </data>
+  <data name="Menu.Home.NavTitle" xml:space="preserve">
+    <value>Inicio</value>
+  </data>
+  <data name="Menu.Home.Description" xml:space="preserve">
+    <value>Elige una sección para personalizar tu experiencia de Roblox.</value>
+  </data>
+  <data name="Menu.Home.QuickAccess" xml:space="preserve">
+    <value>Accesos rápidos</value>
+  </data>
+  <data name="Menu.Search.Placeholder" xml:space="preserve">
+    <value>Buscar ajustes: tema, idioma, Discord…</value>
+  </data>
+  <data name="Menu.Search.Home" xml:space="preserve">
+    <value>Inicio — accesos rápidos y resumen</value>
+  </data>
+  <data name="Menu.Search.Integrations" xml:space="preserve">
+    <value>Integraciones — Discord, actividad e invitaciones</value>
+  </data>
+  <data name="Menu.Search.Behaviour" xml:space="preserve">
+    <value>Iniciador — apertura, actualizaciones y canal de Roblox</value>
+  </data>
+  <data name="Menu.Search.FastFlags" xml:space="preserve">
+    <value>Configuración del cliente — gráficos y opciones avanzadas</value>
+  </data>
+  <data name="Menu.Search.Appearance" xml:space="preserve">
+    <value>Apariencia — tema, colores, idioma e icono</value>
+  </data>
+  <data name="Menu.Search.Profiles" xml:space="preserve">
+    <value>Perfiles — guardar y aplicar ajustes</value>
+  </data>
+  <data name="Menu.Search.Shortcuts" xml:space="preserve">
+    <value>Atajos — escritorio y menú Inicio</value>
+  </data>
+  <data name="Menu.Search.LumiStrap" xml:space="preserve">
+    <value>LumiStrap — ajustes e información del iniciador</value>
+  </data>
+  <data name="Menu.Profiles.Empty" xml:space="preserve">
+    <value>Aún no hay perfiles. Guarda tus ajustes actuales para crear uno.</value>
+  </data>
 </root>

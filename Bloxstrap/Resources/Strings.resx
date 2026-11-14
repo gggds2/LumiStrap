@@ -1440,4 +1440,46 @@ Defaulting to {1}.</value>
   <data name="Menu.FastFlagEditor.AllowlistInformation" xml:space="preserve">
     <value>Due to the [Fast Flag allowlist update]({0}), most custom Fast Flags will have no effect on the Roblox player.</value>
   </data>
+  <data name="Menu.Home.Title" xml:space="preserve">
+    <value>Welcome to LumiStrap</value>
+  </data>
+  <data name="Menu.Home.NavTitle" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Menu.Home.Description" xml:space="preserve">
+    <value>Choose a section to personalize your Roblox setup.</value>
+  </data>
+  <data name="Menu.Home.QuickAccess" xml:space="preserve">
+    <value>Quick access</value>
+  </data>
+  <data name="Menu.Search.Placeholder" xml:space="preserve">
+    <value>Find settings: theme, language, Discord…</value>
+  </data>
+  <data name="Menu.Search.Home" xml:space="preserve">
+    <value>Home — quick access and overview</value>
+  </data>
+  <data name="Menu.Search.Integrations" xml:space="preserve">
+    <value>Integrations — Discord, activity and invites</value>
+  </data>
+  <data name="Menu.Search.Behaviour" xml:space="preserve">
+    <value>Bootstrapper — launch, updates and Roblox channel</value>
+  </data>
+  <data name="Menu.Search.FastFlags" xml:space="preserve">
+    <value>Engine Settings — graphics and client options</value>
+  </data>
+  <data name="Menu.Search.Appearance" xml:space="preserve">
+    <value>Appearance — theme, colors, language and icon</value>
+  </data>
+  <data name="Menu.Search.Profiles" xml:space="preserve">
+    <value>Profiles — save and apply settings</value>
+  </data>
+  <data name="Menu.Search.Shortcuts" xml:space="preserve">
+    <value>Shortcuts — desktop and Start menu</value>
+  </data>
+  <data name="Menu.Search.LumiStrap" xml:space="preserve">
+    <value>LumiStrap — launcher settings and information</value>
+  </data>
+  <data name="Menu.Profiles.Empty" xml:space="preserve">
+    <value>No profiles yet. Save your current setup to create one.</value>
+  </data>
 </root>
