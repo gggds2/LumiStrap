@@ -526,8 +526,14 @@
     galleryDialog.addEventListener("click", (event) => { if (event.target === galleryDialog) galleryDialog.close(); });
     galleryDialog.addEventListener("close", () => galleryTrigger?.focus());
     galleryDialog.addEventListener("keydown", (event) => {
-      if (event.key === "ArrowLeft") showGalleryItem(activeGalleryIndex - 1);
-      if (event.key === "ArrowRight") showGalleryItem(activeGalleryIndex + 1);
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        showGalleryItem(activeGalleryIndex - 1);
+      }
+      if (event.key === "ArrowRight") {
+        event.preventDefault();
+        showGalleryItem(activeGalleryIndex + 1);
+      }
     });
 
     function addReleaseLine(container, line) {
