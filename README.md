@@ -15,11 +15,13 @@
 
 <p align="center">
   <a href="https://gggds2.github.io/LumiStrap/#capturas">
-    <img src="docs/assets/screenshots/inicio.png" alt="LumiStrap home screen preview" width="100%">
+    <img src="docs/assets/screenshots/configuracion-graficos-v015.png" alt="LumiStrap 0.1.5 Performance and Quality graphics profiles" width="100%">
   </a>
 </p>
 
 LumiStrap is an independent community fork of [Bloxstrap](https://github.com/bloxstraplabs/bloxstrap) for Windows. It brings together Roblox setup, client preferences, profiles, and repair tools in one place.
+
+**Version 0.1.5** adds Performance and Quality graphics profiles, Roblox Studio support, an Experiences library, Discord privacy controls, a LumiFix pre-launch check, and restorable configuration history.
 
 > LumiStrap is not affiliated with or endorsed by Roblox Corporation.
 
@@ -29,14 +31,31 @@ LumiStrap is an independent community fork of [Bloxstrap](https://github.com/blo
 
 | Tool | What it helps with |
 | --- | --- |
-| **LumiFix** | Check the Roblox installation, repair client files, or clear the download cache after reviewing the action. |
-| **Profiles** | Save, apply, import, and export LumiStrap settings and custom FastFlags. Profiles contain configuration only. |
+| **Graphics profiles** | Start with Performance or Quality, then customize client settings. Manual changes are shown as Custom. |
+| **Roblox Studio and FastFlags** | Manage Studio settings, global options, and FastFlags. Roblox decides which flags are allowed and may change their behavior. |
+| **Experiences** | Add places by Roblox link or place ID, keep favorites, and browse recent games. Recent games can be added automatically with activity tracking enabled. |
+| **LumiFix** | Check processes and Roblox files before launch, inspect the installation, repair client files, or clear the download cache. The pre-launch check does not close programs or edit files. |
+| **Profiles and history** | Save, apply, import, and export settings. LumiStrap keeps up to 20 recent configuration backups that you can restore. Profiles contain configuration only. |
 | **Session panel** | See available experience and server information, with quick access to LumiStrap tools while playing. |
-| **Graphics and FastFlags** | Adjust rendering and other client preferences. Roblox may limit or ignore some FastFlags. |
+| **Discord privacy** | Temporarily hide Roblox activity and join buttons, then restore your previous options when privacy mode is turned off. |
 | **Downloads and errors** | Follow download progress and speed, retry or cancel, and get clearer explanations of common problems. |
 | **Update preview** | Review release changes and keep a configuration backup before updating. |
 
 The [LumiStrap website](https://gggds2.github.io/LumiStrap/) has a full screenshot gallery and the latest release notes.
+
+### LumiStrap 0.1.5
+
+<p align="center">
+  <img src="docs/assets/screenshots/configuracion-graficos-v015.png" alt="Performance and Quality graphics profiles" width="49%">
+  <img src="docs/assets/screenshots/experiencias-v015.png" alt="Experiences library" width="49%">
+</p>
+<p align="center">
+  <img src="docs/assets/screenshots/historial-perfiles-v015.png" alt="Profiles and restorable settings history" width="49%">
+  <img src="docs/assets/screenshots/discord-privacidad-v015.png" alt="Discord privacy settings" width="49%">
+</p>
+<p align="center">
+  <img src="docs/assets/screenshots/lumifix-v015.png" alt="LumiFix pre-launch check" width="80%">
+</p>
 
 ## Install
 
