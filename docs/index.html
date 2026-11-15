@@ -51,6 +51,10 @@
     .nav-links { display: flex; align-items: center; gap: 30px; color: var(--muted); font-size: .91rem; }
     .nav-actions { display: flex; align-items: center; gap: 10px; }
     .nav-links a:hover, .footer-links a:hover { color: var(--text); }
+    .theme-toggle { display: grid; place-items: center; width: 42px; height: 42px; padding: 0; border: 1px solid var(--line); border-radius: 12px; background: rgba(255, 255, 255, .035); color: var(--text); cursor: pointer; }
+    .theme-toggle svg { width: 19px; height: 19px; transition: transform .2s ease; }
+    .theme-toggle .theme-icon-dark { display: none; }
+    .theme-toggle:hover { border-color: rgba(150, 176, 255, .38); background: rgba(255, 255, 255, .08); }
     .menu-toggle { display: none; place-items: center; width: 42px; height: 42px; padding: 0; border: 1px solid var(--line); border-radius: 12px; background: rgba(255, 255, 255, .035); color: var(--text); cursor: pointer; }
     .menu-toggle svg { width: 20px; height: 20px; }
     .button {
@@ -66,18 +70,18 @@
     .button-secondary:hover { border-color: rgba(150, 176, 255, .38); background: rgba(255, 255, 255, .07); }
     .nav-download { padding: 10px 14px; font-size: .88rem; }
 
-    .hero { padding: 88px 0 82px; overflow: hidden; }
-    .hero-grid { display: grid; grid-template-columns: 1fr; align-items: center; gap: 34px; }
+    .hero { padding: 72px 0 68px; overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: 1fr; align-items: center; gap: 28px; }
     .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: #b8c8ff; font-size: .78rem; font-weight: 760; letter-spacing: .13em; text-transform: uppercase; }
     .eyebrow::before { content: ""; width: 23px; height: 1px; background: linear-gradient(90deg, var(--cyan), var(--violet)); }
-    h1 { max-width: 650px; margin: 19px 0 20px; font-size: clamp(3rem, 6vw, 5.35rem); font-weight: 790; letter-spacing: -.075em; line-height: .99; }
+    h1 { max-width: 800px; margin: 16px 0 17px; font-size: clamp(2.8rem, 5.5vw, 4.65rem); font-weight: 790; letter-spacing: -.075em; line-height: .99; }
     .gradient-text { color: transparent; background: linear-gradient(100deg, #8de7ef 6%, #8dbaff 52%, #c49aff 92%); background-clip: text; -webkit-background-clip: text; }
     .hero-copy { max-width: 530px; color: var(--muted); font-size: 1.12rem; line-height: 1.75; }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 29px; }
     .micro-trust { display: flex; align-items: center; flex-wrap: wrap; gap: 17px; margin-top: 25px; color: #939db8; font-size: .82rem; }
     .micro-trust span { display: inline-flex; align-items: center; gap: 7px; }
     .micro-trust svg { width: 15px; height: 15px; color: var(--green); }
-    .hero-visual { position: relative; width: min(1060px, 100%); min-width: 0; margin-inline: auto; padding: 0 10px; }
+    .hero-visual { position: relative; width: min(1020px, 100%); min-width: 0; margin-inline: auto; padding: 0 10px; }
     .hero-visual::before { content: ""; position: absolute; inset: 13% 5% 4%; z-index: -1; border-radius: 40%; background: linear-gradient(135deg, rgba(60, 169, 255, .22), rgba(133, 91, 255, .18)); filter: blur(62px); }
     .hero-screenshot { display: block; overflow: hidden; border: 1px solid rgba(199, 211, 255, .19); border-radius: 13px; background: #111625; box-shadow: 0 24px 70px rgba(0, 0, 0, .38), 0 0 0 6px rgba(255, 255, 255, .018); transition: border-color .22s ease; }
     .hero-screenshot:hover { border-color: rgba(199, 211, 255, .38); }
@@ -90,22 +94,18 @@
     .section-head .eyebrow { justify-content: center; }
     h2 { margin: 13px 0 12px; font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.1; letter-spacing: -.06em; }
     .section-head p { margin: 0; color: var(--muted); font-size: 1.02rem; }
-    .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
-    .feature-card { min-height: 205px; padding: 23px; border: 1px solid var(--line); border-radius: 18px; background: linear-gradient(145deg, rgba(21, 28, 45, .86), rgba(14, 19, 31, .82)); transition: transform .2s ease, border-color .2s ease, background .2s ease; }
-    .feature-card:hover { transform: translateY(-4px); border-color: rgba(137, 164, 255, .3); background: linear-gradient(145deg, rgba(26, 35, 57, .95), rgba(15, 21, 35, .9)); }
-    .feature-icon { display: grid; place-items: center; width: 43px; height: 43px; margin-bottom: 18px; border: 1px solid rgba(151, 173, 255, .16); border-radius: 13px; color: #a9bdff; background: linear-gradient(145deg, rgba(79, 157, 255, .18), rgba(158, 112, 255, .13)); }
-    .feature-icon svg { width: 21px; height: 21px; }
-    .feature-card h3 { margin: 0 0 7px; font-size: 1.02rem; letter-spacing: -.02em; }
-    .feature-card p { margin: 0; color: var(--muted); font-size: .88rem; line-height: 1.65; }
-
-    .screen-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
-    .screen-card { overflow: hidden; border: 1px solid var(--line); border-radius: 17px; background: linear-gradient(145deg, rgba(21, 28, 45, .86), rgba(14, 19, 31, .82)); transition: transform .2s ease, border-color .2s ease; }
-    .screen-card:hover { transform: translateY(-3px); border-color: rgba(137, 164, 255, .32); }
-    .screen-link { display: block; overflow: hidden; background: #0d111e; }
-    .screen-link img { display: block; width: 100%; height: auto; }
-    .screen-caption { padding: 14px 16px 16px; }
-    .screen-caption strong { display: block; margin-bottom: 3px; font-size: .93rem; }
-    .screen-caption span { display: block; color: var(--muted); font-size: .79rem; line-height: 1.5; }
+    .showcase-list { max-width: 1080px; margin-inline: auto; }
+    .showcase-row { display: grid; grid-template-columns: .85fr 1.15fr; align-items: center; gap: clamp(28px, 5vw, 64px); padding: 34px 0; border-bottom: 1px solid var(--line); }
+    .showcase-row:first-child { padding-top: 0; }
+    .showcase-row:last-child { border-bottom: 0; padding-bottom: 0; }
+    .showcase-row:nth-child(even) .showcase-copy { order: 2; }
+    .showcase-row:nth-child(even) .showcase-media { order: 1; }
+    .showcase-copy .eyebrow { font-size: .7rem; }
+    .showcase-copy h3 { margin: 11px 0 10px; font-size: clamp(1.45rem, 2.6vw, 2.1rem); letter-spacing: -.045em; line-height: 1.15; }
+    .showcase-copy p { margin: 0; color: var(--muted); line-height: 1.75; }
+    .showcase-media { display: block; overflow: hidden; border: 1px solid rgba(199, 211, 255, .17); border-radius: 15px; background: #111625; box-shadow: 0 22px 55px rgba(0, 0, 0, .28); }
+    .showcase-media img { display: block; width: 100%; height: auto; }
+    .showcase-media:hover { border-color: rgba(137, 164, 255, .4); }
 
     .lightbox { width: min(1180px, calc(100% - 32px)); max-width: none; max-height: calc(100% - 32px); padding: 20px; border: 1px solid rgba(190, 203, 255, .2); border-radius: 20px; background: #0c1120; color: var(--text); box-shadow: 0 35px 100px rgba(0, 0, 0, .65); }
     .lightbox::backdrop { background: rgba(3, 5, 12, .88); backdrop-filter: blur(8px); }
@@ -186,14 +186,15 @@
       .nav-links a { padding: 11px 12px; border-radius: 9px; }
       .nav-links a:hover { background: rgba(255, 255, 255, .06); }
       .menu-toggle { display: grid; flex: 0 0 auto; }
-      .feature-grid { grid-template-columns: repeat(2, 1fr); }
-      .screen-grid { grid-template-columns: repeat(2, 1fr); }
+      .showcase-row { gap: 36px; }
       .trust-grid { gap: 35px; }
     }
     @media (max-width: 650px) {
       .wrap { width: min(100% - 30px, 1160px); }
       .nav { min-height: 66px; }
-      .nav-download { padding: 9px 11px; font-size: .78rem; }
+      .nav-actions { gap: 6px; }
+      .nav-download { padding: 9px; font-size: .78rem; }
+      .nav-download-label { display: none; }
       .hero { padding: 57px 0 54px; }
       h1 { font-size: clamp(2.85rem, 13vw, 4.35rem); }
       .hero-copy { font-size: 1rem; }
@@ -201,9 +202,8 @@
       .hero-visual { padding: 0; }
       .hero-caption { flex-direction: column; gap: 2px; }
       .section { padding: 62px 0; }
-      .feature-grid { grid-template-columns: 1fr; }
-      .screen-grid { grid-template-columns: 1fr; }
-      .feature-card { min-height: 0; }
+      .showcase-row { grid-template-columns: 1fr; gap: 17px; padding: 26px 0; }
+      .showcase-row:nth-child(even) .showcase-copy, .showcase-row:nth-child(even) .showcase-media { order: initial; }
       .update-band, .trust-grid { grid-template-columns: 1fr; gap: 27px; }
       .update-band { padding: 24px 19px; }
       .download-section { padding: 20px 0 62px; }
@@ -222,6 +222,59 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
     }
+
+    :root[data-theme="light"] {
+      color-scheme: light;
+      --bg: #f7f8fc;
+      --panel: #fff;
+      --panel-raised: #fff;
+      --line: rgba(31, 44, 77, .13);
+      --text: #17213a;
+      --muted: #5b6680;
+      --blue: #3c7de6;
+      --violet: #8353dc;
+      --cyan: #358fb2;
+      --green: #168363;
+    }
+    :root[data-theme="light"] body { background: radial-gradient(ellipse at 82% 5%, rgba(79, 132, 245, .10), transparent 34rem), radial-gradient(ellipse at 8% 34%, rgba(144, 91, 220, .07), transparent 32rem), var(--bg); }
+    :root[data-theme="light"] .topbar { border-color: rgba(31, 44, 77, .1); background: rgba(247, 248, 252, .86); }
+    :root[data-theme="light"] .eyebrow { color: #4e608e; }
+    :root[data-theme="light"] .brand em { color: #5874b5; }
+    :root[data-theme="light"] .nav-links.is-open { background: rgba(255, 255, 255, .98); box-shadow: 0 20px 45px rgba(31, 44, 77, .15); }
+    :root[data-theme="light"] .nav-links a:hover { background: rgba(64, 96, 160, .07); }
+    :root[data-theme="light"] .theme-toggle, :root[data-theme="light"] .menu-toggle { background: rgba(255, 255, 255, .8); }
+    :root[data-theme="light"] .theme-toggle .theme-icon-light { display: none; }
+    :root[data-theme="light"] .theme-toggle .theme-icon-dark { display: block; }
+    :root[data-theme="light"] .button-secondary { background: rgba(255, 255, 255, .7); }
+    :root[data-theme="light"] .button-secondary:hover { background: #fff; }
+    :root[data-theme="light"] .hero-visual::before { opacity: .55; }
+    :root[data-theme="light"] .hero-caption { color: #34415d; }
+    :root[data-theme="light"] .hero-caption span:last-child, :root[data-theme="light"] .micro-trust { color: #58647c; }
+    :root[data-theme="light"] .showcase-row { border-color: rgba(31, 44, 77, .12); }
+    :root[data-theme="light"] .showcase-media { border-color: rgba(31, 44, 77, .15); box-shadow: 0 18px 42px rgba(38, 51, 83, .12); }
+    :root[data-theme="light"] .update-band { border-color: rgba(90, 111, 174, .2); background: linear-gradient(110deg, rgba(96, 145, 238, .10), rgba(162, 112, 220, .08)), #fff; }
+    :root[data-theme="light"] .step { border-color: rgba(31, 44, 77, .12); background: #f5f7fc; }
+    :root[data-theme="light"] .step-number { background: rgba(83, 114, 190, .12); color: #435a92; }
+    :root[data-theme="light"] .step span { color: #64708a; }
+    :root[data-theme="light"] .trust-point { color: #34415d; }
+    :root[data-theme="light"] .brand-caption { color: #34415d; }
+    :root[data-theme="light"] .brand-caption span:last-child { color: #64708a; }
+    :root[data-theme="light"] .download-card { border-color: rgba(95, 121, 195, .22); background: radial-gradient(ellipse at 50% 0%, rgba(91, 139, 255, .13), transparent 57%), linear-gradient(135deg, #fff, #f1f3fb 70%); }
+    :root[data-theme="light"] .download-meta, :root[data-theme="light"] .footer-inner { color: #65708a; }
+    :root[data-theme="light"] .footer-inner .brand { color: #263552; }
+    :root[data-theme="light"] .footer-links a { color: #495875; }
+    :root[data-theme="light"] footer { border-color: rgba(31, 44, 77, .1); }
+    :root[data-theme="light"] .release-card { border-color: rgba(31, 44, 77, .13); background: linear-gradient(145deg, #fff, #f8f9fd); }
+    :root[data-theme="light"] .release-top { border-color: rgba(31, 44, 77, .12); }
+    :root[data-theme="light"] .release-date, :root[data-theme="light"] .release-notes { color: #4f5c75; }
+    :root[data-theme="light"] .release-notes h4 { color: #202c46; }
+    :root[data-theme="light"] .faq-list details { border-color: rgba(31, 44, 77, .13); background: #fff; }
+    :root[data-theme="light"] .faq-list summary { color: #202c46; }
+    :root[data-theme="light"] .faq-list summary::after { color: #526cc1; }
+    :root[data-theme="light"] .lightbox { border-color: rgba(31, 44, 77, .18); background: #f9faff; color: #17213a; }
+    :root[data-theme="light"] .lightbox-close, :root[data-theme="light"] .lightbox-arrow { border-color: rgba(31, 44, 77, .14); background: rgba(255, 255, 255, .88); color: #283653; }
+    :root[data-theme="light"] .lightbox-caption { color: #34415d; }
+    :root[data-theme="light"] .lightbox-count { color: #65708a; }
   </style>
 </head>
 <body>
@@ -234,15 +287,16 @@
       <div class="nav-links" id="site-navigation">
         <a href="#funciones">Funciones</a>
         <a href="#capturas">Capturas</a>
-        <a href="#actualizaciones">Actualizaciones</a>
-        <a href="#novedades">Novedades</a>
         <a href="#faq">Preguntas frecuentes</a>
-        <a href="#acerca">Acerca de</a>
       </div>
       <div class="nav-actions">
         <a class="button button-primary nav-download" href="https://github.com/gggds2/LumiStrap/releases/latest" aria-label="Descargar la última versión de LumiStrap">
-          Descargar <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 18v2h14v-2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="nav-download-label">Descargar</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 18v2h14v-2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
+        <button class="theme-toggle" type="button" aria-label="Activar tema claro" aria-pressed="false" title="Activar tema claro">
+          <svg class="theme-icon-light" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.7"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+          <svg class="theme-icon-dark" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.5 15.3A8.5 8.5 0 0 1 8.7 3.5 8.7 8.7 0 1 0 20.5 15.3Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
         <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="site-navigation">
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
         </button>
@@ -282,70 +336,58 @@
     <section class="section" id="funciones">
       <div class="wrap">
         <div class="section-head">
-          <div class="eyebrow">Herramientas que sí ayudan</div>
-          <h2>Más claridad en cada paso.</h2>
-          <p>Funciones prácticas para configurar, mantener y entender tu experiencia con Roblox.</p>
+          <div class="eyebrow">Conoce LumiStrap</div>
+          <h2>Herramientas claras para cada parte de Roblox.</h2>
+          <p>Explora las secciones principales con capturas reales de la aplicación. Selecciona una imagen para ampliarla.</p>
         </div>
-        <div class="feature-grid">
-          <article class="feature-card">
-            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3 19 6v5c0 4.5-3 7.5-7 10-4-2.5-7-5.5-7-10V6l7-3Z" stroke="currentColor" stroke-width="1.7"/><path d="m8.5 12 2.2 2.2 4.8-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <h3>LumiFix</h3><p>Revisa archivos del cliente, repara la instalación o limpia la caché. LumiStrap explica la acción y pide confirmación antes de hacer cambios.</p>
+        <div class="showcase-list" id="capturas">
+          <article class="showcase-row">
+            <div class="showcase-copy">
+              <div class="eyebrow">Configuración del cliente</div>
+              <h3>Ajusta Roblox a tu manera.</h3>
+              <p>Configura el motor gráfico, el detalle de las mallas y otras opciones del cliente. LumiStrap permite gestionar FastFlags según la lista admitida por Roblox.</p>
+            </div>
+            <a class="showcase-media" href="assets/screenshots/configuracion-cliente.png" data-lightbox data-caption="Configuración del cliente" aria-label="Ampliar captura de Configuración del cliente"><img src="assets/screenshots/configuracion-cliente.png" alt="Opciones de gráficos y FastFlags en la configuración del cliente" width="1920" height="1080" loading="lazy"></a>
           </article>
-          <article class="feature-card">
-            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16M8 4v4m8 2v4m-5 2v4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
-            <h3>Perfiles de configuración</h3><p>Guarda y cambia entre tus ajustes y FastFlags personalizadas sin volver a configurarlo todo cada vez.</p>
+          <article class="showcase-row">
+            <div class="showcase-copy">
+              <div class="eyebrow">Perfiles</div>
+              <h3>Guarda tus ajustes y llévalos contigo.</h3>
+              <p>Crea perfiles, cambia entre configuraciones e importa o exporta archivos. Revisa qué va a cambiar antes de aplicar un perfil.</p>
+            </div>
+            <a class="showcase-media" href="assets/screenshots/perfiles.png" data-lightbox data-caption="Perfiles" aria-label="Ampliar captura de Perfiles"><img src="assets/screenshots/perfiles.png" alt="Perfiles de LumiStrap para guardar, aplicar, importar y exportar ajustes" width="1920" height="1080" loading="lazy"></a>
           </article>
-          <article class="feature-card">
-            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
-            <h3>Información de sesión</h3><p>Consulta los datos disponibles de la experiencia y del servidor, y copia la información que quieras compartir.</p>
+          <article class="showcase-row">
+            <div class="showcase-copy">
+              <div class="eyebrow">LumiFix</div>
+              <h3>Revisa y repara desde un solo lugar.</h3>
+              <p>Comprueba la instalación de Roblox, repara los archivos del cliente o limpia la caché de descargas. LumiStrap explica la acción antes de que confirmes.</p>
+            </div>
+            <a class="showcase-media" href="assets/screenshots/lumistrap.png" data-lightbox data-caption="LumiFix y ajustes de LumiStrap" aria-label="Ampliar captura de LumiFix"><img src="assets/screenshots/lumistrap.png" alt="Ajustes de LumiStrap y herramientas LumiFix" width="1920" height="1080" loading="lazy"></a>
           </article>
-          <article class="feature-card">
-            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M5 19V9m7 10V5m7 14v-7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
-            <h3>Ajustes gráficos</h3><p>Elige renderizado automático, Direct3D 11 o Vulkan; ajusta detalle de mallas y calidad FRM.</p>
+          <article class="showcase-row">
+            <div class="showcase-copy">
+              <div class="eyebrow">Integraciones y sesión</div>
+              <h3>Conecta tus herramientas favoritas.</h3>
+              <p>Configura el seguimiento de actividad, Discord y programas personalizados. Consulta la información de sesión disponible mientras juegas.</p>
+            </div>
+            <a class="showcase-media" href="assets/screenshots/integraciones.png" data-lightbox data-caption="Integraciones y sesión" aria-label="Ampliar captura de Integraciones"><img src="assets/screenshots/integraciones.png" alt="Integraciones de actividad y Discord en LumiStrap" width="1920" height="1080" loading="lazy"></a>
           </article>
-          <article class="feature-card">
-            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 16v3h16v-3M12 3v12m0 0 4-4m-4 4-4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <h3>Descargas más claras</h3><p>Mira el progreso y la velocidad. Si una descarga falla, puedes cancelarla o intentar de nuevo.</p>
+          <article class="showcase-row">
+            <div class="showcase-copy">
+              <div class="eyebrow">Iniciador</div>
+              <h3>Decide cómo se inicia Roblox.</h3>
+              <p>Controla las instancias abiertas, las actualizaciones en segundo plano y la reinstalación del cliente.</p>
+            </div>
+            <a class="showcase-media" href="assets/screenshots/iniciador.png" data-lightbox data-caption="Iniciador" aria-label="Ampliar captura del iniciador"><img src="assets/screenshots/iniciador.png" alt="Opciones del iniciador de LumiStrap" width="1920" height="1080" loading="lazy"></a>
           </article>
-          <article class="feature-card">
-            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v14H4zM8 9h8m-8 4h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M9 19v2m6-2v2" stroke="currentColor" stroke-width="1.7"/></svg></div>
-            <h3>Actualizaciones bajo tu control</h3><p>Revisa las novedades antes de actualizar, pospón la actualización y conserva copias recientes de tu configuración.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="capturas">
-      <div class="wrap">
-        <div class="section-head">
-          <div class="eyebrow">Conoce la aplicación</div>
-          <h2>Herramientas claras, desde el primer vistazo.</h2>
-          <p>Explora capturas reales de las secciones principales de LumiStrap 0.1.4. Selecciona una imagen para ampliarla y recorrer la galería.</p>
-        </div>
-        <div class="screen-grid">
-          <article class="screen-card">
-            <a class="screen-link" href="assets/screenshots/integraciones.png" data-lightbox data-caption="Integraciones" aria-label="Ampliar captura de Integraciones"><img src="assets/screenshots/integraciones.png" alt="Integraciones: seguimiento de actividad, Discord y opciones personalizadas" width="1920" height="1080" loading="lazy"></a>
-            <div class="screen-caption"><strong>Integraciones</strong><span>Seguimiento de actividad, Discord y programas personalizados.</span></div>
-          </article>
-          <article class="screen-card">
-            <a class="screen-link" href="assets/screenshots/iniciador.png" data-lightbox data-caption="Iniciador" aria-label="Ampliar captura del iniciador"><img src="assets/screenshots/iniciador.png" alt="Opciones del iniciador de LumiStrap" width="1920" height="1080" loading="lazy"></a>
-            <div class="screen-caption"><strong>Iniciador</strong><span>Controla las instancias, las actualizaciones y la reinstalación de Roblox.</span></div>
-          </article>
-          <article class="screen-card">
-            <a class="screen-link" href="assets/screenshots/modificadores.png" data-lightbox data-caption="Modificadores" aria-label="Ampliar captura de Modificadores"><img src="assets/screenshots/modificadores.png" alt="Opciones de Modificadores de LumiStrap" width="1920" height="1080" loading="lazy"></a>
-            <div class="screen-caption"><strong>Modificadores</strong><span>Personaliza cursores, sonidos, emojis y otros detalles visuales.</span></div>
-          </article>
-          <article class="screen-card">
-            <a class="screen-link" href="assets/screenshots/configuracion-cliente.png" data-lightbox data-caption="Configuración del cliente" aria-label="Ampliar captura de Configuración del cliente"><img src="assets/screenshots/configuracion-cliente.png" alt="Ajustes gráficos y FastFlags del cliente de Roblox" width="1920" height="1080" loading="lazy"></a>
-            <div class="screen-caption"><strong>Configuración del cliente</strong><span>Ajustes gráficos y FastFlags permitidas por Roblox.</span></div>
-          </article>
-          <article class="screen-card">
-            <a class="screen-link" href="assets/screenshots/perfiles.png" data-lightbox data-caption="Perfiles" aria-label="Ampliar captura de Perfiles"><img src="assets/screenshots/perfiles.png" alt="Perfiles para guardar, importar y exportar ajustes" width="1920" height="1080" loading="lazy"></a>
-            <div class="screen-caption"><strong>Perfiles</strong><span>Guarda, aplica, importa y exporta tus configuraciones.</span></div>
-          </article>
-          <article class="screen-card">
-            <a class="screen-link" href="assets/screenshots/lumistrap.png" data-lightbox data-caption="Ajustes de LumiStrap y LumiFix" aria-label="Ampliar captura de los ajustes de LumiStrap"><img src="assets/screenshots/lumistrap.png" alt="Ajustes de LumiStrap y herramientas LumiFix" width="1920" height="1080" loading="lazy"></a>
-            <div class="screen-caption"><strong>LumiStrap y LumiFix</strong><span>Revisa o repara Roblox, limpia la caché y gestiona preferencias.</span></div>
+          <article class="showcase-row">
+            <div class="showcase-copy">
+              <div class="eyebrow">Modificadores</div>
+              <h3>Personaliza los detalles de tu experiencia.</h3>
+              <p>Encuentra opciones visuales y de compatibilidad para adaptar algunos aspectos del cliente de Roblox.</p>
+            </div>
+            <a class="showcase-media" href="assets/screenshots/modificadores.png" data-lightbox data-caption="Modificadores" aria-label="Ampliar captura de Modificadores"><img src="assets/screenshots/modificadores.png" alt="Opciones de Modificadores de LumiStrap" width="1920" height="1080" loading="lazy"></a>
           </article>
         </div>
       </div>
@@ -472,6 +514,26 @@
     <div class="lightbox-count" id="lightbox-count" aria-live="polite"></div>
   </dialog>
   <script>
+    const themeButton = document.querySelector(".theme-toggle");
+
+    function setTheme(theme, savePreference = false) {
+      const isLight = theme === "light";
+      document.documentElement.dataset.theme = isLight ? "light" : "dark";
+      themeButton.setAttribute("aria-pressed", String(isLight));
+      themeButton.setAttribute("aria-label", isLight ? "Activar tema oscuro" : "Activar tema claro");
+      themeButton.title = isLight ? "Activar tema oscuro" : "Activar tema claro";
+      if (savePreference) {
+        try { localStorage.setItem("lumistrap-theme", isLight ? "light" : "dark"); } catch { /* La página sigue funcionando si el navegador bloquea el almacenamiento local. */ }
+      }
+    }
+
+    let savedTheme = "dark";
+    try { if (localStorage.getItem("lumistrap-theme") === "light") savedTheme = "light"; } catch { /* Usa el tema oscuro si el almacenamiento local no está disponible. */ }
+    setTheme(savedTheme);
+    themeButton.addEventListener("click", () => {
+      setTheme(document.documentElement.dataset.theme === "light" ? "dark" : "light", true);
+    });
+
     const menuButton = document.querySelector(".menu-toggle");
     const siteNavigation = document.getElementById("site-navigation");
 
@@ -589,3 +651,4 @@
   </script>
 </body>
 </html>
+
