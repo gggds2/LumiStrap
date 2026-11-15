@@ -15,7 +15,7 @@
 
 <p align="center">
   <a href="https://gggds2.github.io/LumiStrap/#capturas">
-    <img src="docs/assets/screenshots/configuracion-graficos-v015.png" alt="LumiStrap 0.1.5 Performance and Quality graphics profiles" width="100%">
+    <img src="docs/assets/screenshots/inicio-v015.png" alt="LumiStrap 0.1.5 home screen" width="100%">
   </a>
 </p>
 
@@ -46,15 +46,19 @@ The [LumiStrap website](https://gggds2.github.io/LumiStrap/) has a full screensh
 ### LumiStrap 0.1.5
 
 <p align="center">
+  <img src="docs/assets/screenshots/inicio-v015.png" alt="LumiStrap 0.1.5 home screen" width="49%">
   <img src="docs/assets/screenshots/configuracion-graficos-v015.png" alt="Performance and Quality graphics profiles" width="49%">
-  <img src="docs/assets/screenshots/experiencias-v015.png" alt="Experiences library" width="49%">
 </p>
 <p align="center">
   <img src="docs/assets/screenshots/historial-perfiles-v015.png" alt="Profiles and restorable settings history" width="49%">
+  <img src="docs/assets/screenshots/experiencias-v015.png" alt="Experiences library" width="49%">
+</p>
+<p align="center">
+  <img src="docs/assets/screenshots/roblox-studio-v015.png" alt="Roblox Studio tools" width="49%">
   <img src="docs/assets/screenshots/discord-privacidad-v015.png" alt="Discord privacy settings" width="49%">
 </p>
 <p align="center">
-  <img src="docs/assets/screenshots/lumifix-v015.png" alt="LumiFix pre-launch check" width="80%">
+  <img src="docs/assets/screenshots/lumifix-v015-clean.png" alt="LumiFix pre-launch check" width="80%">
 </p>
 
 ## Install
