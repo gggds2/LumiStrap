@@ -37,18 +37,22 @@
     a { color: inherit; text-decoration: none; }
     button, a { -webkit-tap-highlight-color: transparent; }
     a:focus-visible { outline: 3px solid var(--cyan); outline-offset: 4px; border-radius: 8px; }
+    button:focus-visible, .faq-list summary:focus-visible { outline: 3px solid var(--cyan); outline-offset: 3px; }
     .wrap { width: min(1160px, calc(100% - 44px)); margin-inline: auto; }
     .topbar {
       position: sticky; top: 0; z-index: 5;
       border-bottom: 1px solid rgba(190, 203, 255, .09);
       background: rgba(9, 12, 23, .78); backdrop-filter: blur(18px);
     }
-    .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 26px; }
+    .nav { position: relative; min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 26px; }
     .brand { display: inline-flex; align-items: center; gap: 11px; font-size: 1.18rem; font-weight: 760; letter-spacing: -.04em; }
     .brand-logo { display: block; width: 38px; height: 38px; object-fit: contain; border-radius: 12px; box-shadow: 0 8px 24px rgba(85, 116, 255, .22); }
     .brand em { color: #99baff; font-style: normal; font-weight: 560; }
     .nav-links { display: flex; align-items: center; gap: 30px; color: var(--muted); font-size: .91rem; }
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
     .nav-links a:hover, .footer-links a:hover { color: var(--text); }
+    .menu-toggle { display: none; place-items: center; width: 42px; height: 42px; padding: 0; border: 1px solid var(--line); border-radius: 12px; background: rgba(255, 255, 255, .035); color: var(--text); cursor: pointer; }
+    .menu-toggle svg { width: 20px; height: 20px; }
     .button {
       display: inline-flex; align-items: center; justify-content: center; gap: 10px;
       border: 1px solid transparent; border-radius: 13px; padding: 13px 19px;
@@ -103,6 +107,37 @@
     .screen-caption strong { display: block; margin-bottom: 3px; font-size: .93rem; }
     .screen-caption span { display: block; color: var(--muted); font-size: .79rem; line-height: 1.5; }
 
+    .lightbox { width: min(1180px, calc(100% - 32px)); max-width: none; max-height: calc(100% - 32px); padding: 20px; border: 1px solid rgba(190, 203, 255, .2); border-radius: 20px; background: #0c1120; color: var(--text); box-shadow: 0 35px 100px rgba(0, 0, 0, .65); }
+    .lightbox::backdrop { background: rgba(3, 5, 12, .88); backdrop-filter: blur(8px); }
+    .lightbox-close { display: grid; place-items: center; width: 40px; height: 40px; margin: 0 0 10px auto; border: 1px solid var(--line); border-radius: 12px; background: rgba(255, 255, 255, .05); color: var(--text); cursor: pointer; }
+    .lightbox-close svg { width: 19px; height: 19px; }
+    .lightbox-stage { display: grid; grid-template-columns: 48px minmax(0, 1fr) 48px; align-items: center; gap: 12px; }
+    .lightbox-arrow { display: grid; place-items: center; width: 44px; height: 48px; border: 1px solid var(--line); border-radius: 14px; background: rgba(255, 255, 255, .05); color: var(--text); cursor: pointer; transition: background .18s ease, border-color .18s ease; }
+    .lightbox-arrow:hover, .lightbox-close:hover { border-color: rgba(150, 176, 255, .38); background: rgba(255, 255, 255, .1); }
+    .lightbox-arrow svg { width: 21px; height: 21px; }
+    .lightbox figure { display: grid; justify-items: center; gap: 12px; min-width: 0; margin: 0; }
+    .lightbox-image { display: block; width: auto; max-width: 100%; height: auto; max-height: min(72vh, 780px); border: 1px solid rgba(190, 203, 255, .14); border-radius: 10px; background: #111625; }
+    .lightbox-caption { color: #d9e1f6; font-size: .9rem; text-align: center; }
+    .lightbox-count { margin-top: 10px; color: #8e9ab6; font-size: .76rem; text-align: center; }
+
+    .release-card { padding: 24px; border: 1px solid rgba(152, 171, 255, .17); border-radius: 19px; background: linear-gradient(145deg, rgba(21, 28, 45, .9), rgba(14, 19, 31, .88)); }
+    .release-top { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding-bottom: 17px; border-bottom: 1px solid var(--line); }
+    .release-top .eyebrow { font-size: .7rem; }
+    .release-version { margin: 5px 0 0; font-size: 1.4rem; letter-spacing: -.04em; }
+    .release-date { color: #929db9; font-size: .8rem; }
+    .release-notes { display: grid; gap: 8px; padding: 16px 0 19px; color: #c2cbe0; font-size: .9rem; }
+    .release-notes h4 { margin: 7px 0 0; color: #f1f3ff; font-size: .94rem; }
+    .release-notes p { margin: 0; white-space: pre-wrap; }
+    .release-notes ul { display: grid; gap: 6px; margin: 0; padding-left: 21px; }
+    .release-loading, .release-error { color: var(--muted); }
+    .faq-list { display: grid; gap: 11px; max-width: 900px; margin-inline: auto; }
+    .faq-list details { border: 1px solid var(--line); border-radius: 15px; background: linear-gradient(145deg, rgba(21, 28, 45, .78), rgba(14, 19, 31, .76)); }
+    .faq-list summary { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 17px 19px; color: #edf1ff; font-weight: 700; cursor: pointer; list-style: none; }
+    .faq-list summary::-webkit-details-marker { display: none; }
+    .faq-list summary::after { content: "+"; color: #a9bdff; font-size: 1.35rem; font-weight: 500; }
+    .faq-list details[open] summary::after { content: "−"; }
+    .faq-list details p { margin: -2px 19px 18px; color: var(--muted); font-size: .9rem; line-height: 1.7; }
+
     .update-band { display: grid; grid-template-columns: 1fr 1.05fr; align-items: center; gap: 46px; padding: 35px; border: 1px solid rgba(152, 171, 255, .16); border-radius: var(--radius); background: linear-gradient(110deg, rgba(33, 52, 91, .35), rgba(63, 39, 96, .20)), var(--panel); }
     .update-band h2 { margin: 11px 0 12px; font-size: clamp(1.8rem, 3.4vw, 2.6rem); }
     .update-band p { margin: 0; color: var(--muted); }
@@ -141,11 +176,16 @@
     .footer-links a { color: #a9b2c8; }
     .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 
-    @media (max-width: 900px) {
+    @media (max-width: 1050px) {
       .hero { padding-top: 65px; }
       .hero-grid { gap: 30px; }
       .hero-copy { max-width: 650px; }
       .hero-visual { width: 100%; }
+      .nav-links { display: none; }
+      .nav-links.is-open { position: absolute; top: calc(100% + 1px); right: 0; left: 0; z-index: 10; display: flex; align-items: stretch; flex-direction: column; gap: 2px; padding: 8px; border: 1px solid var(--line); border-radius: 15px; background: rgba(13, 18, 32, .98); box-shadow: 0 20px 45px rgba(0, 0, 0, .45); }
+      .nav-links a { padding: 11px 12px; border-radius: 9px; }
+      .nav-links a:hover { background: rgba(255, 255, 255, .06); }
+      .menu-toggle { display: grid; flex: 0 0 auto; }
       .feature-grid { grid-template-columns: repeat(2, 1fr); }
       .screen-grid { grid-template-columns: repeat(2, 1fr); }
       .trust-grid { gap: 35px; }
@@ -153,7 +193,6 @@
     @media (max-width: 650px) {
       .wrap { width: min(100% - 30px, 1160px); }
       .nav { min-height: 66px; }
-      .nav-links { display: none; }
       .nav-download { padding: 9px 11px; font-size: .78rem; }
       .hero { padding: 57px 0 54px; }
       h1 { font-size: clamp(2.85rem, 13vw, 4.35rem); }
@@ -171,6 +210,14 @@
       .download-card { padding: 42px 19px; }
       .footer-inner { align-items: flex-start; flex-direction: column; }
       .footer-links { gap: 13px 18px; }
+      .lightbox { width: calc(100% - 16px); max-height: calc(100% - 16px); padding: 10px; border-radius: 15px; }
+      .lightbox-stage { grid-template-columns: 36px minmax(0, 1fr) 36px; gap: 5px; }
+      .lightbox-arrow { width: 36px; height: 42px; border-radius: 11px; }
+      .lightbox-image { max-height: 66vh; }
+      .release-card { padding: 18px; }
+      .release-top { align-items: flex-start; flex-direction: column; gap: 5px; }
+      .faq-list summary { padding: 15px; }
+      .faq-list details p { margin: -2px 15px 15px; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
@@ -184,15 +231,22 @@
         <img class="brand-logo" src="assets/lumistrap-icon.png" alt="" width="38" height="38">
         <span>Lumi<em>Strap</em></span>
       </a>
-      <div class="nav-links">
+      <div class="nav-links" id="site-navigation">
         <a href="#funciones">Funciones</a>
         <a href="#capturas">Capturas</a>
         <a href="#actualizaciones">Actualizaciones</a>
+        <a href="#novedades">Novedades</a>
+        <a href="#faq">Preguntas frecuentes</a>
         <a href="#acerca">Acerca de</a>
       </div>
-      <a class="button button-primary nav-download" href="https://github.com/gggds2/LumiStrap/releases/latest" aria-label="Descargar la última versión de LumiStrap">
-        Descargar <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 18v2h14v-2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
+      <div class="nav-actions">
+        <a class="button button-primary nav-download" href="https://github.com/gggds2/LumiStrap/releases/latest" aria-label="Descargar la última versión de LumiStrap">
+          Descargar <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 18v2h14v-2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="site-navigation">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+      </div>
     </nav>
   </header>
 
@@ -217,7 +271,7 @@
         </div>
 
         <div class="hero-visual">
-          <a class="hero-screenshot" href="assets/screenshots/inicio.png" target="_blank" rel="noopener" aria-label="Abrir captura de la pantalla de inicio de LumiStrap">
+          <a class="hero-screenshot" href="assets/screenshots/inicio.png" data-lightbox data-caption="Inicio de LumiStrap" aria-label="Ampliar captura de la pantalla de inicio de LumiStrap">
             <img src="assets/screenshots/inicio.png" alt="Pantalla de inicio de LumiStrap 0.1.4" width="1920" height="1080" fetchpriority="high">
           </a>
           <div class="hero-caption"><span>Interfaz real de LumiStrap</span><span>Versión 0.1.4</span></div>
@@ -266,31 +320,31 @@
         <div class="section-head">
           <div class="eyebrow">Conoce la aplicación</div>
           <h2>Herramientas claras, desde el primer vistazo.</h2>
-          <p>Explora capturas reales de las secciones principales de LumiStrap 0.1.4. Selecciona una imagen para verla en tamaño completo.</p>
+          <p>Explora capturas reales de las secciones principales de LumiStrap 0.1.4. Selecciona una imagen para ampliarla y recorrer la galería.</p>
         </div>
         <div class="screen-grid">
           <article class="screen-card">
-            <a class="screen-link" href="assets/screenshots/integraciones.png" target="_blank" rel="noopener" aria-label="Abrir captura de Integraciones en tamaño completo"><img src="assets/screenshots/integraciones.png" alt="Integraciones: seguimiento de actividad, Discord y opciones personalizadas" width="1920" height="1080" loading="lazy"></a>
+            <a class="screen-link" href="assets/screenshots/integraciones.png" data-lightbox data-caption="Integraciones" aria-label="Ampliar captura de Integraciones"><img src="assets/screenshots/integraciones.png" alt="Integraciones: seguimiento de actividad, Discord y opciones personalizadas" width="1920" height="1080" loading="lazy"></a>
             <div class="screen-caption"><strong>Integraciones</strong><span>Seguimiento de actividad, Discord y programas personalizados.</span></div>
           </article>
           <article class="screen-card">
-            <a class="screen-link" href="assets/screenshots/iniciador.png" target="_blank" rel="noopener" aria-label="Abrir captura del iniciador en tamaño completo"><img src="assets/screenshots/iniciador.png" alt="Opciones del iniciador de LumiStrap" width="1920" height="1080" loading="lazy"></a>
+            <a class="screen-link" href="assets/screenshots/iniciador.png" data-lightbox data-caption="Iniciador" aria-label="Ampliar captura del iniciador"><img src="assets/screenshots/iniciador.png" alt="Opciones del iniciador de LumiStrap" width="1920" height="1080" loading="lazy"></a>
             <div class="screen-caption"><strong>Iniciador</strong><span>Controla las instancias, las actualizaciones y la reinstalación de Roblox.</span></div>
           </article>
           <article class="screen-card">
-            <a class="screen-link" href="assets/screenshots/modificadores.png" target="_blank" rel="noopener" aria-label="Abrir captura de Modificadores en tamaño completo"><img src="assets/screenshots/modificadores.png" alt="Opciones de Modificadores de LumiStrap" width="1920" height="1080" loading="lazy"></a>
+            <a class="screen-link" href="assets/screenshots/modificadores.png" data-lightbox data-caption="Modificadores" aria-label="Ampliar captura de Modificadores"><img src="assets/screenshots/modificadores.png" alt="Opciones de Modificadores de LumiStrap" width="1920" height="1080" loading="lazy"></a>
             <div class="screen-caption"><strong>Modificadores</strong><span>Personaliza cursores, sonidos, emojis y otros detalles visuales.</span></div>
           </article>
           <article class="screen-card">
-            <a class="screen-link" href="assets/screenshots/configuracion-cliente.png" target="_blank" rel="noopener" aria-label="Abrir captura de Configuración del cliente en tamaño completo"><img src="assets/screenshots/configuracion-cliente.png" alt="Ajustes gráficos y FastFlags del cliente de Roblox" width="1920" height="1080" loading="lazy"></a>
+            <a class="screen-link" href="assets/screenshots/configuracion-cliente.png" data-lightbox data-caption="Configuración del cliente" aria-label="Ampliar captura de Configuración del cliente"><img src="assets/screenshots/configuracion-cliente.png" alt="Ajustes gráficos y FastFlags del cliente de Roblox" width="1920" height="1080" loading="lazy"></a>
             <div class="screen-caption"><strong>Configuración del cliente</strong><span>Ajustes gráficos y FastFlags permitidas por Roblox.</span></div>
           </article>
           <article class="screen-card">
-            <a class="screen-link" href="assets/screenshots/perfiles.png" target="_blank" rel="noopener" aria-label="Abrir captura de Perfiles en tamaño completo"><img src="assets/screenshots/perfiles.png" alt="Perfiles para guardar, importar y exportar ajustes" width="1920" height="1080" loading="lazy"></a>
+            <a class="screen-link" href="assets/screenshots/perfiles.png" data-lightbox data-caption="Perfiles" aria-label="Ampliar captura de Perfiles"><img src="assets/screenshots/perfiles.png" alt="Perfiles para guardar, importar y exportar ajustes" width="1920" height="1080" loading="lazy"></a>
             <div class="screen-caption"><strong>Perfiles</strong><span>Guarda, aplica, importa y exporta tus configuraciones.</span></div>
           </article>
           <article class="screen-card">
-            <a class="screen-link" href="assets/screenshots/lumistrap.png" target="_blank" rel="noopener" aria-label="Abrir captura de los ajustes de LumiStrap en tamaño completo"><img src="assets/screenshots/lumistrap.png" alt="Ajustes de LumiStrap y herramientas LumiFix" width="1920" height="1080" loading="lazy"></a>
+            <a class="screen-link" href="assets/screenshots/lumistrap.png" data-lightbox data-caption="Ajustes de LumiStrap y LumiFix" aria-label="Ampliar captura de los ajustes de LumiStrap"><img src="assets/screenshots/lumistrap.png" alt="Ajustes de LumiStrap y herramientas LumiFix" width="1920" height="1080" loading="lazy"></a>
             <div class="screen-caption"><strong>LumiStrap y LumiFix</strong><span>Revisa o repara Roblox, limpia la caché y gestiona preferencias.</span></div>
           </article>
         </div>
@@ -310,6 +364,56 @@
             <div class="step"><span class="step-number">02</span><span><strong>Respalda tus ajustes</strong><span>Se crea una copia automática del perfil.</span></span></div>
             <div class="step"><span class="step-number">03</span><span><strong>Actualiza a tu ritmo</strong><span>Instala ahora o pospón la decisión.</span></span></div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="novedades">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Siempre al día</div>
+          <h2>Las novedades más recientes.</h2>
+          <p>La versión y sus cambios se consultan directamente desde el último lanzamiento de LumiStrap en GitHub.</p>
+        </div>
+        <article class="release-card" aria-labelledby="release-version">
+          <div class="release-top">
+            <div><div class="eyebrow">Última versión estable</div><h3 class="release-version" id="release-version">Consultando GitHub…</h3></div>
+            <time class="release-date" id="release-date"></time>
+          </div>
+          <div class="release-notes" id="release-notes" aria-live="polite"><p class="release-loading">Cargando las novedades…</p></div>
+          <a class="button button-secondary" href="https://github.com/gggds2/LumiStrap/releases/latest">Ver lanzamiento y descargar</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Respuestas rápidas</div>
+          <h2>Preguntas frecuentes.</h2>
+          <p>Lo esencial sobre LumiStrap, la instalación y sus ajustes.</p>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>¿Qué es LumiStrap?</summary>
+            <p>Es un fork comunitario independiente de Bloxstrap para Windows. No está afiliado a Roblox Corporation.</p>
+          </details>
+          <details>
+            <summary>¿Cómo instalo LumiStrap?</summary>
+            <p>Descarga el único archivo <strong>LumiStrap.exe</strong> desde la página de versiones y ejecútalo. Se abrirá directamente el instalador.</p>
+          </details>
+          <details>
+            <summary>¿Qué guarda un perfil?</summary>
+            <p>Guarda tus ajustes de LumiStrap y FastFlags personalizadas. No incluye archivos de Roblox ni modificaciones; puedes importar y exportar perfiles.</p>
+          </details>
+          <details>
+            <summary>¿Las FastFlags siempre funcionan?</summary>
+            <p>No necesariamente. Roblox solo aplica las flags incluidas en su lista permitida, y puede cambiar su disponibilidad o comportamiento con una actualización.</p>
+          </details>
+          <details>
+            <summary>¿Qué hace LumiFix?</summary>
+            <p>Puede revisar la instalación de Roblox, reparar archivos del cliente o limpiar la caché de descargas. LumiStrap explica la acción antes de que confirmes.</p>
+          </details>
         </div>
       </div>
     </section>
@@ -353,5 +457,129 @@
       <div class="footer-links"><a href="https://github.com/gggds2/LumiStrap">GitHub</a><a href="https://github.com/gggds2/LumiStrap/releases">Versiones</a><a href="https://github.com/gggds2/LumiStrap/issues">Ayuda</a><a href="https://github.com/gggds2/LumiStrap/blob/main/LICENSE">Licencia</a></div>
     </div>
   </footer>
+  <dialog class="lightbox" id="gallery-lightbox" aria-label="Galería de capturas">
+    <button class="lightbox-close" type="button" aria-label="Cerrar captura">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
+    <div class="lightbox-stage">
+      <button class="lightbox-arrow" type="button" data-gallery-previous aria-label="Captura anterior"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m15 18-6-6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <figure>
+        <img class="lightbox-image" id="lightbox-image" alt="">
+        <figcaption class="lightbox-caption" id="lightbox-caption"></figcaption>
+      </figure>
+      <button class="lightbox-arrow" type="button" data-gallery-next aria-label="Siguiente captura"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m9 18 6-6-6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </div>
+    <div class="lightbox-count" id="lightbox-count" aria-live="polite"></div>
+  </dialog>
+  <script>
+    const menuButton = document.querySelector(".menu-toggle");
+    const siteNavigation = document.getElementById("site-navigation");
+
+    function setMenuOpen(open) {
+      menuButton.setAttribute("aria-expanded", String(open));
+      menuButton.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+      siteNavigation.classList.toggle("is-open", open);
+    }
+
+    menuButton.addEventListener("click", () => {
+      setMenuOpen(menuButton.getAttribute("aria-expanded") !== "true");
+    });
+    siteNavigation.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => setMenuOpen(false)));
+    document.addEventListener("click", (event) => {
+      if (menuButton.getAttribute("aria-expanded") === "true" && !(event.target instanceof Element && event.target.closest(".nav"))) setMenuOpen(false);
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && menuButton.getAttribute("aria-expanded") === "true") {
+        setMenuOpen(false);
+        menuButton.focus();
+      }
+    });
+
+    const galleryDialog = document.getElementById("gallery-lightbox");
+    const galleryImage = document.getElementById("lightbox-image");
+    const galleryCaption = document.getElementById("lightbox-caption");
+    const galleryCount = document.getElementById("lightbox-count");
+    const galleryItems = Array.from(document.querySelectorAll("[data-lightbox]"));
+    let activeGalleryIndex = 0;
+    let galleryTrigger = null;
+
+    function showGalleryItem(index) {
+      activeGalleryIndex = (index + galleryItems.length) % galleryItems.length;
+      const item = galleryItems[activeGalleryIndex];
+      const thumbnail = item.querySelector("img");
+      galleryImage.src = item.href;
+      galleryImage.alt = thumbnail?.alt || item.dataset.caption || "Captura de LumiStrap";
+      galleryCaption.textContent = item.dataset.caption || "Captura de LumiStrap";
+      galleryCount.textContent = `${activeGalleryIndex + 1} de ${galleryItems.length}`;
+    }
+
+    galleryItems.forEach((item, index) => item.addEventListener("click", (event) => {
+      event.preventDefault();
+      galleryTrigger = item;
+      showGalleryItem(index);
+      galleryDialog.showModal();
+      galleryDialog.querySelector(".lightbox-close").focus();
+    }));
+    galleryDialog.querySelector(".lightbox-close").addEventListener("click", () => galleryDialog.close());
+    galleryDialog.querySelector("[data-gallery-previous]").addEventListener("click", () => showGalleryItem(activeGalleryIndex - 1));
+    galleryDialog.querySelector("[data-gallery-next]").addEventListener("click", () => showGalleryItem(activeGalleryIndex + 1));
+    galleryDialog.addEventListener("click", (event) => { if (event.target === galleryDialog) galleryDialog.close(); });
+    galleryDialog.addEventListener("close", () => galleryTrigger?.focus());
+    galleryDialog.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowLeft") showGalleryItem(activeGalleryIndex - 1);
+      if (event.key === "ArrowRight") showGalleryItem(activeGalleryIndex + 1);
+    });
+
+    function addReleaseLine(container, line) {
+      const text = line.replace(/\*\*(.*?)\*\*/g, "$1").replace(/`([^`]+)`/g, "$1").replace(/\[([^\]]+)\]\(https?:\/\/[^)]+\)/g, "$1");
+      if (/^#{1,3}\s/.test(text)) {
+        const heading = document.createElement("h4");
+        heading.textContent = text.replace(/^#{1,3}\s*/, "");
+        container.append(heading);
+      } else if (/^[-*]\s/.test(text)) {
+        let list = container.lastElementChild;
+        if (!list || list.tagName !== "UL") {
+          list = document.createElement("ul");
+          container.append(list);
+        }
+        const entry = document.createElement("li");
+        entry.textContent = text.replace(/^[-*]\s*/, "");
+        list.append(entry);
+      } else {
+        const paragraph = document.createElement("p");
+        paragraph.textContent = text;
+        container.append(paragraph);
+      }
+    }
+
+    async function loadLatestRelease() {
+      const version = document.getElementById("release-version");
+      const date = document.getElementById("release-date");
+      const notes = document.getElementById("release-notes");
+      try {
+        const response = await fetch("https://api.github.com/repos/gggds2/LumiStrap/releases/latest", { headers: { Accept: "application/vnd.github+json" } });
+        if (!response.ok) throw new Error("No se pudo consultar el lanzamiento");
+        const release = await response.json();
+        version.textContent = release.name || release.tag_name || "Último lanzamiento";
+        const published = release.published_at || release.created_at;
+        if (published) {
+          date.dateTime = published;
+          date.textContent = new Intl.DateTimeFormat("es-MX", { dateStyle: "long" }).format(new Date(published));
+        }
+        notes.replaceChildren();
+        const lines = String(release.body || "Consulta GitHub para ver los detalles de esta versión.").split(/\r?\n/).slice(0, 28);
+        lines.forEach((line) => { if (line.trim()) addReleaseLine(notes, line.trim()); });
+      } catch {
+        version.textContent = "Novedades no disponibles";
+        notes.replaceChildren();
+        const message = document.createElement("p");
+        message.className = "release-error";
+        message.textContent = "No se pudo cargar el lanzamiento ahora. Puedes consultar las novedades directamente en GitHub.";
+        notes.append(message);
+      }
+    }
+
+    loadLatestRelease();
+  </script>
 </body>
 </html>
