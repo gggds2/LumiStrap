@@ -96,22 +96,27 @@
     .section-head .eyebrow { justify-content: center; }
     h2 { margin: 13px 0 12px; font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.1; letter-spacing: -.06em; }
     .section-head p { margin: 0; color: var(--muted); font-size: 1.02rem; }
-    .showcase-list { max-width: 1080px; margin-inline: auto; }
-    .showcase-row { display: grid; grid-template-columns: .85fr 1.15fr; align-items: center; gap: clamp(28px, 5vw, 64px); padding: 34px 0; border-bottom: 1px solid var(--line); }
-    .showcase-row:first-child { padding-top: 0; }
-    .showcase-row:last-child { border-bottom: 0; padding-bottom: 0; }
-    .showcase-row:nth-child(even) .showcase-copy { order: 2; }
-    .showcase-row:nth-child(even) .showcase-media { order: 1; }
-    .showcase-copy .eyebrow { font-size: .7rem; }
-    .showcase-copy h3 { margin: 11px 0 10px; font-size: clamp(1.45rem, 2.6vw, 2.1rem); letter-spacing: -.045em; line-height: 1.15; }
-    .showcase-copy p { margin: 0; color: var(--muted); line-height: 1.75; }
-    .showcase-media { display: block; overflow: hidden; border: 1px solid rgba(199, 211, 255, .17); border-radius: 15px; background: #111625; box-shadow: 0 22px 55px rgba(0, 0, 0, .28); }
-    .showcase-media img { display: block; width: 100%; height: auto; }
-    .showcase-media:hover { border-color: rgba(137, 164, 255, .4); }
-
-    .tour-panel { display: grid; grid-template-columns: .62fr 1.38fr; align-items: center; gap: 30px; padding: 24px; border: 1px solid var(--line); border-radius: 22px; background: linear-gradient(145deg, rgba(21, 28, 45, .92), rgba(14, 19, 31, .88)); }
+    .tour-panel { display: grid; grid-template-columns: .72fr 1.28fr; align-items: center; gap: 35px; padding: 25px; border: 1px solid var(--line); border-radius: 22px; background: linear-gradient(145deg, rgba(21, 28, 45, .92), rgba(14, 19, 31, .88)); }
     .tour-copy h3 { margin: 11px 0 9px; font-size: 1.55rem; line-height: 1.15; letter-spacing: -.04em; }
     .tour-copy p { margin: 0; color: var(--muted); line-height: 1.7; }
+    .tour-tabs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 20px; }
+    .tour-tab { display: flex; align-items: center; gap: 10px; width: 100%; min-width: 0; padding: 10px 12px; border: 1px solid transparent; border-radius: 11px; background: transparent; color: var(--muted); font: inherit; font-size: .87rem; text-align: left; cursor: pointer; }
+    .tour-tab::before { content: ""; width: 7px; height: 7px; flex: 0 0 auto; border-radius: 50%; background: #69748e; }
+    .tour-tab[aria-selected="true"] { border-color: rgba(130, 157, 255, .23); background: rgba(107, 135, 231, .12); color: var(--text); }
+    .tour-tab[aria-selected="true"]::before { background: linear-gradient(135deg, var(--cyan), var(--violet)); box-shadow: 0 0 13px rgba(129, 155, 255, .75); }
+    .tour-tab:focus-visible, .tour-play:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+    .tour-stage { min-width: 0; }
+    .tour-image-link { display: block; overflow: hidden; border: 1px solid rgba(199, 211, 255, .17); border-radius: 13px; background: #111625; }
+    .tour-image { display: block; width: 100%; height: auto; transition: opacity .16s ease; }
+    .tour-image.is-changing { opacity: .35; }
+    .tour-caption { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 12px; color: var(--muted); font-size: .8rem; }
+    .tour-counter { color: #9da9c6; font-variant-numeric: tabular-nums; }
+    .tour-play { display: inline-flex; align-items: center; gap: 7px; margin-top: 14px; padding: 8px 11px; border: 1px solid var(--line); border-radius: 10px; background: rgba(255, 255, 255, .035); color: var(--text); font: inherit; font-size: .8rem; font-weight: 650; cursor: pointer; }
+    .tour-play:hover { border-color: rgba(150, 176, 255, .38); background: rgba(255, 255, 255, .08); }
+    .tour-play svg { width: 15px; height: 15px; }
+    .tour-play .pause-icon { display: none; }
+    .tour-play[aria-pressed="true"] .play-icon { display: none; }
+    .tour-play[aria-pressed="true"] .pause-icon { display: block; }
     .release-highlights { margin: 0 auto 34px; padding: 23px; border: 1px solid var(--line); border-radius: 20px; background: linear-gradient(145deg, rgba(21, 28, 45, .82), rgba(14, 19, 31, .76)); }
     .release-highlights h3 { margin: 9px 0 0; font-size: 1.35rem; letter-spacing: -.035em; }
     .highlight-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 17px; }
@@ -119,10 +124,22 @@
     .highlight-card .install-number { margin-bottom: 12px; }
     .highlight-card h4 { margin: 0 0 7px; font-size: .98rem; }
     .highlight-card p { margin: 0; color: var(--muted); font-size: .87rem; line-height: 1.65; }
-    .tour-video-stage { min-width: 0; margin: 0; overflow: hidden; border: 1px solid rgba(199, 211, 255, .17); border-radius: 14px; background: #090d17; box-shadow: 0 18px 42px rgba(0, 0, 0, .22); }
-    .tour-video { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: contain; background: #090d17; }
-    .tour-caption { padding: 11px 14px; color: var(--muted); font-size: .8rem; }
-
+    .presence-card { max-width: 900px; margin: 0 auto; padding: 25px; border: 1px solid var(--line); border-radius: 20px; background: linear-gradient(145deg, rgba(21, 28, 45, .82), rgba(14, 19, 31, .76)); text-align: center; }
+    .presence-card h3 { margin: 0 0 9px; font-size: clamp(1.45rem, 2.5vw, 1.9rem); letter-spacing: -.04em; }
+    .presence-card p { max-width: 690px; margin: 0 auto; color: var(--muted); line-height: 1.7; }
+    .presence-preview { display: block; width: min(100%, 480px); margin: 22px auto 0; overflow: hidden; border: 1px solid rgba(199, 211, 255, .17); border-radius: 16px; background: #111; box-shadow: 0 18px 42px rgba(0, 0, 0, .22); }
+    .presence-preview img { display: block; width: 100%; height: auto; }
+    .feature-list-card { max-width: 1120px; margin: 34px auto 0; padding: 25px; border: 1px solid var(--line); border-radius: 20px; background: linear-gradient(145deg, rgba(21, 28, 45, .82), rgba(14, 19, 31, .76)); }
+    .feature-list-card h3 { margin: 0 0 18px; font-size: 1.55rem; letter-spacing: -.04em; text-align: center; }
+    .feature-table-scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 13px; }
+    .feature-table { width: 100%; border-collapse: collapse; table-layout: fixed; text-align: left; }
+    .feature-table th, .feature-table td { padding: 14px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    .feature-table thead th { background: rgba(255, 255, 255, .045); font-size: .84rem; }
+    .feature-table thead th:first-child, .feature-table tbody th { width: 29%; }
+    .feature-table tbody th { font-size: .88rem; font-weight: 700; }
+    .feature-table tbody td { color: var(--muted); font-size: .87rem; line-height: 1.65; }
+    .feature-table tbody tr:last-child > * { border-bottom: 0; }
+    .feature-table code { color: var(--text); }
     .install-grid, .help-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
     .install-card, .help-card { min-width: 0; padding: 21px; border: 1px solid var(--line); border-radius: 16px; background: linear-gradient(145deg, rgba(21, 28, 45, .78), rgba(14, 19, 31, .76)); }
     .install-number { display: grid; place-items: center; width: 34px; height: 34px; margin-bottom: 15px; border-radius: 11px; background: rgba(112, 154, 255, .14); color: #b5c5ff; font-size: .8rem; font-weight: 750; }
@@ -220,7 +237,6 @@
       .nav-links a { padding: 11px 12px; border-radius: 9px; }
       .nav-links a:hover { background: rgba(255, 255, 255, .06); }
       .menu-toggle { display: grid; flex: 0 0 auto; }
-      .showcase-row { gap: 36px; }
       .trust-grid { gap: 35px; }
       .tour-panel { grid-template-columns: 1fr; gap: 22px; }
     }
@@ -241,11 +257,11 @@
       .hero-visual { padding: 0; }
       .hero-caption { flex-direction: column; gap: 2px; }
       .section { padding: 62px 0; }
-      .showcase-row { grid-template-columns: 1fr; gap: 17px; padding: 26px 0; }
-      .showcase-row:nth-child(even) .showcase-copy, .showcase-row:nth-child(even) .showcase-media { order: initial; }
       .update-band, .trust-grid { grid-template-columns: 1fr; gap: 27px; }
       .install-grid, .help-grid { grid-template-columns: 1fr; }
       .tour-panel { padding: 17px; }
+      .tour-tabs { gap: 5px; }
+      .tour-tab { padding: 9px 8px; font-size: .79rem; }
       .history-item { grid-template-columns: 1fr auto; gap: 3px 10px; }
       .history-item span { grid-column: 1 / -1; grid-row: 2; }
       .history-item time { grid-column: 2; grid-row: 1; }
@@ -295,10 +311,16 @@
     :root[data-theme="light"] .hero-visual::before { opacity: .55; }
     :root[data-theme="light"] .hero-caption { color: #34415d; }
     :root[data-theme="light"] .hero-caption span:last-child, :root[data-theme="light"] .micro-trust { color: #58647c; }
-    :root[data-theme="light"] .showcase-row { border-color: rgba(31, 44, 77, .12); }
-    :root[data-theme="light"] .showcase-media { border-color: rgba(31, 44, 77, .15); box-shadow: 0 18px 42px rgba(38, 51, 83, .12); }
     :root[data-theme="light"] .tour-panel, :root[data-theme="light"] .install-card, :root[data-theme="light"] .help-card { border-color: rgba(31, 44, 77, .12); background: linear-gradient(145deg, rgba(255, 255, 255, .96), rgba(247, 248, 252, .96)); }
-    :root[data-theme="light"] .tour-video-stage { border-color: rgba(31, 44, 77, .15); }
+    :root[data-theme="light"] .tour-image-link { border-color: rgba(31, 44, 77, .15); }
+    :root[data-theme="light"] .presence-card { border-color: rgba(31, 44, 77, .12); background: linear-gradient(145deg, rgba(255, 255, 255, .96), rgba(247, 248, 252, .96)); }
+    :root[data-theme="light"] .presence-preview { border-color: rgba(31, 44, 77, .15); }
+    :root[data-theme="light"] .feature-list-card { border-color: rgba(31, 44, 77, .12); background: linear-gradient(145deg, rgba(255, 255, 255, .96), rgba(247, 248, 252, .96)); }
+    :root[data-theme="light"] .feature-table-scroll { border-color: rgba(31, 44, 77, .12); }
+    :root[data-theme="light"] .feature-table th, :root[data-theme="light"] .feature-table td { border-color: rgba(31, 44, 77, .12); }
+    :root[data-theme="light"] .feature-table thead th { background: rgba(74, 103, 185, .07); }
+    :root[data-theme="light"] .tour-play { background: rgba(255, 255, 255, .8); }
+    :root[data-theme="light"] .tour-tab[aria-selected="true"] { border-color: rgba(74, 103, 185, .22); background: rgba(96, 128, 218, .1); }
     :root[data-theme="light"] .troubleshoot, :root[data-theme="light"] .history-item { border-color: rgba(31, 44, 77, .12); background: rgba(255, 255, 255, .72); }
     :root[data-theme="light"] .history-item time { color: #64708a; }
     :root[data-theme="light"] .install-number { background: rgba(83, 114, 190, .12); color: #435a92; }
@@ -379,8 +401,8 @@
         </div>
 
         <div class="hero-visual">
-          <a class="hero-screenshot" href="assets/screenshots/inicio-v016.png" data-lightbox data-caption="Inicio de LumiStrap 0.1.6" aria-label="Ampliar captura de Inicio de LumiStrap">
-            <img src="assets/screenshots/inicio-v016.png" alt="Inicio de LumiStrap 0.1.6" width="1920" height="1080" fetchpriority="high">
+          <a class="hero-screenshot" href="assets/screenshots/inicio-v016-web.png" data-lightbox data-caption="Inicio de LumiStrap 0.1.6" aria-label="Ampliar captura de Inicio de LumiStrap">
+            <img src="assets/screenshots/inicio-v016-web.png" alt="Inicio de LumiStrap 0.1.6" width="1920" height="1080" fetchpriority="high">
           </a>
           <div class="hero-caption"><span>Inicio de LumiStrap</span><span>Versión 0.1.6</span></div>
         </div>
@@ -392,32 +414,39 @@
         <div class="section-head">
           <div class="eyebrow" data-i18n="tour.eyebrow">Míralo en acción</div>
           <h2 data-i18n="tour.title">Recorrido paso a paso por LumiStrap.</h2>
-          <p data-i18n="tour.intro">Sigue el video y conoce paso a paso las secciones y herramientas de LumiStrap.</p>
+          <p data-i18n="tour.intro">Elige una sección para ver la aplicación y conocer sus herramientas principales.</p>
         </div>
         <div class="tour-panel">
           <div class="tour-copy">
-            <div class="eyebrow">Recorrido guiado</div>
-            <h3>Conoce LumiStrap paso a paso.</h3>
-            <p>En este video te mostramos las secciones principales, desde Inicio y Experiencias hasta los perfiles gráficos, las integraciones y LumiFix. Reprodúcelo cuando quieras y pausa para revisar cada parte.</p>
+            <div class="eyebrow" id="tour-kicker">Inicio</div>
+            <h3 id="tour-title">Bienvenido a LumiStrap.</h3>
+            <p id="tour-description">Abre tus herramientas principales y elige una sección desde los accesos rápidos.</p>
+            <div class="tour-tabs" role="tablist" aria-label="Recorrido de funciones" data-i18n-aria="tour.tablist">
+              <button class="tour-tab" type="button" role="tab" aria-selected="true" aria-controls="tour-panel-display" data-tour="0">Inicio</button>
+              <button class="tour-tab" type="button" role="tab" aria-selected="false" aria-controls="tour-panel-display" data-tour="1">Integraciones</button>
+              <button class="tour-tab" type="button" role="tab" aria-selected="false" aria-controls="tour-panel-display" data-tour="2">Roblox Studio</button>
+              <button class="tour-tab" type="button" role="tab" aria-selected="false" aria-controls="tour-panel-display" data-tour="3">Gráficos</button>
+              <button class="tour-tab" type="button" role="tab" aria-selected="false" aria-controls="tour-panel-display" data-tour="4">Perfiles</button>
+              <button class="tour-tab" type="button" role="tab" aria-selected="false" aria-controls="tour-panel-display" data-tour="5">Apariencia</button>
+            </div>
+            <button class="tour-play" id="tour-play" type="button" aria-pressed="false" aria-label="Reproducir recorrido">
+              <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l10-6.5-10-6.5Z"/></svg>
+              <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5h4v14H7zm6 0h4v14h-4z"/></svg>
+              <span id="tour-play-label">Reproducir recorrido</span>
+            </button>
           </div>
-          <figure class="tour-video-stage">
-            <video class="tour-video" controls preload="metadata" playsinline poster="assets/screenshots/inicio-v016.png" aria-label="Recorrido paso a paso por las secciones de LumiStrap">
-              <source src="recorrido-lumistrap.mp4" type="video/mp4">
-              Tu navegador no puede reproducir este video. Actualízalo o ábrelo en otro navegador.
-            </video>
-            <figcaption class="tour-caption">Recorrido por las secciones de LumiStrap · Versión 0.1.6</figcaption>
-          </figure>
+          <div class="tour-stage" id="tour-panel-display" role="tabpanel" aria-live="polite">
+            <a class="tour-image-link" id="tour-image-link" href="assets/screenshots/inicio-v016-web.png" data-lightbox data-caption="Inicio de LumiStrap">
+              <img class="tour-image" id="tour-image" src="assets/screenshots/inicio-v016-web.png" alt="Inicio de LumiStrap" width="1920" height="1080" fetchpriority="high">
+            </a>
+            <div class="tour-caption"><span id="tour-caption">Inicio de LumiStrap</span><span class="tour-counter" id="tour-counter">01 / 06</span></div>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="section" id="funciones">
       <div class="wrap">
-        <div class="section-head">
-          <div class="eyebrow">Conoce LumiStrap</div>
-          <h2>Herramientas claras para cada parte de Roblox.</h2>
-          <p>Explora las secciones principales con capturas reales de la aplicación. Selecciona una imagen para ampliarla.</p>
-        </div>
         <div class="release-highlights" id="novedades-016">
           <div class="eyebrow">Versión 0.1.6</div>
           <h3>Novedades de LumiStrap 0.1.6</h3>
@@ -427,80 +456,34 @@
             <article class="highlight-card"><span class="install-number">03</span><h4>Asistente inteligente de gráficos</h4><p>Analiza procesador, memoria y gráficos en tu equipo. Revisa la recomendación y sus cambios antes de aplicarla.</p></article>
           </div>
         </div>
-        <div class="showcase-list" id="capturas">
-          <article class="showcase-row">
-            <div class="showcase-copy">
-              <div class="eyebrow">Configuración del cliente</div>
-              <h3>Elige Rendimiento, Equilibrio o Calidad.</h3>
-              <p>Elige uno de los tres perfiles gráficos y personaliza las opciones del cliente cuando quieras. Si cambias sus valores, la configuración pasa a Personalizado. La disponibilidad de FastFlags depende de Roblox.</p>
-            </div>
-            <a class="showcase-media" href="assets/screenshots/configuracion-graficos-v016.png" data-lightbox data-caption="Perfiles gráficos de Rendimiento, Equilibrio y Calidad" aria-label="Ampliar captura de los perfiles gráficos"><img src="assets/screenshots/configuracion-graficos-v016.png" alt="Modos Rendimiento, Equilibrio y Calidad en la configuración gráfica de LumiStrap 0.1.6" width="1920" height="1080" loading="lazy"></a>
-          </article>
-          <article class="showcase-row">
-            <div class="showcase-copy">
-              <div class="eyebrow">Perfiles</div>
-              <h3>Guarda tus ajustes y recupera versiones anteriores.</h3>
-              <p>Crea, aplica, importa o exporta perfiles. LumiStrap guarda hasta 20 copias recientes de tu configuración para que puedas restaurar una anterior.</p>
-            </div>
-            <a class="showcase-media" href="assets/screenshots/perfiles-v016.png" data-lightbox data-caption="Perfiles e historial de ajustes" aria-label="Ampliar captura del historial de Perfiles"><img src="assets/screenshots/perfiles-v016.png" alt="Perfiles e historial de configuraciones restaurables en LumiStrap" width="1920" height="1080" loading="lazy"></a>
-          </article>
-          <article class="showcase-row">
-            <div class="showcase-copy">
-              <div class="eyebrow">LumiFix</div>
-              <h3>Revisa y repara desde un solo lugar.</h3>
-              <p>Revisa procesos abiertos y archivos de Roblox antes de iniciar. También puedes comprobar la instalación, reparar archivos o limpiar la caché; la revisión previa no cierra programas ni modifica archivos.</p>
-            </div>
-            <a class="showcase-media" href="assets/screenshots/lumifix-v015-clean.png" data-lightbox data-caption="LumiFix y revisión antes de iniciar" aria-label="Ampliar captura de LumiFix"><img src="assets/screenshots/lumifix-v015-clean.png" alt="LumiFix revisa Roblox y los procesos antes de iniciar el juego" width="1920" height="1080" loading="lazy"></a>
-          </article>
-          <article class="showcase-row">
-            <div class="showcase-copy">
-              <div class="eyebrow">Integraciones y sesión</div>
-              <h3>Controla tu actividad y privacidad en Discord.</h3>
-              <p>Configura el seguimiento de sesión y el estado de actividad. El modo de privacidad oculta temporalmente la actividad de Roblox y los botones para unirse, y recupera tus opciones al desactivarlo.</p>
-            </div>
-            <a class="showcase-media" href="assets/screenshots/integraciones-v016.png" data-lightbox data-caption="Privacidad de Discord e integraciones" aria-label="Ampliar captura de privacidad de Discord"><img src="assets/screenshots/integraciones-v016.png" alt="Modo de privacidad y opciones de presencia de Discord en LumiStrap" width="1920" height="1080" loading="lazy"></a>
-          </article>
-          <article class="showcase-row">
-            <div class="showcase-copy">
-              <div class="eyebrow">Iniciador</div>
-              <h3>Decide cómo se inicia Roblox.</h3>
-              <p>Controla las instancias abiertas, las actualizaciones en segundo plano y la reinstalación del cliente.</p>
-            </div>
-            <a class="showcase-media" href="assets/screenshots/iniciador.png" data-lightbox data-caption="Iniciador" aria-label="Ampliar captura del iniciador"><img src="assets/screenshots/iniciador.png" alt="Opciones del iniciador de LumiStrap" width="1920" height="1080" loading="lazy"></a>
-          </article>
-          <article class="showcase-row">
-            <div class="showcase-copy">
-              <div class="eyebrow">Modificadores</div>
-              <h3>Personaliza los detalles de tu experiencia.</h3>
-              <p>Encuentra opciones visuales y de compatibilidad para adaptar algunos aspectos del cliente de Roblox.</p>
-            </div>
-            <a class="showcase-media" href="assets/screenshots/modificadores.png" data-lightbox data-caption="Modificadores" aria-label="Ampliar captura de Modificadores"><img src="assets/screenshots/modificadores.png" alt="Opciones de Modificadores de LumiStrap" width="1920" height="1080" loading="lazy"></a>
-          </article>
-          <article class="showcase-row">
-            <div class="showcase-copy">
-              <div class="eyebrow">Experiencias</div>
-              <h3>Ten tus juegos favoritos a mano.</h3>
-              <p>Añade experiencias con su enlace o ID de lugar, marca favoritos y consulta juegos recientes. Los recientes se agregan automáticamente cuando activas el seguimiento de actividad.</p>
-            </div>
-            <a class="showcase-media" href="assets/screenshots/experiencias-v016.png" data-lightbox data-caption="Biblioteca de Experiencias" aria-label="Ampliar captura de Experiencias"><img src="assets/screenshots/experiencias-v016.png" alt="Biblioteca de Experiencias de LumiStrap con favoritos y juegos recientes" width="1920" height="1080" loading="lazy"></a>
-          </article>
-          <article class="showcase-row">
-            <div class="showcase-copy">
-              <div class="eyebrow">Roblox Studio</div>
-              <h3>Accede a Studio y sus herramientas.</h3>
-              <p>Abre Roblox Studio, la carpeta de instalación local o el editor de FastFlags de LumiStrap. Roblox puede tratar de forma distinta las flags de Studio.</p>
-            </div>
-            <a class="showcase-media" href="assets/screenshots/roblox-studio-v016.png" data-lightbox data-caption="Herramientas de Roblox Studio" aria-label="Ampliar captura de Roblox Studio"><img src="assets/screenshots/roblox-studio-v016.png" alt="Acceso a Roblox Studio y al editor de FastFlags de LumiStrap" width="1920" height="1080" loading="lazy"></a>
-          </article>
-          <article class="showcase-row">
-            <div class="showcase-copy">
-              <div class="eyebrow">Asistente gráfico</div>
-              <h3>Una recomendación basada en tu equipo.</h3>
-              <p>El asistente detecta el procesador, la memoria y el adaptador gráfico localmente. Muestra Rendimiento, Equilibrio o Calidad y una vista previa de los cambios; puedes cerrar el panel cuando termines.</p>
-            </div>
-            <a class="showcase-media" href="assets/screenshots/asistente-grafico-v016.png" data-lightbox data-caption="Asistente inteligente de gráficos" aria-label="Ampliar captura del asistente gráfico"><img src="assets/screenshots/asistente-grafico-v016.png" alt="Hardware detectado y recomendación de calidad en el asistente gráfico de LumiStrap" width="1920" height="1080" loading="lazy"></a>
-          </article>
-        </div>
+        <article class="presence-card" id="rich-presence">
+          <h3>Discord Rich Presence</h3>
+          <p>Presencia personalizada de Discord para mostrar a los demás qué juegos estás jugando. También es compatible con BloxstrapRPC. (obvio.)</p>
+          <a class="presence-preview" href="assets/screenshots/discord-rich-presence-v016.png" data-lightbox data-caption="Discord Rich Presence de LumiStrap">
+            <img src="assets/screenshots/discord-rich-presence-v016.png" alt="Vista de Discord Rich Presence de LumiStrap mientras juegas a Roblox, con botones para unirse al servidor y descargar" width="2144" height="1378" loading="lazy">
+          </a>
+        </article>
+        <article class="feature-list-card" id="feature-list">
+          <h3>Funciones</h3>
+          <div class="feature-table-scroll">
+            <table class="feature-table">
+              <thead><tr><th scope="col">Herramienta</th><th scope="col">Para qué sirve</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Perfiles gráficos</th><td>Elige Rendimiento, Equilibrio o Calidad y personaliza los ajustes del cliente. Los cambios manuales aparecen como Personalizado.</td></tr>
+                <tr><th scope="row">Asistente gráfico</th><td>Detecta localmente el procesador, la memoria y los gráficos; muestra una recomendación de Rendimiento, Equilibrio o Calidad para que la revises antes de aplicarla.</td></tr>
+                <tr><th scope="row">Temas Lumi</th><td>Elige paletas incluidas, cambia entre modo claro y oscuro, personaliza los colores e importa o exporta archivos <code>.lumitheme</code>.</td></tr>
+                <tr><th scope="row">Roblox Studio y FastFlags</th><td>Gestiona los ajustes de Studio, las opciones globales y las FastFlags. Roblox decide qué indicadores permite y puede cambiar su comportamiento.</td></tr>
+                <tr><th scope="row">Experiencias</th><td>Añade lugares con un enlace de Roblox o un ID de lugar, guarda favoritos y consulta juegos recientes. Los juegos recientes pueden agregarse automáticamente si activas el seguimiento de actividad.</td></tr>
+                <tr><th scope="row">LumiFix</th><td>Revisa procesos y archivos de Roblox antes de iniciar, comprueba la instalación, repara archivos del cliente o borra la caché de descargas. La comprobación previa no cierra programas ni modifica archivos.</td></tr>
+                <tr><th scope="row">Perfiles e historial</th><td>Guarda, aplica, importa y exporta ajustes. LumiStrap conserva hasta 20 copias recientes que puedes restaurar. Los perfiles contienen solo la configuración.</td></tr>
+                <tr><th scope="row">Panel de sesión</th><td>Consulta la información disponible de la experiencia y del servidor, con acceso rápido a las herramientas de LumiStrap mientras juegas.</td></tr>
+                <tr><th scope="row">Privacidad de Discord</th><td>Oculta temporalmente la actividad de Roblox y los botones para unirse; al desactivar el modo de privacidad, se restauran las opciones anteriores.</td></tr>
+                <tr><th scope="row">Descargas y errores</th><td>Sigue el progreso y la velocidad de las descargas, vuelve a intentarlas o cancélalas y consulta explicaciones más claras de problemas comunes.</td></tr>
+                <tr><th scope="row">Centro de actualizaciones</th><td>Busca nuevas versiones de LumiStrap, revisa sus cambios y decide cuándo instalarlas.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -682,38 +665,7 @@
       '.hero-caption span:last-child': 'Version 0.1.6',
       '#recorrido .section-head .eyebrow': 'See it in action',
       '#recorrido .section-head h2': 'A step-by-step tour of LumiStrap.',
-      '#recorrido .section-head p': 'Follow the video for a step-by-step look at LumiStrap’s sections and tools.',
-      '.tour-copy .eyebrow': 'Guided tour',
-      '.tour-copy h3': 'Explore LumiStrap step by step.',
-      '.tour-copy p': 'This video walks through the main sections, from Home and Experiences to graphics profiles, integrations, and LumiFix. Play it anytime and pause to inspect each part.',
-      '.tour-caption': 'Walkthrough of LumiStrap’s sections · Version 0.1.6',
-      '#funciones .section-head .eyebrow': 'Explore LumiStrap',
-      '#funciones .section-head h2': 'Clear tools for every part of Roblox.',
-      '#funciones .section-head p': 'Explore the main sections with real screenshots from the app. Select an image to enlarge it.',
-      '#funciones .showcase-row:nth-child(1) .showcase-copy .eyebrow': 'Client settings',
-      '#funciones .showcase-row:nth-child(1) h3': 'Choose Performance, Balanced, or Quality.',
-      '#funciones .showcase-row:nth-child(1) p': 'Choose one of three graphics profiles and customize client settings whenever you like. Manual changes appear as Custom. Roblox decides which FastFlags are allowed.',
-      '#funciones .showcase-row:nth-child(2) .showcase-copy .eyebrow': 'Profiles',
-      '#funciones .showcase-row:nth-child(2) h3': 'Save settings and restore an earlier version.',
-      '#funciones .showcase-row:nth-child(2) p': 'Create, apply, import, or export profiles. LumiStrap keeps up to 20 recent configuration backups so you can restore an earlier one.',
-      '#funciones .showcase-row:nth-child(3) .showcase-copy .eyebrow': 'LumiFix',
-      '#funciones .showcase-row:nth-child(3) h3': 'Check and repair from one place.',
-      '#funciones .showcase-row:nth-child(3) p': 'Review open processes and Roblox files before launch. You can also check the installation, repair client files, or clear the cache. The preflight check does not close programs or change files.',
-      '#funciones .showcase-row:nth-child(4) .showcase-copy .eyebrow': 'Discord privacy and integrations',
-      '#funciones .showcase-row:nth-child(4) h3': 'Control activity and Discord privacy.',
-      '#funciones .showcase-row:nth-child(4) p': 'Set up session tracking and activity status. Privacy mode temporarily hides Roblox activity and join buttons, then restores your options when turned off.',
-      '#funciones .showcase-row:nth-child(5) .showcase-copy .eyebrow': 'Launcher',
-      '#funciones .showcase-row:nth-child(5) h3': 'Choose how Roblox starts.',
-      '#funciones .showcase-row:nth-child(5) p': 'Control open instances, background updates, and client reinstalls.',
-      '#funciones .showcase-row:nth-child(6) .showcase-copy .eyebrow': 'Modifications',
-      '#funciones .showcase-row:nth-child(6) h3': 'Personalize the details of your experience.',
-      '#funciones .showcase-row:nth-child(6) p': 'Find visual and compatibility options to adjust parts of the Roblox client.',
-      '#funciones .showcase-row:nth-child(7) .showcase-copy .eyebrow': 'Experiences',
-      '#funciones .showcase-row:nth-child(7) h3': 'Keep your favorite games close.',
-      '#funciones .showcase-row:nth-child(7) p': 'Add experiences with a Roblox link or place ID, mark favorites, and browse recent games. Recent games are added automatically when activity tracking is enabled.',
-      '#funciones .showcase-row:nth-child(8) .showcase-copy .eyebrow': 'Roblox Studio',
-      '#funciones .showcase-row:nth-child(8) h3': 'Open Studio and its tools.',
-      '#funciones .showcase-row:nth-child(8) p': 'Open Roblox Studio, its local installation folder, or LumiStrap’s FastFlags editor. Roblox may handle Studio flags differently.',
+      '#recorrido .section-head p': 'Choose a section to view the app and learn what its main tools do.',
       '#novedades-016 .eyebrow': 'Version 0.1.6',
       '#novedades-016 h3': 'What’s new in LumiStrap 0.1.6',
       '.highlight-card:nth-child(1) h4': 'Update Center',
@@ -722,9 +674,32 @@
       '.highlight-card:nth-child(2) p': 'Choose Aurora, Lumen, Ocean, Sakura, or Mint palettes; switch between light and dark, adjust colors, and import or export .lumitheme files.',
       '.highlight-card:nth-child(3) h4': 'Smart graphics assistant',
       '.highlight-card:nth-child(3) p': 'Locally checks your processor, memory, and graphics adapter. Review the recommendation and proposed changes before applying.',
-      '#funciones .showcase-row:nth-child(9) .showcase-copy .eyebrow': 'Graphics assistant',
-      '#funciones .showcase-row:nth-child(9) h3': 'A recommendation based on your PC.',
-      '#funciones .showcase-row:nth-child(9) p': 'The assistant detects your processor, memory, and graphics adapter locally. It shows a Performance, Balanced, or Quality recommendation and a preview of changes. You can close the panel when you are done.',
+      '#rich-presence p': 'Custom Discord Rich Presence, to show everyone what games you\'re playing. Also supports BloxstrapRPC. (duh.)',
+      '#feature-list h3': 'Features',
+      '#feature-list thead th:nth-child(1)': 'Tool',
+      '#feature-list thead th:nth-child(2)': 'What it helps with',
+      '#feature-list tbody tr:nth-child(1) th': 'Graphics profiles',
+      '#feature-list tbody tr:nth-child(1) td': 'Choose Performance, Balanced, or Quality, then customize client settings. Manual changes appear as Custom.',
+      '#feature-list tbody tr:nth-child(2) th': 'Graphics assistant',
+      '#feature-list tbody tr:nth-child(2) td': 'Detect CPU, memory, and graphics hardware locally; preview a Performance, Balanced, or Quality recommendation before applying it.',
+      '#feature-list tbody tr:nth-child(3) th': 'Lumi Themes',
+      '#feature-list tbody tr:nth-child(3) td': 'Choose built-in palettes, switch between light and dark, customize colors, and import or export <code>.lumitheme</code> files.',
+      '#feature-list tbody tr:nth-child(4) th': 'Roblox Studio and FastFlags',
+      '#feature-list tbody tr:nth-child(4) td': 'Manage Studio settings, global options, and FastFlags. Roblox decides which flags are allowed and may change their behavior.',
+      '#feature-list tbody tr:nth-child(5) th': 'Experiences',
+      '#feature-list tbody tr:nth-child(5) td': 'Add places by Roblox link or place ID, keep favorites, and browse recent games. Recent games can be added automatically with activity tracking enabled.',
+      '#feature-list tbody tr:nth-child(6) th': 'LumiFix',
+      '#feature-list tbody tr:nth-child(6) td': 'Check processes and Roblox files before launch, inspect the installation, repair client files, or clear the download cache. The pre-launch check does not close programs or edit files.',
+      '#feature-list tbody tr:nth-child(7) th': 'Profiles and history',
+      '#feature-list tbody tr:nth-child(7) td': 'Save, apply, import, and export settings. LumiStrap keeps up to 20 recent configuration backups that you can restore. Profiles contain configuration only.',
+      '#feature-list tbody tr:nth-child(8) th': 'Session panel',
+      '#feature-list tbody tr:nth-child(8) td': 'See available experience and server information, with quick access to LumiStrap tools while playing.',
+      '#feature-list tbody tr:nth-child(9) th': 'Discord privacy',
+      '#feature-list tbody tr:nth-child(9) td': 'Temporarily hide Roblox activity and join buttons, then restore your previous options when privacy mode is turned off.',
+      '#feature-list tbody tr:nth-child(10) th': 'Downloads and errors',
+      '#feature-list tbody tr:nth-child(10) td': 'Follow download progress and speed, retry or cancel, and get clearer explanations of common problems.',
+      '#feature-list tbody tr:nth-child(11) th': 'Update Center',
+      '#feature-list tbody tr:nth-child(11) td': 'Check for a new LumiStrap release, review its changes, and choose when to install it.',
       '#instalar .section-head .eyebrow': 'In a few minutes',
       '#instalar .section-head h2': 'Install LumiStrap step by step.',
       '#instalar .section-head p': 'The official installer is a single file and opens directly when you run it.',
@@ -800,39 +775,37 @@
       '.footer-links a:nth-child(4)': 'License'
     };
 
+    const tourSteps = {
+      es: [
+        { tab: 'Inicio', title: 'Bienvenido a LumiStrap.', description: 'Accede a tus secciones desde los accesos rápidos, abre LumiFix y revisa las actualizaciones.', caption: 'Inicio de LumiStrap', image: 'inicio-v016-web.png' },
+        { tab: 'Integraciones', title: 'Configura tus integraciones.', description: 'Activa el seguimiento de actividad, controla tu privacidad en Discord y elige qué aplicaciones acompañan Roblox.', caption: 'Integraciones de LumiStrap', image: 'recorrido-integraciones-v016.png' },
+        { tab: 'Roblox Studio', title: 'Atajos para Roblox Studio.', description: 'Comprueba si Studio está instalado y abre el programa, su carpeta local o el editor de FastFlags.', caption: 'Roblox Studio en LumiStrap', image: 'recorrido-roblox-studio-v016.png' },
+        { tab: 'Gráficos', title: 'Ajusta el cliente a tu equipo.', description: 'Elige Rendimiento, Equilibrio o Calidad y revisa la recomendación del asistente antes de aplicarla.', caption: 'Perfiles gráficos y asistente de LumiStrap', image: 'recorrido-configuracion-v016.png' },
+        { tab: 'Perfiles', title: 'Guarda tus ajustes.', description: 'Importa y exporta perfiles, guarda configuraciones y restaura copias recientes.', caption: 'Perfiles e historial de LumiStrap', image: 'recorrido-perfiles-v016.png' },
+        { tab: 'Apariencia', title: 'Dale tu estilo a LumiStrap.', description: 'Elige una paleta Lumi, ajusta sus colores y cambia entre el tema claro y el oscuro.', caption: 'Temas y apariencia de LumiStrap', image: 'recorrido-apariencia-v016.png' }
+      ],
+      en: [
+        { tab: 'Home', title: 'Welcome to LumiStrap.', description: 'Open your sections from the quick links, launch LumiFix, and check for updates.', caption: 'LumiStrap home', image: 'inicio-v016-web.png' },
+        { tab: 'Integrations', title: 'Set up your integrations.', description: 'Enable activity tracking, manage Discord privacy, and choose which apps start with Roblox.', caption: 'LumiStrap integrations', image: 'recorrido-integraciones-v016.png' },
+        { tab: 'Roblox Studio', title: 'Roblox Studio shortcuts.', description: 'Check whether Studio is installed, then open it, its local folder, or the FastFlags editor.', caption: 'Roblox Studio in LumiStrap', image: 'recorrido-roblox-studio-v016.png' },
+        { tab: 'Graphics', title: 'Adjust the client for your PC.', description: 'Choose Performance, Balanced, or Quality and review the assistant’s recommendation before applying it.', caption: 'LumiStrap graphics profiles and assistant', image: 'recorrido-configuracion-v016.png' },
+        { tab: 'Profiles', title: 'Keep your settings ready.', description: 'Import and export profiles, save configurations, and restore recent backups.', caption: 'LumiStrap profiles and history', image: 'recorrido-perfiles-v016.png' },
+        { tab: 'Appearance', title: 'Make LumiStrap yours.', description: 'Choose a Lumi palette, adjust its colors, and switch between light and dark themes.', caption: 'LumiStrap themes and appearance', image: 'recorrido-apariencia-v016.png' }
+      ]
+    };
+    let activeTourIndex = 0;
+    let isTourPlaying = false;
+    let tourTimer = null;
+
     const localizedAttributes = [
       ['.brand', 'aria-label', 'LumiStrap, home'],
       ['.nav-download', 'aria-label', 'Download the latest LumiStrap release'],
       ['.hero-visual .hero-screenshot', 'aria-label', 'Enlarge the LumiStrap home screenshot'],
       ['.hero-visual .hero-screenshot', 'data-caption', 'LumiStrap 0.1.6 home screen'],
       ['.hero-visual .hero-screenshot img', 'alt', 'LumiStrap 0.1.6 home screen'],
-      ['.showcase-row:nth-child(1) .showcase-media', 'aria-label', 'Enlarge the graphics profiles screenshot'],
-      ['.showcase-row:nth-child(1) .showcase-media', 'data-caption', 'Performance, Balanced, and Quality graphics profiles'],
-      ['.showcase-row:nth-child(1) img', 'alt', 'Performance, Balanced, and Quality modes in LumiStrap graphics settings'],
-      ['.showcase-row:nth-child(2) .showcase-media', 'aria-label', 'Enlarge the profiles history screenshot'],
-      ['.showcase-row:nth-child(2) .showcase-media', 'data-caption', 'Profiles and settings history'],
-      ['.showcase-row:nth-child(2) img', 'alt', 'Profiles and restorable configuration history in LumiStrap'],
-      ['.showcase-row:nth-child(3) .showcase-media', 'aria-label', 'Enlarge the LumiFix screenshot'],
-      ['.showcase-row:nth-child(3) .showcase-media', 'data-caption', 'LumiFix pre-launch check'],
-      ['.showcase-row:nth-child(3) img', 'alt', 'LumiFix checks Roblox and open processes before launch'],
-      ['.showcase-row:nth-child(4) .showcase-media', 'aria-label', 'Enlarge the Discord privacy screenshot'],
-      ['.showcase-row:nth-child(4) .showcase-media', 'data-caption', 'Discord privacy and integrations'],
-      ['.showcase-row:nth-child(4) img', 'alt', 'Discord privacy mode and activity options in LumiStrap'],
-      ['.showcase-row:nth-child(5) .showcase-media', 'aria-label', 'Enlarge the launcher screenshot'],
-      ['.showcase-row:nth-child(5) .showcase-media', 'data-caption', 'Launcher'],
-      ['.showcase-row:nth-child(5) img', 'alt', 'LumiStrap launcher options'],
-      ['.showcase-row:nth-child(6) .showcase-media', 'aria-label', 'Enlarge the modifications screenshot'],
-      ['.showcase-row:nth-child(6) .showcase-media', 'data-caption', 'Modifications'],
-      ['.showcase-row:nth-child(6) img', 'alt', 'LumiStrap modification options'],
-      ['.showcase-row:nth-child(7) .showcase-media', 'aria-label', 'Enlarge the Experiences screenshot'],
-      ['.showcase-row:nth-child(7) .showcase-media', 'data-caption', 'Experiences library'],
-      ['.showcase-row:nth-child(7) img', 'alt', 'LumiStrap Experiences library with favorites and recent games'],
-      ['.showcase-row:nth-child(8) .showcase-media', 'aria-label', 'Enlarge the Roblox Studio screenshot'],
-      ['.showcase-row:nth-child(8) .showcase-media', 'data-caption', 'Roblox Studio tools'],
-      ['.showcase-row:nth-child(8) img', 'alt', 'Roblox Studio and LumiStrap FastFlags editor'],
-      ['.showcase-row:nth-child(9) .showcase-media', 'aria-label', 'Enlarge the graphics assistant screenshot'],
-      ['.showcase-row:nth-child(9) .showcase-media', 'data-caption', 'Smart graphics assistant'],
-      ['.showcase-row:nth-child(9) img', 'alt', 'Hardware detection and quality recommendation in LumiStrap graphics assistant']
+      ['.presence-preview', 'aria-label', 'Enlarge the Discord Rich Presence preview'],
+      ['.presence-preview', 'data-caption', 'LumiStrap Discord Rich Presence'],
+      ['.presence-preview img', 'alt', 'Discord Rich Presence in LumiStrap while playing Roblox'],
     ];
     const originalAttributes = localizedAttributes.map(([selector, name]) => document.querySelector(selector)?.getAttribute(name) ?? '');
 
@@ -879,6 +852,7 @@
       document.querySelector('.nav-download').setAttribute('aria-label', isEnglish ? 'Download the latest LumiStrap release' : 'Descargar la última versión de LumiStrap');
       document.querySelector('.theme-toggle').setAttribute('aria-label', document.documentElement.dataset.theme === 'light' ? (isEnglish ? 'Enable dark theme' : 'Activar tema oscuro') : (isEnglish ? 'Enable light theme' : 'Activar tema claro'));
       document.querySelector('.menu-toggle').setAttribute('aria-label', document.querySelector('.menu-toggle').getAttribute('aria-expanded') === 'true' ? (isEnglish ? 'Close menu' : 'Cerrar menú') : (isEnglish ? 'Open menu' : 'Abrir menú'));
+      document.querySelector('.tour-tabs').setAttribute('aria-label', isEnglish ? 'Feature tour' : 'Recorrido de funciones');
       document.querySelector('#gallery-lightbox').setAttribute('aria-label', isEnglish ? 'Screenshot gallery' : 'Galería de capturas');
       document.querySelector('.lightbox-close').setAttribute('aria-label', isEnglish ? 'Close screenshot' : 'Cerrar captura');
       document.querySelector('[data-gallery-previous]').setAttribute('aria-label', isEnglish ? 'Previous screenshot' : 'Captura anterior');
@@ -901,9 +875,62 @@
         message.textContent = isEnglish ? 'The release could not be loaded. You can check the updates directly on GitHub.' : 'No se pudo cargar el lanzamiento ahora. Puedes consultar las novedades directamente en GitHub.';
         notes.append(message);
       }
+      updateTour(activeTourIndex);
+      syncTourPlaybackControl();
       if (savePreference) {
         try { localStorage.setItem('lumistrap-language', currentLanguage); } catch { /* The page still works if local storage is unavailable. */ }
       }
+    }
+
+    function updateTour(index) {
+      const steps = tourSteps[currentLanguage];
+      activeTourIndex = (index + steps.length) % steps.length;
+      const step = steps[activeTourIndex];
+      const imagePath = `assets/screenshots/${step.image}`;
+      const image = document.getElementById('tour-image');
+      const link = document.getElementById('tour-image-link');
+      if (image.getAttribute('src') !== imagePath) {
+        image.classList.add('is-changing');
+        image.onload = () => image.classList.remove('is-changing');
+        image.src = imagePath;
+        if (image.complete && image.naturalWidth > 0) image.classList.remove('is-changing');
+      }
+      image.alt = step.caption;
+      link.href = imagePath;
+      link.dataset.caption = step.caption;
+      document.getElementById('tour-kicker').textContent = step.tab;
+      document.getElementById('tour-title').textContent = step.title;
+      document.getElementById('tour-description').textContent = step.description;
+      document.getElementById('tour-caption').textContent = step.caption;
+      document.getElementById('tour-counter').textContent = `${String(activeTourIndex + 1).padStart(2, '0')} / ${String(steps.length).padStart(2, '0')}`;
+      document.querySelectorAll('.tour-tab').forEach((tab, tabIndex) => {
+        tab.textContent = steps[tabIndex].tab;
+        tab.setAttribute('aria-selected', String(tabIndex === activeTourIndex));
+      });
+    }
+
+    function syncTourPlaybackControl() {
+      const button = document.getElementById('tour-play');
+      const isEnglish = currentLanguage === 'en';
+      const label = isTourPlaying ? (isEnglish ? 'Pause tour' : 'Pausar recorrido') : (isEnglish ? 'Play tour' : 'Reproducir recorrido');
+      document.getElementById('tour-play-label').textContent = label;
+      button.setAttribute('aria-pressed', String(isTourPlaying));
+      button.setAttribute('aria-label', label);
+    }
+
+    function setTourPlaying(playing) {
+      isTourPlaying = playing;
+      if (tourTimer) clearInterval(tourTimer);
+      tourTimer = null;
+      if (playing) {
+        let remaining = tourSteps[currentLanguage].length;
+        tourTimer = setInterval(() => {
+          updateTour(activeTourIndex + 1);
+          remaining -= 1;
+          if (remaining <= 0) setTourPlaying(false);
+        }, 4500);
+      }
+      syncTourPlaybackControl();
     }
 
     let requestedLanguage = 'es';
@@ -911,6 +938,11 @@
     languageToggle.addEventListener('click', () => setLanguage(currentLanguage === 'es' ? 'en' : 'es', true));
 
     setLanguage(requestedLanguage);
+    document.querySelectorAll('.tour-tab').forEach((tab) => tab.addEventListener('click', () => {
+      setTourPlaying(false);
+      updateTour(Number(tab.dataset.tour));
+    }));
+    document.getElementById('tour-play').addEventListener('click', () => setTourPlaying(!isTourPlaying));
 
     const themeButton = document.querySelector(".theme-toggle");
 
