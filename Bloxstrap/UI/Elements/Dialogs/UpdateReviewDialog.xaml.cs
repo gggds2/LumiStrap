@@ -32,7 +32,7 @@ namespace Bloxstrap.UI.Elements.Dialogs
             };
         }
 
-        private static string FormatReleaseNotes(string? markdown)
+        public static string FormatReleaseNotes(string? markdown)
         {
             if (String.IsNullOrWhiteSpace(markdown))
                 return Strings.Dialog_UpdateReview_NoReleaseNotes;

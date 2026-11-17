@@ -6,7 +6,7 @@ namespace Bloxstrap.Integrations
 {
     public class DiscordRichPresence : IDisposable
     {
-        private readonly DiscordRpcClient _rpcClient = new("1005469189907173486");
+        private readonly DiscordRpcClient _rpcClient = new("1571977382158667938");
         private readonly ActivityWatcher _activityWatcher;
         private readonly Queue<Message> _messageQueue = new();
 
@@ -23,6 +23,17 @@ namespace Bloxstrap.Integrations
         private bool _privacyModeEnabled;
         private readonly FileSystemWatcher? _settingsWatcher;
         private int _settingsReloadQueued;
+        private readonly object _presenceStartLock = new();
+        private DateTime? _presenceSessionStartTime;
+
+        private DateTime GetPresenceSessionStartTime(DateTime? fallback = null)
+        {
+            lock (_presenceStartLock)
+            {
+                _presenceSessionStartTime ??= fallback?.ToUniversalTime() ?? DateTime.UtcNow;
+                return _presenceSessionStartTime.Value;
+            }
+        }
 
         public DiscordRichPresence(ActivityWatcher activityWatcher)
         {
@@ -45,10 +56,14 @@ namespace Bloxstrap.Integrations
 
             _activityWatcher.OnGameJoin += (_, _) => Task.Run(() => SetCurrentGame());
             _activityWatcher.OnGameLeave += (_, _) => Task.Run(() => SetCurrentGame());
+            _activityWatcher.OnLogOpen += (_, _) => Task.Run(() => SetCurrentGame());
             _activityWatcher.OnRPCMessage += (_, message) => ProcessRPCMessage(message);
 
             _rpcClient.OnReady += (_, e) =>
+            {
                 App.Logger.WriteLine(LOG_IDENT, $"Received ready from user {e.User} ({e.User.ID})");
+                _ = Task.Run(() => SetCurrentGame());
+            };
 
             _rpcClient.OnPresenceUpdate += (_, e) =>
                 App.Logger.WriteLine(LOG_IDENT, "Presence updated");
@@ -400,9 +415,28 @@ namespace Bloxstrap.Integrations
             
             if (!_activityWatcher.InGame)
             {
-                App.Logger.WriteLine(LOG_IDENT, "Not in game, clearing presence");
+                App.Logger.WriteLine(LOG_IDENT, "Not in game, setting LumiStrap idle presence");
 
-                _currentPresence = _originalPresence =  null;
+                _currentPresence = new DiscordRPC.RichPresence
+                {
+                    Details = "Listo para jugar",
+                    State = "Roblox con LumiStrap",
+                    Timestamps = new Timestamps { Start = GetPresenceSessionStartTime() },
+                    Assets = new Assets
+                    {
+                        LargeImageKey = "lumistrap-discord-1024",
+                        LargeImageText = "LumiStrap • listo para jugar"
+                    },
+                    Buttons = new[]
+                    {
+                        new Button
+                        {
+                            Label = "Descargar",
+                            Url = "https://gggds2.github.io/LumiStrap/"
+                        }
+                    }
+                };
+                _originalPresence = _currentPresence.Clone();
                 _messageQueue.Clear();
 
                 UpdatePresence();
@@ -420,10 +454,12 @@ namespace Bloxstrap.Integrations
             App.Logger.WriteLine(LOG_IDENT, $"Setting presence for Place ID {placeId}");
 
             // preserve time spent playing if we're teleporting between places in the same universe
-            var timeStarted = activity.TimeJoined;
+            var activityStartTime = activity.TimeJoined;
 
             if (activity.RootActivity is not null)
-                timeStarted = activity.RootActivity.TimeJoined;
+                activityStartTime = activity.RootActivity.TimeJoined;
+
+            var timeStarted = GetPresenceSessionStartTime(activityStartTime);
 
             if (activity.UniverseDetails is null)
             {
@@ -471,9 +507,13 @@ namespace Bloxstrap.Integrations
             if (universeName.Length < 2)
                 universeName = $"{universeName}\x2800\x2800\x2800";
 
+            string gameDetails = $"{universeName} en LumiStrap";
+            if (gameDetails.Length > 128)
+                gameDetails = gameDetails[..128];
+
             _currentPresence = new DiscordRPC.RichPresence
             {
-                Details = universeName,
+                Details = gameDetails,
                 State = status,
                 Timestamps = new Timestamps { Start = timeStarted.ToUniversalTime() },
                 Buttons = GetButtons(),
@@ -528,10 +568,19 @@ namespace Bloxstrap.Integrations
                 }
             }
 
+            if (buttons.Count == 0)
+            {
+                buttons.Add(new Button
+                {
+                    Label = "See game page",
+                    Url = $"https://www.roblox.com/games/{data.PlaceId}"
+                });
+            }
+
             buttons.Add(new Button
             {
-                Label = "See game page",
-                Url = $"https://www.roblox.com/games/{data.PlaceId}"
+                Label = "Descargar",
+                Url = "https://gggds2.github.io/LumiStrap/"
             });
 
             return buttons.ToArray();

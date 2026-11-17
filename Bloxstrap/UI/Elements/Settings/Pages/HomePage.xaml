@@ -8,7 +8,8 @@
       mc:Ignorable="d"
       d:DesignHeight="800" d:DesignWidth="800"
       Title="HomePage"
-      Scrollable="True">
+      Scrollable="True"
+      Loaded="Page_Loaded">
     <StackPanel Margin="0,0,14,16">
         <Border Margin="0,0,0,22" Padding="24,22" CornerRadius="16">
             <Border.Background>
@@ -146,5 +147,32 @@
                 </StackPanel>
             </ui:CardAction>
         </UniformGrid>
+
+        <ui:Card Margin="0,10,0,0" Padding="14">
+            <StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" Margin="0,0,12,0">
+                        <TextBlock Text="Centro de actualizaciones" FontSize="16" FontWeight="SemiBold" />
+                        <TextBlock Margin="0,3,0,0" Text="Consulta las novedades y elige cuándo instalar una nueva versión de LumiStrap."
+                                   FontSize="12" Foreground="{DynamicResource TextFillColorSecondaryBrush}" TextWrapping="Wrap" />
+                    </StackPanel>
+                    <ui:Button x:Name="CheckUpdatesButton" Grid.Column="1" Content="Buscar actualizaciones" Click="CheckUpdates_Click" VerticalAlignment="Center" />
+                </Grid>
+                <TextBlock x:Name="UpdateStatusText" Margin="0,10,0,0" Text="Se comprobará si hay una versión nueva."
+                           TextWrapping="Wrap" AutomationProperties.LiveSetting="Polite" />
+                <StackPanel x:Name="AvailableUpdatePanel" Visibility="Collapsed" Margin="0,10,0,0">
+                    <TextBlock x:Name="UpdateVersionText" FontSize="14" FontWeight="SemiBold" />
+                    <Border Margin="0,6,0,8" Padding="10" CornerRadius="6"
+                            Background="{DynamicResource CardBackgroundFillColorDefaultBrush}">
+                        <ScrollViewer MaxHeight="180" VerticalScrollBarVisibility="Auto">
+                            <TextBlock x:Name="UpdateNotesText" TextWrapping="Wrap" />
+                        </ScrollViewer>
+                    </Border>
+                    <ui:Button x:Name="InstallUpdateButton" Content="Revisar e instalar" Click="InstallUpdate_Click"
+                               Appearance="Primary" HorizontalAlignment="Left" />
+                </StackPanel>
+            </StackPanel>
+        </ui:Card>
     </StackPanel>
 </ui:UiPage>

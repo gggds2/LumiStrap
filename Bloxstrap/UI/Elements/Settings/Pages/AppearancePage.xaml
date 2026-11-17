@@ -18,7 +18,7 @@
         <controls:OptionControl
             Header="{x:Static resources:Strings.Menu_Appearance_Global_Theme_Title}"
             Description="{x:Static resources:Strings.Menu_Appearance_Description}">
-            <ComboBox Width="200" Padding="10,5,10,5" ItemsSource="{Binding Themes, Mode=OneTime}" Text="{Binding Theme, Mode=TwoWay}">
+            <ComboBox Width="200" Padding="10,5,10,5" ItemsSource="{Binding Themes, Mode=OneTime}" SelectedItem="{Binding Theme, Mode=TwoWay}">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Path=., Converter={StaticResource EnumNameConverter}}" />
@@ -26,6 +26,34 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
         </controls:OptionControl>
+
+        <ui:Card Margin="0,8,0,0" Padding="14">
+            <StackPanel>
+                <TextBlock Text="Temas Lumi" FontSize="16" FontWeight="SemiBold" />
+                <TextBlock Margin="0,3,0,10" Text="Elige una paleta incluida o importa una. La apariencia clara u oscura se controla desde Tema global. Personaliza los colores y guarda para actualizar esa paleta, sin crear otra entrada duplicada."
+                           FontSize="12" Foreground="{DynamicResource TextFillColorSecondaryBrush}" TextWrapping="Wrap" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <ComboBox Grid.Column="0" Margin="0,0,8,0" Padding="10,5" ItemsSource="{Binding LumiThemeOptions}"
+                              SelectedItem="{Binding SelectedLumiTheme, Mode=TwoWay}" />
+                    <ui:Button Grid.Column="1" Margin="0,0,6,0" Content="Importar" Command="{Binding ImportLumiThemeCommand}" />
+                    <ui:Button Grid.Column="2" Margin="0,0,6,0" Content="Exportar" Command="{Binding ExportLumiThemeCommand}" />
+                    <ui:Button Grid.Column="3" Content="Restablecer" Command="{Binding ResetLumiThemeCommand}" />
+                </Grid>
+                <ui:TextBox Margin="0,10,0,0" Text="{Binding NewLumiThemeName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <WrapPanel Margin="0,8,0,0">
+                    <ui:Button Command="{Binding PickPrimaryColorCommand}" Margin="0,0,6,6"><StackPanel Orientation="Horizontal"><TextBlock Text="Principal: " /><TextBlock Text="{Binding NewLumiThemePrimary}" /></StackPanel></ui:Button>
+                    <ui:Button Command="{Binding PickSecondaryColorCommand}" Margin="0,0,6,6"><StackPanel Orientation="Horizontal"><TextBlock Text="Secundario: " /><TextBlock Text="{Binding NewLumiThemeSecondary}" /></StackPanel></ui:Button>
+                    <ui:Button Command="{Binding PickTertiaryColorCommand}" Margin="0,0,6,6"><StackPanel Orientation="Horizontal"><TextBlock Text="Énfasis: " /><TextBlock Text="{Binding NewLumiThemeTertiary}" /></StackPanel></ui:Button>
+                    <ui:Button Content="Guardar y aplicar" Command="{Binding SaveLumiThemeCommand}" Appearance="Primary" Margin="0,0,0,6" />
+                </WrapPanel>
+            </StackPanel>
+        </ui:Card>
 
         <controls:OptionControl
             Header="{x:Static resources:Strings.Menu_Appearance_Language_Title}"

@@ -20,11 +20,51 @@ namespace Bloxstrap.UI.ViewModels.Settings
 
         public ICommand OpenFastFlagEditorCommand => new RelayCommand(OpenFastFlagEditor);
         public ICommand ApplyPerformancePresetCommand => new RelayCommand(() => ApplyClientPreset("performance"));
+        public ICommand ApplyBalancedPresetCommand => new RelayCommand(() => ApplyClientPreset("balanced"));
         public ICommand ApplyQualityPresetCommand => new RelayCommand(() => ApplyClientPreset("quality"));
+        public ICommand AnalyzeGraphicsCommand => new RelayCommand(AnalyzeGraphics);
+        public ICommand ApplyRecommendedGraphicsCommand => new RelayCommand(() =>
+        {
+            if (_graphicsHardware is null)
+                AnalyzeGraphics();
+
+            if (_graphicsHardware is not null)
+                ApplyClientPreset(_graphicsHardware.RecommendedPreset);
+        });
+
+        private GraphicsHardwareInfo? _graphicsHardware;
+        public bool GraphicsAssistantHasResult => _graphicsHardware is not null;
+        public Visibility GraphicsAssistantResultVisibility => GraphicsAssistantHasResult ? Visibility.Visible : Visibility.Collapsed;
+        public string GraphicsAssistantHardware => _graphicsHardware?.HardwareSummary ?? "";
+        public string GraphicsAssistantRecommendation => _graphicsHardware is null ? "" : $"Recomendación: {_graphicsHardware.RecommendationName}";
+        public string GraphicsAssistantReason => _graphicsHardware?.RecommendationReason ?? "";
+        public string GraphicsAssistantPreview => _graphicsHardware?.PresetPreview ?? "";
+
+        private void AnalyzeGraphics()
+        {
+            try
+            {
+                _graphicsHardware = GraphicsHardwareInfo.Detect();
+            }
+            catch (Exception ex)
+            {
+                App.Logger.WriteException("FastFlagsViewModel::AnalyzeGraphics", ex);
+                Frontend.ShowMessageBox($"No se pudo leer el hardware del equipo: {ex.Message}", MessageBoxImage.Error);
+                return;
+            }
+
+            OnPropertyChanged(nameof(GraphicsAssistantHasResult));
+            OnPropertyChanged(nameof(GraphicsAssistantResultVisibility));
+            OnPropertyChanged(nameof(GraphicsAssistantHardware));
+            OnPropertyChanged(nameof(GraphicsAssistantRecommendation));
+            OnPropertyChanged(nameof(GraphicsAssistantReason));
+            OnPropertyChanged(nameof(GraphicsAssistantPreview));
+        }
 
         public string ClientPresetLabel => ConfigurationProfileManager.GetClientPreset() switch
         {
             "performance" => LumiFeatureStrings.Menu_FastFlags_ClientPreset_Performance,
+            "balanced" => LumiFeatureStrings.Menu_FastFlags_ClientPreset_Balanced,
             "quality" => LumiFeatureStrings.Menu_FastFlags_ClientPreset_Quality,
             _ => LumiFeatureStrings.Menu_FastFlags_ClientPreset_Custom
         };
@@ -46,7 +86,9 @@ namespace Bloxstrap.UI.ViewModels.Settings
         {
             string presetLabel = presetName == "performance"
                 ? LumiFeatureStrings.Menu_FastFlags_ClientPreset_Performance
-                : LumiFeatureStrings.Menu_FastFlags_ClientPreset_Quality;
+                : presetName == "balanced"
+                    ? LumiFeatureStrings.Menu_FastFlags_ClientPreset_Balanced
+                    : LumiFeatureStrings.Menu_FastFlags_ClientPreset_Quality;
             string prompt = String.Format(LumiFeatureStrings.Menu_FastFlags_ClientPreset_ApplyPrompt, presetLabel);
 
             if (Frontend.ShowMessageBox(prompt, MessageBoxImage.Warning, MessageBoxButton.YesNo, MessageBoxResult.No) != MessageBoxResult.Yes)

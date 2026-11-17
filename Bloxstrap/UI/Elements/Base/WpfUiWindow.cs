@@ -1,9 +1,10 @@
-﻿using System.Windows;
+using System.Windows;
 using System.Windows.Interop;
 using Wpf.Ui.Appearance;
 using Wpf.Ui.Controls;
 using Wpf.Ui.Mvvm.Contracts;
 using Wpf.Ui.Mvvm.Services;
+using Bloxstrap.Models;
 
 namespace Bloxstrap.UI.Elements.Base
 {
@@ -20,14 +21,18 @@ namespace Bloxstrap.UI.Elements.Base
         {
             const int customThemeIndex = 2; // index for CustomTheme merged dictionary
 
-            _themeService.SetTheme(App.Settings.Prop.Theme.GetFinal() == Enums.Theme.Dark ? ThemeType.Dark : ThemeType.Light);
-            _themeService.SetSystemAccent();
-            Application.Current.Resources["SystemAccentColorPrimary"] = System.Windows.Media.Color.FromRgb(55, 132, 238);
-            Application.Current.Resources["SystemAccentColorSecondary"] = System.Windows.Media.Color.FromRgb(113, 94, 226);
-            Application.Current.Resources["SystemAccentColorTertiary"] = System.Windows.Media.Color.FromRgb(174, 91, 218);
+            LumiThemePack? lumiTheme = LumiThemeManager.GetSelectedTheme();
+            Enums.Theme finalTheme = App.Settings.Prop.Theme.GetFinal();
+
+            _themeService.SetTheme(finalTheme == Enums.Theme.Dark ? ThemeType.Dark : ThemeType.Light);
+
+            System.Windows.Media.Color primaryAccent = LumiThemeManager.ParseColor(lumiTheme?.AccentPrimary, System.Windows.Media.Color.FromRgb(55, 132, 238));
+            System.Windows.Media.Color secondaryAccent = LumiThemeManager.ParseColor(lumiTheme?.AccentSecondary, System.Windows.Media.Color.FromRgb(113, 94, 226));
+            System.Windows.Media.Color tertiaryAccent = LumiThemeManager.ParseColor(lumiTheme?.AccentTertiary, System.Windows.Media.Color.FromRgb(174, 91, 218));
+            Accent.Apply(primaryAccent, primaryAccent, secondaryAccent, tertiaryAccent);
 
             // there doesn't seem to be a way to query the name for merged dictionaries
-            var dict = new ResourceDictionary { Source = new Uri($"pack://application:,,,/UI/Style/{Enum.GetName(App.Settings.Prop.Theme.GetFinal())}.xaml") };
+            var dict = new ResourceDictionary { Source = new Uri($"pack://application:,,,/UI/Style/{Enum.GetName(finalTheme)}.xaml") };
             Application.Current.Resources.MergedDictionaries[customThemeIndex] = dict;
 
 #if QA_BUILD

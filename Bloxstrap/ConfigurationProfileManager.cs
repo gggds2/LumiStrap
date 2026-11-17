@@ -282,6 +282,9 @@ namespace Bloxstrap
             if (FastFlagsEqual(currentFlags, CreateClientPresetFlags("performance")))
                 return "performance";
 
+            if (FastFlagsEqual(currentFlags, CreateClientPresetFlags("balanced")))
+                return "balanced";
+
             if (FastFlagsEqual(currentFlags, CreateClientPresetFlags("quality")))
                 return "quality";
 
@@ -309,20 +312,21 @@ namespace Bloxstrap
         private static Dictionary<string, string> CreateClientPresetFlags(string presetName)
         {
             bool isPerformance = String.Equals(presetName, "performance", StringComparison.OrdinalIgnoreCase);
+            bool isBalanced = String.Equals(presetName, "balanced", StringComparison.OrdinalIgnoreCase);
             bool isQuality = String.Equals(presetName, "quality", StringComparison.OrdinalIgnoreCase);
 
-            if (!isPerformance && !isQuality)
+            if (!isPerformance && !isBalanced && !isQuality)
                 throw new ArgumentException("The selected client preset is not supported.", nameof(presetName));
 
-            int meshLevel = isPerformance ? 0 : 3;
+            int meshLevel = isPerformance ? 0 : isBalanced ? 2 : 3;
             var flags = new Dictionary<string, string>(StringComparer.Ordinal)
             {
                 [FastFlagManager.PresetFlags["Rendering.ManualFullscreen"]] = "False",
-                [FastFlagManager.PresetFlags["Rendering.MSAA"]] = isPerformance ? "1" : "4",
-                [FastFlagManager.PresetFlags["Rendering.FRMQualityOverride"]] = isPerformance ? "1" : "21",
+                [FastFlagManager.PresetFlags["Rendering.MSAA"]] = isPerformance ? "1" : isBalanced ? "2" : "4",
+                [FastFlagManager.PresetFlags["Rendering.FRMQualityOverride"]] = isPerformance ? "1" : isBalanced ? "11" : "21",
                 [FastFlagManager.PresetFlags["Geometry.MeshLOD.Static"]] = meshLevel.ToString(),
                 [FastFlagManager.PresetFlags["Rendering.TextureQuality.OverrideEnabled"]] = "True",
-                [FastFlagManager.PresetFlags["Rendering.TextureQuality.Level"]] = isPerformance ? "0" : "3"
+                [FastFlagManager.PresetFlags["Rendering.TextureQuality.Level"]] = isPerformance ? "0" : isBalanced ? "2" : "3"
             };
 
             string[] meshLevels = { "L0", "L12", "L23", "L34" };

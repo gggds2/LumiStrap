@@ -48,14 +48,45 @@
                         </Border>
                     </StackPanel>
                 </StackPanel>
-                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                <WrapPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right">
                     <ui:Button Content="{x:Static resources:LumiFeatureStrings.Menu_FastFlags_ClientPreset_Performance}"
                                Command="{Binding ApplyPerformancePresetCommand}" Margin="0,0,8,0" />
+                    <ui:Button Content="{x:Static resources:LumiFeatureStrings.Menu_FastFlags_ClientPreset_Balanced}"
+                               Command="{Binding ApplyBalancedPresetCommand}" Margin="0,0,8,0" />
                     <ui:Button Content="{x:Static resources:LumiFeatureStrings.Menu_FastFlags_ClientPreset_Quality}"
                                Command="{Binding ApplyQualityPresetCommand}" Appearance="Primary" />
-                </StackPanel>
+                </WrapPanel>
             </Grid>
         </ui:Card>
+
+        <ui:CardExpander Margin="0,8,0,0" IsExpanded="True">
+            <ui:CardExpander.Header>
+                <StackPanel>
+                    <TextBlock Text="Asistente inteligente de gráficos" FontSize="16" FontWeight="SemiBold" />
+                    <TextBlock Margin="0,3,0,0" Text="Analiza tu equipo y revisa una recomendación de gráficos antes de aplicarla. Puedes contraer este apartado cuando termines."
+                               FontSize="12" Foreground="{DynamicResource TextFillColorSecondaryBrush}" TextWrapping="Wrap" />
+                </StackPanel>
+            </ui:CardExpander.Header>
+            <StackPanel>
+                <ui:Button Content="Analizar mi equipo" Command="{Binding AnalyzeGraphicsCommand}" HorizontalAlignment="Left" />
+                <StackPanel Margin="0,12,0,0" Visibility="{Binding GraphicsAssistantResultVisibility}">
+                    <TextBlock Text="{Binding GraphicsAssistantHardware}" TextWrapping="Wrap" />
+                    <TextBlock Margin="0,8,0,0" Text="{Binding GraphicsAssistantRecommendation}" FontSize="14" FontWeight="SemiBold" />
+                    <TextBlock Margin="0,3,0,0" Text="{Binding GraphicsAssistantReason}" TextWrapping="Wrap"
+                               Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                    <Border Margin="0,8,0,0" Padding="9" CornerRadius="6" Background="{DynamicResource CardBackgroundFillColorDefaultBrush}">
+                        <StackPanel>
+                            <TextBlock Text="Vista previa de los cambios" FontWeight="SemiBold" />
+                            <TextBlock Margin="0,3,0,0" Text="{Binding GraphicsAssistantPreview}" TextWrapping="Wrap" />
+                            <TextBlock Margin="0,5,0,0" Text="Roblox puede ignorar algunas FastFlags después de una actualización."
+                                       FontSize="11" Foreground="{DynamicResource TextFillColorTertiaryBrush}" TextWrapping="Wrap" />
+                        </StackPanel>
+                    </Border>
+                    <ui:Button Margin="0,10,0,0" Content="Aplicar recomendación" Command="{Binding ApplyRecommendedGraphicsCommand}"
+                               Appearance="Primary" HorizontalAlignment="Left" />
+                </StackPanel>
+            </StackPanel>
+        </ui:CardExpander>
 
         <TextBlock Text="{x:Static resources:Strings.Common_Presets}" FontSize="20" FontWeight="Medium" Margin="0,16,0,0" />
 

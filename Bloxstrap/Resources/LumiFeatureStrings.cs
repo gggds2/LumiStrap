@@ -8,6 +8,7 @@ namespace Bloxstrap.Resources
         public static string Menu_FastFlags_ClientPreset_Title => Get("Menu.FastFlags.ClientPreset.Title");
         public static string Menu_FastFlags_ClientPreset_Description => Get("Menu.FastFlags.ClientPreset.Description");
         public static string Menu_FastFlags_ClientPreset_Performance => Get("Menu.FastFlags.ClientPreset.Performance");
+        public static string Menu_FastFlags_ClientPreset_Balanced => Get("Menu.FastFlags.ClientPreset.Balanced");
         public static string Menu_FastFlags_ClientPreset_Quality => Get("Menu.FastFlags.ClientPreset.Quality");
         public static string Menu_FastFlags_ClientPreset_Current => Get("Menu.FastFlags.ClientPreset.Current");
         public static string Menu_FastFlags_ClientPreset_Custom => Get("Menu.FastFlags.ClientPreset.Custom");

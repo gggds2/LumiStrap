@@ -12,14 +12,6 @@ namespace Bloxstrap.UI.ViewModels.Settings
     {
         public WebEnvironment[] WebEnvironments => Enum.GetValues<WebEnvironment>();
 
-        public bool UpdateCheckingEnabled
-        {
-            get => App.Settings.Prop.CheckForUpdates;
-            set => App.Settings.Prop.CheckForUpdates = value;
-        }
-
-        public Visibility UpdateCheckingVisibility => String.IsNullOrWhiteSpace(App.ProjectRepository) ? Visibility.Collapsed : Visibility.Visible;
-
         public bool AnalyticsEnabled
         {
             get => App.Settings.Prop.EnableAnalytics;
