@@ -14,8 +14,8 @@
 </div>
 
 <p align="center">
-  <a href="https://gggds2.github.io/LumiStrap/#capturas">
-    <img src="docs/assets/screenshots/inicio-v016.png" alt="LumiStrap 0.1.6 home screen" width="100%">
+  <a href="https://gggds2.github.io/LumiStrap/#recorrido">
+    <img src="docs/assets/screenshots/inicio-v016-web.png" alt="LumiStrap 0.1.6 home screen" width="100%">
   </a>
 </p>
 
@@ -43,39 +43,7 @@ LumiStrap is an independent community fork of [Bloxstrap](https://github.com/blo
 | **Downloads and errors** | Follow download progress and speed, retry or cancel, and get clearer explanations of common problems. |
 | **Update Center** | Check for a new LumiStrap release, review its changes, and choose when to install it. |
 
-The [LumiStrap website](https://gggds2.github.io/LumiStrap/) has a full screenshot gallery and the latest release notes.
-
-### LumiStrap 0.1.6
-
-<p align="center">
-  <img src="docs/assets/screenshots/configuracion-graficos-v016.png" alt="Rendimiento, Equilibrio y Calidad en la configuración del cliente" width="49%">
-  <img src="docs/assets/screenshots/asistente-grafico-v016.png" alt="Recomendación del asistente gráfico según el hardware" width="49%">
-</p>
-<p align="center">
-  <img src="docs/assets/screenshots/perfiles-v016.png" alt="Perfiles e historial de ajustes en LumiStrap 0.1.6" width="49%">
-  <img src="docs/assets/screenshots/experiencias-v016.png" alt="Biblioteca de Experiencias en LumiStrap 0.1.6" width="49%">
-</p>
-<p align="center">
-  <img src="docs/assets/screenshots/integraciones-v016.png" alt="Integraciones de LumiStrap 0.1.6" width="49%">
-  <img src="docs/assets/screenshots/roblox-studio-v016.png" alt="Herramientas de Roblox Studio en LumiStrap 0.1.6" width="49%">
-</p>
-
-### LumiStrap 0.1.5
-
-<p align="center">
-  <img src="docs/assets/screenshots/configuracion-graficos-v015.png" alt="Performance and Quality graphics profiles" width="49%">
-  <img src="docs/assets/screenshots/experiencias-v015.png" alt="Experiences library" width="49%">
-</p>
-<p align="center">
-  <img src="docs/assets/screenshots/historial-perfiles-v015.png" alt="Profiles and restorable settings history" width="49%">
-  <img src="docs/assets/screenshots/discord-privacidad-v015.png" alt="Discord privacy settings" width="49%">
-</p>
-<p align="center">
-  <img src="docs/assets/screenshots/lumifix-v015-clean.png" alt="LumiFix pre-launch check" width="80%">
-</p>
-<p align="center">
-  <img src="docs/assets/screenshots/roblox-studio-v015.png" alt="Roblox Studio tools" width="80%">
-</p>
+The [LumiStrap website](https://gggds2.github.io/LumiStrap/) has a step-by-step tour and the latest release notes.
 
 ## Install
 
