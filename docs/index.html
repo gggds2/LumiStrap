@@ -109,14 +109,9 @@
     .showcase-media img { display: block; width: 100%; height: auto; }
     .showcase-media:hover { border-color: rgba(137, 164, 255, .4); }
 
-    .tour-panel { display: grid; grid-template-columns: .72fr 1.28fr; align-items: center; gap: 35px; padding: 25px; border: 1px solid var(--line); border-radius: 22px; background: linear-gradient(145deg, rgba(21, 28, 45, .92), rgba(14, 19, 31, .88)); }
+    .tour-panel { display: grid; grid-template-columns: .62fr 1.38fr; align-items: center; gap: 30px; padding: 24px; border: 1px solid var(--line); border-radius: 22px; background: linear-gradient(145deg, rgba(21, 28, 45, .92), rgba(14, 19, 31, .88)); }
     .tour-copy h3 { margin: 11px 0 9px; font-size: 1.55rem; line-height: 1.15; letter-spacing: -.04em; }
     .tour-copy p { margin: 0; color: var(--muted); line-height: 1.7; }
-    .tour-tabs { display: grid; gap: 8px; margin-top: 20px; }
-    .tour-tab { display: flex; align-items: center; gap: 10px; width: 100%; padding: 10px 12px; border: 1px solid transparent; border-radius: 11px; background: transparent; color: var(--muted); font: inherit; font-size: .87rem; text-align: left; cursor: pointer; }
-    .tour-tab::before { content: ""; width: 7px; height: 7px; flex: 0 0 auto; border-radius: 50%; background: #69748e; }
-    .tour-tab[aria-selected="true"] { border-color: rgba(130, 157, 255, .23); background: rgba(107, 135, 231, .12); color: var(--text); }
-    .tour-tab[aria-selected="true"]::before { background: linear-gradient(135deg, var(--cyan), var(--violet)); box-shadow: 0 0 13px rgba(129, 155, 255, .75); }
     .release-highlights { margin: 0 auto 34px; padding: 23px; border: 1px solid var(--line); border-radius: 20px; background: linear-gradient(145deg, rgba(21, 28, 45, .82), rgba(14, 19, 31, .76)); }
     .release-highlights h3 { margin: 9px 0 0; font-size: 1.35rem; letter-spacing: -.035em; }
     .highlight-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 17px; }
@@ -124,18 +119,9 @@
     .highlight-card .install-number { margin-bottom: 12px; }
     .highlight-card h4 { margin: 0 0 7px; font-size: .98rem; }
     .highlight-card p { margin: 0; color: var(--muted); font-size: .87rem; line-height: 1.65; }
-    .tour-stage { min-width: 0; }
-    .tour-image-link { display: block; overflow: hidden; border: 1px solid rgba(199, 211, 255, .17); border-radius: 13px; background: #111625; }
-    .tour-image { display: block; width: 100%; height: auto; transition: opacity .16s ease; }
-    .tour-image.is-changing { opacity: .35; }
-    .tour-caption { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 12px; color: var(--muted); font-size: .8rem; }
-    .tour-counter { color: #9da9c6; font-variant-numeric: tabular-nums; }
-    .tour-play { display: inline-flex; align-items: center; gap: 7px; margin-top: 14px; padding: 8px 11px; border: 1px solid var(--line); border-radius: 10px; background: rgba(255, 255, 255, .035); color: var(--text); font: inherit; font-size: .8rem; font-weight: 650; cursor: pointer; }
-    .tour-play:hover { border-color: rgba(150, 176, 255, .38); background: rgba(255, 255, 255, .08); }
-    .tour-play svg { width: 15px; height: 15px; }
-    .tour-play .pause-icon { display: none; }
-    .tour-play[aria-pressed="true"] .play-icon { display: none; }
-    .tour-play[aria-pressed="true"] .pause-icon { display: block; }
+    .tour-video-stage { min-width: 0; margin: 0; overflow: hidden; border: 1px solid rgba(199, 211, 255, .17); border-radius: 14px; background: #090d17; box-shadow: 0 18px 42px rgba(0, 0, 0, .22); }
+    .tour-video { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: contain; background: #090d17; }
+    .tour-caption { padding: 11px 14px; color: var(--muted); font-size: .8rem; }
 
     .install-grid, .help-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
     .install-card, .help-card { min-width: 0; padding: 21px; border: 1px solid var(--line); border-radius: 16px; background: linear-gradient(145deg, rgba(21, 28, 45, .78), rgba(14, 19, 31, .76)); }
@@ -237,7 +223,6 @@
       .showcase-row { gap: 36px; }
       .trust-grid { gap: 35px; }
       .tour-panel { grid-template-columns: 1fr; gap: 22px; }
-      .tour-tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
     @media (max-width: 650px) {
       .wrap { width: min(100% - 30px, 1160px); }
@@ -261,8 +246,6 @@
       .update-band, .trust-grid { grid-template-columns: 1fr; gap: 27px; }
       .install-grid, .help-grid { grid-template-columns: 1fr; }
       .tour-panel { padding: 17px; }
-      .tour-tabs { grid-template-columns: 1fr 1fr; gap: 5px; }
-      .tour-tab { padding: 9px 8px; font-size: .79rem; }
       .history-item { grid-template-columns: 1fr auto; gap: 3px 10px; }
       .history-item span { grid-column: 1 / -1; grid-row: 2; }
       .history-item time { grid-column: 2; grid-row: 1; }
@@ -315,9 +298,7 @@
     :root[data-theme="light"] .showcase-row { border-color: rgba(31, 44, 77, .12); }
     :root[data-theme="light"] .showcase-media { border-color: rgba(31, 44, 77, .15); box-shadow: 0 18px 42px rgba(38, 51, 83, .12); }
     :root[data-theme="light"] .tour-panel, :root[data-theme="light"] .install-card, :root[data-theme="light"] .help-card { border-color: rgba(31, 44, 77, .12); background: linear-gradient(145deg, rgba(255, 255, 255, .96), rgba(247, 248, 252, .96)); }
-    :root[data-theme="light"] .tour-image-link { border-color: rgba(31, 44, 77, .15); }
-    :root[data-theme="light"] .tour-play { background: rgba(255, 255, 255, .8); }
-    :root[data-theme="light"] .tour-tab[aria-selected="true"] { border-color: rgba(74, 103, 185, .22); background: rgba(96, 128, 218, .1); }
+    :root[data-theme="light"] .tour-video-stage { border-color: rgba(31, 44, 77, .15); }
     :root[data-theme="light"] .troubleshoot, :root[data-theme="light"] .history-item { border-color: rgba(31, 44, 77, .12); background: rgba(255, 255, 255, .72); }
     :root[data-theme="light"] .history-item time { color: #64708a; }
     :root[data-theme="light"] .install-number { background: rgba(83, 114, 190, .12); color: #435a92; }
@@ -410,32 +391,22 @@
       <div class="wrap">
         <div class="section-head">
           <div class="eyebrow" data-i18n="tour.eyebrow">Míralo en acción</div>
-          <h2 data-i18n="tour.title">Un recorrido rápido por LumiStrap.</h2>
-          <p data-i18n="tour.intro">Elige una herramienta para ver su pantalla y conocer lo que puedes hacer.</p>
+          <h2 data-i18n="tour.title">Recorrido paso a paso por LumiStrap.</h2>
+          <p data-i18n="tour.intro">Sigue el video y conoce paso a paso las secciones y herramientas de LumiStrap.</p>
         </div>
         <div class="tour-panel">
           <div class="tour-copy">
-            <div class="eyebrow" id="tour-kicker">Inicio</div>
-            <h3 id="tour-title">Bienvenido a LumiStrap.</h3>
-            <p id="tour-description">Abre tus herramientas principales y elige una sección desde los accesos rápidos.</p>
-            <div class="tour-tabs" role="tablist" aria-label="Recorrido de funciones" data-i18n-aria="tour.tablist">
-              <button class="tour-tab" type="button" role="tab" aria-selected="true" aria-controls="tour-panel-display" data-tour="0">Inicio</button>
-              <button class="tour-tab" type="button" role="tab" aria-selected="false" aria-controls="tour-panel-display" data-tour="1">Gráficos</button>
-              <button class="tour-tab" type="button" role="tab" aria-selected="false" aria-controls="tour-panel-display" data-tour="2">Perfiles</button>
-              <button class="tour-tab" type="button" role="tab" aria-selected="false" aria-controls="tour-panel-display" data-tour="3">LumiFix</button>
-            </div>
-            <button class="tour-play" id="tour-play" type="button" aria-pressed="false" aria-label="Reproducir recorrido">
-              <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l10-6.5-10-6.5Z"/></svg>
-              <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5h4v14H7zm6 0h4v14h-4z"/></svg>
-              <span id="tour-play-label">Reproducir recorrido</span>
-            </button>
+            <div class="eyebrow">Recorrido guiado</div>
+            <h3>Conoce LumiStrap paso a paso.</h3>
+            <p>En este video te mostramos las secciones principales, desde Inicio y Experiencias hasta los perfiles gráficos, las integraciones y LumiFix. Reprodúcelo cuando quieras y pausa para revisar cada parte.</p>
           </div>
-          <div class="tour-stage" id="tour-panel-display" role="tabpanel" aria-live="polite">
-            <a class="tour-image-link" id="tour-image-link" href="assets/screenshots/inicio-v016.png" data-lightbox data-caption="Inicio de LumiStrap">
-              <img class="tour-image" id="tour-image" src="assets/screenshots/inicio-v016.png" alt="Inicio de LumiStrap" width="1920" height="1080" loading="lazy">
-            </a>
-            <div class="tour-caption"><span id="tour-caption">Inicio de LumiStrap</span><span class="tour-counter" id="tour-counter">01 / 04</span></div>
-          </div>
+          <figure class="tour-video-stage">
+            <video class="tour-video" controls preload="metadata" playsinline poster="assets/screenshots/inicio-v016.png" aria-label="Recorrido paso a paso por las secciones de LumiStrap">
+              <source src="recorrido-lumistrap.mp4" type="video/mp4">
+              Tu navegador no puede reproducir este video. Actualízalo o ábrelo en otro navegador.
+            </video>
+            <figcaption class="tour-caption">Recorrido por las secciones de LumiStrap · Versión 0.1.6</figcaption>
+          </figure>
         </div>
       </div>
     </section>
@@ -710,17 +681,12 @@
       '.hero-caption span:first-child': 'LumiStrap home',
       '.hero-caption span:last-child': 'Version 0.1.6',
       '#recorrido .section-head .eyebrow': 'See it in action',
-      '#recorrido .section-head h2': 'A quick tour of LumiStrap.',
-      '#recorrido .section-head p': 'Choose a tool to see its screen and learn what you can do.',
-      '.tour-copy .eyebrow': 'Home',
-      '.tour-copy h3': 'Welcome to LumiStrap.',
-      '.tour-copy p': 'Open your main tools and choose a section from the quick links.',
-      '.tour-tab:nth-child(1)': 'Home',
-      '.tour-tab:nth-child(2)': 'Graphics profiles',
-      '.tour-tab:nth-child(3)': 'Profiles',
-      '.tour-tab:nth-child(4)': 'LumiFix',
-      '.tour-caption span:first-child': 'LumiStrap home screen',
-      '.tour-play-label': 'Play quick tour',
+      '#recorrido .section-head h2': 'A step-by-step tour of LumiStrap.',
+      '#recorrido .section-head p': 'Follow the video for a step-by-step look at LumiStrap’s sections and tools.',
+      '.tour-copy .eyebrow': 'Guided tour',
+      '.tour-copy h3': 'Explore LumiStrap step by step.',
+      '.tour-copy p': 'This video walks through the main sections, from Home and Experiences to graphics profiles, integrations, and LumiFix. Play it anytime and pause to inspect each part.',
+      '.tour-caption': 'Walkthrough of LumiStrap’s sections · Version 0.1.6',
       '#funciones .section-head .eyebrow': 'Explore LumiStrap',
       '#funciones .section-head h2': 'Clear tools for every part of Roblox.',
       '#funciones .section-head p': 'Explore the main sections with real screenshots from the app. Select an image to enlarge it.',
@@ -882,22 +848,6 @@
     let releaseHistoryError = false;
     let latestReleaseData = null;
     let latestReleaseError = false;
-    let isTourPlaying = false;
-    let tourTimer = null;
-    const tourSteps = {
-      es: [
-        { title: 'Bienvenido a LumiStrap.', description: 'Abre tus herramientas principales y elige una sección desde los accesos rápidos.', caption: 'Inicio de LumiStrap' },
-        { title: 'Elige Rendimiento, Equilibrio o Calidad.', description: 'Usa uno de los tres perfiles gráficos y personaliza las opciones del cliente cuando lo necesites.', caption: 'Perfiles gráficos de LumiStrap' },
-        { title: 'Tus ajustes, listos cuando los necesites.', description: 'Guarda perfiles y recupera una de las copias recientes de tu configuración.', caption: 'Perfiles e historial de ajustes' },
-        { title: 'Mantenimiento con explicación previa.', description: 'Revisa procesos antes de iniciar Roblox, comprueba archivos o limpia la caché con LumiFix.', caption: 'LumiFix y revisión antes de iniciar' }
-      ],
-      en: [
-        { title: 'Welcome to LumiStrap.', description: 'Open your main tools and choose a section from the quick links.', caption: 'LumiStrap home screen' },
-        { title: 'Choose Performance, Balanced, or Quality.', description: 'Start with one of the three graphics profiles and customize client options whenever you need.', caption: 'LumiStrap graphics profiles' },
-        { title: 'Your settings, ready when you need them.', description: 'Save profiles and restore one of your recent configuration backups.', caption: 'Profiles and settings history' },
-        { title: 'Maintenance with a clear explanation first.', description: 'Check processes before launch, inspect Roblox files, or clear the cache with LumiFix.', caption: 'LumiFix pre-launch check' }
-      ]
-    };
     let currentLanguage = 'es';
 
     function setLanguage(language, savePreference = false) {
@@ -929,17 +879,11 @@
       document.querySelector('.nav-download').setAttribute('aria-label', isEnglish ? 'Download the latest LumiStrap release' : 'Descargar la última versión de LumiStrap');
       document.querySelector('.theme-toggle').setAttribute('aria-label', document.documentElement.dataset.theme === 'light' ? (isEnglish ? 'Enable dark theme' : 'Activar tema oscuro') : (isEnglish ? 'Enable light theme' : 'Activar tema claro'));
       document.querySelector('.menu-toggle').setAttribute('aria-label', document.querySelector('.menu-toggle').getAttribute('aria-expanded') === 'true' ? (isEnglish ? 'Close menu' : 'Cerrar menú') : (isEnglish ? 'Open menu' : 'Abrir menú'));
-      document.querySelector('.tour-tabs').setAttribute('aria-label', isEnglish ? 'Feature tour' : 'Recorrido de funciones');
       document.querySelector('#gallery-lightbox').setAttribute('aria-label', isEnglish ? 'Screenshot gallery' : 'Galería de capturas');
       document.querySelector('.lightbox-close').setAttribute('aria-label', isEnglish ? 'Close screenshot' : 'Cerrar captura');
       document.querySelector('[data-gallery-previous]').setAttribute('aria-label', isEnglish ? 'Previous screenshot' : 'Captura anterior');
       document.querySelector('[data-gallery-next]').setAttribute('aria-label', isEnglish ? 'Next screenshot' : 'Siguiente captura');
-      const tourTabs = document.querySelectorAll('.tour-tab');
-      const labels = isEnglish ? ['Home', 'Graphics profiles', 'Profiles', 'LumiFix'] : ['Inicio', 'Perfiles gráficos', 'Perfiles', 'LumiFix'];
-      tourTabs.forEach((tab, index) => { tab.textContent = labels[index]; });
-      syncTourPlaybackControl();
       document.querySelector('.steps').setAttribute('aria-label', isEnglish ? 'Update process' : 'Proceso de actualización');
-      updateTour(activeTourIndex);
       const loading = document.querySelector('#release-history .release-loading');
       if (loading) loading.textContent = isEnglish ? 'Loading releases…' : 'Cargando versiones…';
       if (Array.isArray(releaseHistoryData)) renderReleaseHistory();
@@ -965,59 +909,6 @@
     let requestedLanguage = 'es';
     try { requestedLanguage = localStorage.getItem('lumistrap-language') || 'es'; } catch { /* Spanish is the default when local storage is unavailable. */ }
     languageToggle.addEventListener('click', () => setLanguage(currentLanguage === 'es' ? 'en' : 'es', true));
-
-    let activeTourIndex = 0;
-    function updateTour(index) {
-      activeTourIndex = (index + tourSteps[currentLanguage].length) % tourSteps[currentLanguage].length;
-      const language = currentLanguage;
-      const step = tourSteps[language][activeTourIndex];
-      const tourLabels = language === 'en' ? ['Home', 'Graphics profiles', 'Profiles', 'LumiFix'] : ['Inicio', 'Perfiles gráficos', 'Perfiles', 'LumiFix'];
-      const screenshots = ['inicio-v016.png', 'configuracion-graficos-v016.png', 'perfiles-v016.png', 'lumifix-v015-clean.png'];
-      const imagePath = `assets/screenshots/${screenshots[activeTourIndex]}`;
-      const image = document.getElementById('tour-image');
-      const link = document.getElementById('tour-image-link');
-      image.classList.add('is-changing');
-      image.onload = () => image.classList.remove('is-changing');
-      image.src = imagePath;
-      if (image.complete && image.naturalWidth > 0) image.classList.remove('is-changing');
-      image.alt = step.caption;
-      link.href = imagePath;
-      link.dataset.caption = step.caption;
-      document.getElementById('tour-kicker').textContent = tourLabels[activeTourIndex];
-      document.getElementById('tour-title').textContent = step.title;
-      document.getElementById('tour-description').textContent = step.description;
-      document.getElementById('tour-caption').textContent = step.caption;
-      document.getElementById('tour-counter').textContent = `${String(activeTourIndex + 1).padStart(2, '0')} / ${String(tourSteps[language].length).padStart(2, '0')}`;
-      document.querySelectorAll('.tour-tab').forEach((tab, tabIndex) => tab.setAttribute('aria-selected', String(tabIndex === activeTourIndex)));
-    }
-    function syncTourPlaybackControl() {
-      const button = document.getElementById('tour-play');
-      if (!button) return;
-      const isEnglish = currentLanguage === 'en';
-      const label = isTourPlaying ? (isEnglish ? 'Pause tour' : 'Pausar recorrido') : (isEnglish ? 'Play quick tour' : 'Reproducir recorrido');
-      document.getElementById('tour-play-label').textContent = label;
-      button.setAttribute('aria-pressed', String(isTourPlaying));
-      button.setAttribute('aria-label', label);
-    }
-    function setTourPlaying(playing) {
-      isTourPlaying = playing;
-      if (tourTimer) clearInterval(tourTimer);
-      tourTimer = null;
-      if (playing) {
-        let remaining = 4;
-        tourTimer = setInterval(() => {
-          updateTour(activeTourIndex + 1);
-          remaining -= 1;
-          if (remaining <= 0) setTourPlaying(false);
-        }, 3200);
-      }
-      syncTourPlaybackControl();
-    }
-    document.querySelectorAll('.tour-tab').forEach((tab) => tab.addEventListener('click', () => {
-      setTourPlaying(false);
-      updateTour(Number(tab.dataset.tour));
-    }));
-    document.getElementById('tour-play').addEventListener('click', () => setTourPlaying(!isTourPlaying));
 
     setLanguage(requestedLanguage);
 
