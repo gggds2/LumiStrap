@@ -15,13 +15,13 @@
 
 <p align="center">
   <a href="https://gggds2.github.io/LumiStrap/#capturas">
-    <img src="docs/assets/screenshots/inicio-v015.png" alt="LumiStrap 0.1.5 home screen" width="100%">
+    <img src="docs/assets/screenshots/inicio-v016.png" alt="LumiStrap 0.1.6 home screen" width="100%">
   </a>
 </p>
 
 LumiStrap is an independent community fork of [Bloxstrap](https://github.com/bloxstraplabs/bloxstrap) for Windows. It brings together Roblox setup, client preferences, profiles, and repair tools in one place.
 
-**Version 0.1.5** adds Performance and Quality graphics profiles, Roblox Studio support, an Experiences library, Discord privacy controls, a LumiFix pre-launch check, and restorable configuration history.
+**Version 0.1.6** adds the Update Center, shareable Lumi themes, Performance, Balanced, and Quality graphics profiles, and a hardware-aware graphics assistant. It also includes the Roblox Studio, Experiences, Discord privacy, LumiFix, and profile history features introduced in 0.1.5.
 
 > LumiStrap is not affiliated with or endorsed by Roblox Corporation.
 
@@ -31,7 +31,9 @@ LumiStrap is an independent community fork of [Bloxstrap](https://github.com/blo
 
 | Tool | What it helps with |
 | --- | --- |
-| **Graphics profiles** | Start with Performance or Quality, then customize client settings. Manual changes are shown as Custom. |
+| **Graphics profiles** | Choose Performance, Balanced, or Quality, then customize client settings. Manual changes appear as Custom. |
+| **Graphics assistant** | Detect CPU, memory, and graphics hardware locally; preview a Performance, Balanced, or Quality recommendation before applying it. |
+| **Lumi Themes** | Choose built-in palettes, switch between light and dark, customize colors, and import or export `.lumitheme` files. |
 | **Roblox Studio and FastFlags** | Manage Studio settings, global options, and FastFlags. Roblox decides which flags are allowed and may change their behavior. |
 | **Experiences** | Add places by Roblox link or place ID, keep favorites, and browse recent games. Recent games can be added automatically with activity tracking enabled. |
 | **LumiFix** | Check processes and Roblox files before launch, inspect the installation, repair client files, or clear the download cache. The pre-launch check does not close programs or edit files. |
@@ -39,9 +41,24 @@ LumiStrap is an independent community fork of [Bloxstrap](https://github.com/blo
 | **Session panel** | See available experience and server information, with quick access to LumiStrap tools while playing. |
 | **Discord privacy** | Temporarily hide Roblox activity and join buttons, then restore your previous options when privacy mode is turned off. |
 | **Downloads and errors** | Follow download progress and speed, retry or cancel, and get clearer explanations of common problems. |
-| **Update preview** | Review release changes and keep a configuration backup before updating. |
+| **Update Center** | Check for a new LumiStrap release, review its changes, and choose when to install it. |
 
 The [LumiStrap website](https://gggds2.github.io/LumiStrap/) has a full screenshot gallery and the latest release notes.
+
+### LumiStrap 0.1.6
+
+<p align="center">
+  <img src="docs/assets/screenshots/configuracion-graficos-v016.png" alt="Rendimiento, Equilibrio y Calidad en la configuración del cliente" width="49%">
+  <img src="docs/assets/screenshots/asistente-grafico-v016.png" alt="Recomendación del asistente gráfico según el hardware" width="49%">
+</p>
+<p align="center">
+  <img src="docs/assets/screenshots/perfiles-v016.png" alt="Perfiles e historial de ajustes en LumiStrap 0.1.6" width="49%">
+  <img src="docs/assets/screenshots/experiencias-v016.png" alt="Biblioteca de Experiencias en LumiStrap 0.1.6" width="49%">
+</p>
+<p align="center">
+  <img src="docs/assets/screenshots/integraciones-v016.png" alt="Integraciones de LumiStrap 0.1.6" width="49%">
+  <img src="docs/assets/screenshots/roblox-studio-v016.png" alt="Herramientas de Roblox Studio en LumiStrap 0.1.6" width="49%">
+</p>
 
 ### LumiStrap 0.1.5
 

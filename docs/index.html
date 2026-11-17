@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#090c17">
-  <meta name="description" content="LumiStrap organiza la instalación de Roblox y tus ajustes en Windows con perfiles, LumiFix y herramientas claras.">
+  <meta name="description" content="LumiStrap reúne la instalación de Roblox, temas compartibles, perfiles gráficos y herramientas claras para Windows.">
   <title>LumiStrap — Roblox a tu manera</title>
   <style>
     :root {
@@ -117,6 +117,13 @@
     .tour-tab::before { content: ""; width: 7px; height: 7px; flex: 0 0 auto; border-radius: 50%; background: #69748e; }
     .tour-tab[aria-selected="true"] { border-color: rgba(130, 157, 255, .23); background: rgba(107, 135, 231, .12); color: var(--text); }
     .tour-tab[aria-selected="true"]::before { background: linear-gradient(135deg, var(--cyan), var(--violet)); box-shadow: 0 0 13px rgba(129, 155, 255, .75); }
+    .release-highlights { margin: 0 auto 34px; padding: 23px; border: 1px solid var(--line); border-radius: 20px; background: linear-gradient(145deg, rgba(21, 28, 45, .82), rgba(14, 19, 31, .76)); }
+    .release-highlights h3 { margin: 9px 0 0; font-size: 1.35rem; letter-spacing: -.035em; }
+    .highlight-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 17px; }
+    .highlight-card { min-width: 0; padding: 17px; border: 1px solid var(--line); border-radius: 15px; background: rgba(7, 11, 21, .28); }
+    .highlight-card .install-number { margin-bottom: 12px; }
+    .highlight-card h4 { margin: 0 0 7px; font-size: .98rem; }
+    .highlight-card p { margin: 0; color: var(--muted); font-size: .87rem; line-height: 1.65; }
     .tour-stage { min-width: 0; }
     .tour-image-link { display: block; overflow: hidden; border: 1px solid rgba(199, 211, 255, .17); border-radius: 13px; background: #111625; }
     .tour-image { display: block; width: 100%; height: auto; transition: opacity .16s ease; }
@@ -391,10 +398,10 @@
         </div>
 
         <div class="hero-visual">
-          <a class="hero-screenshot" href="assets/screenshots/inicio-v015.png" data-lightbox data-caption="Inicio de LumiStrap 0.1.5" aria-label="Ampliar captura de Inicio de LumiStrap">
-            <img src="assets/screenshots/inicio-v015.png" alt="Inicio de LumiStrap 0.1.5" width="1920" height="1080" fetchpriority="high">
+          <a class="hero-screenshot" href="assets/screenshots/inicio-v016.png" data-lightbox data-caption="Inicio de LumiStrap 0.1.6" aria-label="Ampliar captura de Inicio de LumiStrap">
+            <img src="assets/screenshots/inicio-v016.png" alt="Inicio de LumiStrap 0.1.6" width="1920" height="1080" fetchpriority="high">
           </a>
-          <div class="hero-caption"><span>Inicio de LumiStrap</span><span>Versión 0.1.5</span></div>
+          <div class="hero-caption"><span>Inicio de LumiStrap</span><span>Versión 0.1.6</span></div>
         </div>
       </div>
     </section>
@@ -424,8 +431,8 @@
             </button>
           </div>
           <div class="tour-stage" id="tour-panel-display" role="tabpanel" aria-live="polite">
-            <a class="tour-image-link" id="tour-image-link" href="assets/screenshots/inicio-v015.png" data-lightbox data-caption="Inicio de LumiStrap">
-              <img class="tour-image" id="tour-image" src="assets/screenshots/inicio-v015.png" alt="Inicio de LumiStrap" width="1920" height="1080" loading="lazy">
+            <a class="tour-image-link" id="tour-image-link" href="assets/screenshots/inicio-v016.png" data-lightbox data-caption="Inicio de LumiStrap">
+              <img class="tour-image" id="tour-image" src="assets/screenshots/inicio-v016.png" alt="Inicio de LumiStrap" width="1920" height="1080" loading="lazy">
             </a>
             <div class="tour-caption"><span id="tour-caption">Inicio de LumiStrap</span><span class="tour-counter" id="tour-counter">01 / 04</span></div>
           </div>
@@ -440,14 +447,23 @@
           <h2>Herramientas claras para cada parte de Roblox.</h2>
           <p>Explora las secciones principales con capturas reales de la aplicación. Selecciona una imagen para ampliarla.</p>
         </div>
+        <div class="release-highlights" id="novedades-016">
+          <div class="eyebrow">Versión 0.1.6</div>
+          <h3>Novedades de LumiStrap 0.1.6</h3>
+          <div class="highlight-grid">
+            <article class="highlight-card"><span class="install-number">01</span><h4>Centro de actualizaciones</h4><p>Consulta una versión nueva y sus cambios. Tú decides cuándo instalarla.</p></article>
+            <article class="highlight-card"><span class="install-number">02</span><h4>Temas Lumi</h4><p>Elige paletas Aurora, Lumen, Ocean, Sakura o Mint; cambia entre modo claro y oscuro, ajusta colores e importa o exporta archivos .lumitheme.</p></article>
+            <article class="highlight-card"><span class="install-number">03</span><h4>Asistente inteligente de gráficos</h4><p>Analiza procesador, memoria y gráficos en tu equipo. Revisa la recomendación y sus cambios antes de aplicarla.</p></article>
+          </div>
+        </div>
         <div class="showcase-list" id="capturas">
           <article class="showcase-row">
             <div class="showcase-copy">
               <div class="eyebrow">Configuración del cliente</div>
-              <h3>Elige Rendimiento o Calidad.</h3>
-              <p>Usa uno de los perfiles gráficos como punto de partida y personaliza las opciones del cliente. Los cambios manuales aparecen como Personalizado. Roblox puede limitar qué FastFlags aplica.</p>
+              <h3>Elige Rendimiento, Equilibrio o Calidad.</h3>
+              <p>Elige uno de los tres perfiles gráficos y personaliza las opciones del cliente cuando quieras. Si cambias sus valores, la configuración pasa a Personalizado. La disponibilidad de FastFlags depende de Roblox.</p>
             </div>
-            <a class="showcase-media" href="assets/screenshots/configuracion-graficos-v015.png" data-lightbox data-caption="Perfiles gráficos de Rendimiento y Calidad" aria-label="Ampliar captura de los perfiles gráficos"><img src="assets/screenshots/configuracion-graficos-v015.png" alt="Modos Rendimiento y Calidad en la configuración gráfica de LumiStrap 0.1.5" width="1920" height="1080" loading="lazy"></a>
+            <a class="showcase-media" href="assets/screenshots/configuracion-graficos-v016.png" data-lightbox data-caption="Perfiles gráficos de Rendimiento, Equilibrio y Calidad" aria-label="Ampliar captura de los perfiles gráficos"><img src="assets/screenshots/configuracion-graficos-v016.png" alt="Modos Rendimiento, Equilibrio y Calidad en la configuración gráfica de LumiStrap 0.1.6" width="1920" height="1080" loading="lazy"></a>
           </article>
           <article class="showcase-row">
             <div class="showcase-copy">
@@ -455,7 +471,7 @@
               <h3>Guarda tus ajustes y recupera versiones anteriores.</h3>
               <p>Crea, aplica, importa o exporta perfiles. LumiStrap guarda hasta 20 copias recientes de tu configuración para que puedas restaurar una anterior.</p>
             </div>
-            <a class="showcase-media" href="assets/screenshots/historial-perfiles-v015.png" data-lightbox data-caption="Perfiles e historial de ajustes" aria-label="Ampliar captura del historial de Perfiles"><img src="assets/screenshots/historial-perfiles-v015.png" alt="Perfiles e historial de configuraciones restaurables en LumiStrap" width="1920" height="1080" loading="lazy"></a>
+            <a class="showcase-media" href="assets/screenshots/perfiles-v016.png" data-lightbox data-caption="Perfiles e historial de ajustes" aria-label="Ampliar captura del historial de Perfiles"><img src="assets/screenshots/perfiles-v016.png" alt="Perfiles e historial de configuraciones restaurables en LumiStrap" width="1920" height="1080" loading="lazy"></a>
           </article>
           <article class="showcase-row">
             <div class="showcase-copy">
@@ -471,7 +487,7 @@
               <h3>Controla tu actividad y privacidad en Discord.</h3>
               <p>Configura el seguimiento de sesión y el estado de actividad. El modo de privacidad oculta temporalmente la actividad de Roblox y los botones para unirse, y recupera tus opciones al desactivarlo.</p>
             </div>
-            <a class="showcase-media" href="assets/screenshots/discord-privacidad-v015.png" data-lightbox data-caption="Privacidad de Discord e integraciones" aria-label="Ampliar captura de privacidad de Discord"><img src="assets/screenshots/discord-privacidad-v015.png" alt="Modo de privacidad y opciones de presencia de Discord en LumiStrap" width="1920" height="1080" loading="lazy"></a>
+            <a class="showcase-media" href="assets/screenshots/integraciones-v016.png" data-lightbox data-caption="Privacidad de Discord e integraciones" aria-label="Ampliar captura de privacidad de Discord"><img src="assets/screenshots/integraciones-v016.png" alt="Modo de privacidad y opciones de presencia de Discord en LumiStrap" width="1920" height="1080" loading="lazy"></a>
           </article>
           <article class="showcase-row">
             <div class="showcase-copy">
@@ -495,7 +511,7 @@
               <h3>Ten tus juegos favoritos a mano.</h3>
               <p>Añade experiencias con su enlace o ID de lugar, marca favoritos y consulta juegos recientes. Los recientes se agregan automáticamente cuando activas el seguimiento de actividad.</p>
             </div>
-            <a class="showcase-media" href="assets/screenshots/experiencias-v015.png" data-lightbox data-caption="Biblioteca de Experiencias" aria-label="Ampliar captura de Experiencias"><img src="assets/screenshots/experiencias-v015.png" alt="Biblioteca de Experiencias de LumiStrap con favoritos y juegos recientes" width="1920" height="1080" loading="lazy"></a>
+            <a class="showcase-media" href="assets/screenshots/experiencias-v016.png" data-lightbox data-caption="Biblioteca de Experiencias" aria-label="Ampliar captura de Experiencias"><img src="assets/screenshots/experiencias-v016.png" alt="Biblioteca de Experiencias de LumiStrap con favoritos y juegos recientes" width="1920" height="1080" loading="lazy"></a>
           </article>
           <article class="showcase-row">
             <div class="showcase-copy">
@@ -503,7 +519,15 @@
               <h3>Accede a Studio y sus herramientas.</h3>
               <p>Abre Roblox Studio, la carpeta de instalación local o el editor de FastFlags de LumiStrap. Roblox puede tratar de forma distinta las flags de Studio.</p>
             </div>
-            <a class="showcase-media" href="assets/screenshots/roblox-studio-v015.png" data-lightbox data-caption="Herramientas de Roblox Studio" aria-label="Ampliar captura de Roblox Studio"><img src="assets/screenshots/roblox-studio-v015.png" alt="Acceso a Roblox Studio y al editor de FastFlags de LumiStrap" width="1920" height="1080" loading="lazy"></a>
+            <a class="showcase-media" href="assets/screenshots/roblox-studio-v016.png" data-lightbox data-caption="Herramientas de Roblox Studio" aria-label="Ampliar captura de Roblox Studio"><img src="assets/screenshots/roblox-studio-v016.png" alt="Acceso a Roblox Studio y al editor de FastFlags de LumiStrap" width="1920" height="1080" loading="lazy"></a>
+          </article>
+          <article class="showcase-row">
+            <div class="showcase-copy">
+              <div class="eyebrow">Asistente gráfico</div>
+              <h3>Una recomendación basada en tu equipo.</h3>
+              <p>El asistente detecta el procesador, la memoria y el adaptador gráfico localmente. Muestra Rendimiento, Equilibrio o Calidad y una vista previa de los cambios; puedes cerrar el panel cuando termines.</p>
+            </div>
+            <a class="showcase-media" href="assets/screenshots/asistente-grafico-v016.png" data-lightbox data-caption="Asistente inteligente de gráficos" aria-label="Ampliar captura del asistente gráfico"><img src="assets/screenshots/asistente-grafico-v016.png" alt="Hardware detectado y recomendación de calidad en el asistente gráfico de LumiStrap" width="1920" height="1080" loading="lazy"></a>
           </article>
         </div>
       </div>
@@ -684,7 +708,7 @@
       '.micro-trust span:nth-child(2)': 'Open source project',
       '.micro-trust span:nth-child(3)': 'Analytics off by default',
       '.hero-caption span:first-child': 'LumiStrap home',
-      '.hero-caption span:last-child': 'Version 0.1.5',
+      '.hero-caption span:last-child': 'Version 0.1.6',
       '#recorrido .section-head .eyebrow': 'See it in action',
       '#recorrido .section-head h2': 'A quick tour of LumiStrap.',
       '#recorrido .section-head p': 'Choose a tool to see its screen and learn what you can do.',
@@ -692,7 +716,7 @@
       '.tour-copy h3': 'Welcome to LumiStrap.',
       '.tour-copy p': 'Open your main tools and choose a section from the quick links.',
       '.tour-tab:nth-child(1)': 'Home',
-      '.tour-tab:nth-child(2)': 'Graphics',
+      '.tour-tab:nth-child(2)': 'Graphics profiles',
       '.tour-tab:nth-child(3)': 'Profiles',
       '.tour-tab:nth-child(4)': 'LumiFix',
       '.tour-caption span:first-child': 'LumiStrap home screen',
@@ -701,8 +725,8 @@
       '#funciones .section-head h2': 'Clear tools for every part of Roblox.',
       '#funciones .section-head p': 'Explore the main sections with real screenshots from the app. Select an image to enlarge it.',
       '#funciones .showcase-row:nth-child(1) .showcase-copy .eyebrow': 'Client settings',
-      '#funciones .showcase-row:nth-child(1) h3': 'Choose Performance or Quality.',
-      '#funciones .showcase-row:nth-child(1) p': 'Start with a graphics profile, then customize client settings. Manual changes appear as Custom. Roblox may limit which FastFlags are applied.',
+      '#funciones .showcase-row:nth-child(1) h3': 'Choose Performance, Balanced, or Quality.',
+      '#funciones .showcase-row:nth-child(1) p': 'Choose one of three graphics profiles and customize client settings whenever you like. Manual changes appear as Custom. Roblox decides which FastFlags are allowed.',
       '#funciones .showcase-row:nth-child(2) .showcase-copy .eyebrow': 'Profiles',
       '#funciones .showcase-row:nth-child(2) h3': 'Save settings and restore an earlier version.',
       '#funciones .showcase-row:nth-child(2) p': 'Create, apply, import, or export profiles. LumiStrap keeps up to 20 recent configuration backups so you can restore an earlier one.',
@@ -724,6 +748,17 @@
       '#funciones .showcase-row:nth-child(8) .showcase-copy .eyebrow': 'Roblox Studio',
       '#funciones .showcase-row:nth-child(8) h3': 'Open Studio and its tools.',
       '#funciones .showcase-row:nth-child(8) p': 'Open Roblox Studio, its local installation folder, or LumiStrap’s FastFlags editor. Roblox may handle Studio flags differently.',
+      '#novedades-016 .eyebrow': 'Version 0.1.6',
+      '#novedades-016 h3': 'What’s new in LumiStrap 0.1.6',
+      '.highlight-card:nth-child(1) h4': 'Update Center',
+      '.highlight-card:nth-child(1) p': 'Check for a new version and review its changes. You decide when to install it.',
+      '.highlight-card:nth-child(2) h4': 'Lumi Themes',
+      '.highlight-card:nth-child(2) p': 'Choose Aurora, Lumen, Ocean, Sakura, or Mint palettes; switch between light and dark, adjust colors, and import or export .lumitheme files.',
+      '.highlight-card:nth-child(3) h4': 'Smart graphics assistant',
+      '.highlight-card:nth-child(3) p': 'Locally checks your processor, memory, and graphics adapter. Review the recommendation and proposed changes before applying.',
+      '#funciones .showcase-row:nth-child(9) .showcase-copy .eyebrow': 'Graphics assistant',
+      '#funciones .showcase-row:nth-child(9) h3': 'A recommendation based on your PC.',
+      '#funciones .showcase-row:nth-child(9) p': 'The assistant detects your processor, memory, and graphics adapter locally. It shows a Performance, Balanced, or Quality recommendation and a preview of changes. You can close the panel when you are done.',
       '#instalar .section-head .eyebrow': 'In a few minutes',
       '#instalar .section-head h2': 'Install LumiStrap step by step.',
       '#instalar .section-head p': 'The official installer is a single file and opens directly when you run it.',
@@ -803,11 +838,11 @@
       ['.brand', 'aria-label', 'LumiStrap, home'],
       ['.nav-download', 'aria-label', 'Download the latest LumiStrap release'],
       ['.hero-visual .hero-screenshot', 'aria-label', 'Enlarge the LumiStrap home screenshot'],
-      ['.hero-visual .hero-screenshot', 'data-caption', 'LumiStrap 0.1.5 home screen'],
-      ['.hero-visual .hero-screenshot img', 'alt', 'LumiStrap 0.1.5 home screen'],
+      ['.hero-visual .hero-screenshot', 'data-caption', 'LumiStrap 0.1.6 home screen'],
+      ['.hero-visual .hero-screenshot img', 'alt', 'LumiStrap 0.1.6 home screen'],
       ['.showcase-row:nth-child(1) .showcase-media', 'aria-label', 'Enlarge the graphics profiles screenshot'],
-      ['.showcase-row:nth-child(1) .showcase-media', 'data-caption', 'Performance and Quality graphics profiles'],
-      ['.showcase-row:nth-child(1) img', 'alt', 'Performance and Quality modes in LumiStrap graphics settings'],
+      ['.showcase-row:nth-child(1) .showcase-media', 'data-caption', 'Performance, Balanced, and Quality graphics profiles'],
+      ['.showcase-row:nth-child(1) img', 'alt', 'Performance, Balanced, and Quality modes in LumiStrap graphics settings'],
       ['.showcase-row:nth-child(2) .showcase-media', 'aria-label', 'Enlarge the profiles history screenshot'],
       ['.showcase-row:nth-child(2) .showcase-media', 'data-caption', 'Profiles and settings history'],
       ['.showcase-row:nth-child(2) img', 'alt', 'Profiles and restorable configuration history in LumiStrap'],
@@ -828,7 +863,10 @@
       ['.showcase-row:nth-child(7) img', 'alt', 'LumiStrap Experiences library with favorites and recent games'],
       ['.showcase-row:nth-child(8) .showcase-media', 'aria-label', 'Enlarge the Roblox Studio screenshot'],
       ['.showcase-row:nth-child(8) .showcase-media', 'data-caption', 'Roblox Studio tools'],
-      ['.showcase-row:nth-child(8) img', 'alt', 'Roblox Studio and LumiStrap FastFlags editor']
+      ['.showcase-row:nth-child(8) img', 'alt', 'Roblox Studio and LumiStrap FastFlags editor'],
+      ['.showcase-row:nth-child(9) .showcase-media', 'aria-label', 'Enlarge the graphics assistant screenshot'],
+      ['.showcase-row:nth-child(9) .showcase-media', 'data-caption', 'Smart graphics assistant'],
+      ['.showcase-row:nth-child(9) img', 'alt', 'Hardware detection and quality recommendation in LumiStrap graphics assistant']
     ];
     const originalAttributes = localizedAttributes.map(([selector, name]) => document.querySelector(selector)?.getAttribute(name) ?? '');
 
@@ -849,13 +887,13 @@
     const tourSteps = {
       es: [
         { title: 'Bienvenido a LumiStrap.', description: 'Abre tus herramientas principales y elige una sección desde los accesos rápidos.', caption: 'Inicio de LumiStrap' },
-        { title: 'Elige Rendimiento o Calidad.', description: 'Aplica un perfil gráfico inicial y personaliza las opciones del cliente cuando lo necesites.', caption: 'Perfiles gráficos de Rendimiento y Calidad' },
+        { title: 'Elige Rendimiento, Equilibrio o Calidad.', description: 'Usa uno de los tres perfiles gráficos y personaliza las opciones del cliente cuando lo necesites.', caption: 'Perfiles gráficos de LumiStrap' },
         { title: 'Tus ajustes, listos cuando los necesites.', description: 'Guarda perfiles y recupera una de las copias recientes de tu configuración.', caption: 'Perfiles e historial de ajustes' },
         { title: 'Mantenimiento con explicación previa.', description: 'Revisa procesos antes de iniciar Roblox, comprueba archivos o limpia la caché con LumiFix.', caption: 'LumiFix y revisión antes de iniciar' }
       ],
       en: [
         { title: 'Welcome to LumiStrap.', description: 'Open your main tools and choose a section from the quick links.', caption: 'LumiStrap home screen' },
-        { title: 'Choose Performance or Quality.', description: 'Apply a graphics profile, then customize client options whenever you need.', caption: 'Performance and Quality graphics profiles' },
+        { title: 'Choose Performance, Balanced, or Quality.', description: 'Start with one of the three graphics profiles and customize client options whenever you need.', caption: 'LumiStrap graphics profiles' },
         { title: 'Your settings, ready when you need them.', description: 'Save profiles and restore one of your recent configuration backups.', caption: 'Profiles and settings history' },
         { title: 'Maintenance with a clear explanation first.', description: 'Check processes before launch, inspect Roblox files, or clear the cache with LumiFix.', caption: 'LumiFix pre-launch check' }
       ]
@@ -897,7 +935,7 @@
       document.querySelector('[data-gallery-previous]').setAttribute('aria-label', isEnglish ? 'Previous screenshot' : 'Captura anterior');
       document.querySelector('[data-gallery-next]').setAttribute('aria-label', isEnglish ? 'Next screenshot' : 'Siguiente captura');
       const tourTabs = document.querySelectorAll('.tour-tab');
-      const labels = isEnglish ? ['Home', 'Graphics', 'Profiles', 'LumiFix'] : ['Inicio', 'Gráficos', 'Perfiles', 'LumiFix'];
+      const labels = isEnglish ? ['Home', 'Graphics profiles', 'Profiles', 'LumiFix'] : ['Inicio', 'Perfiles gráficos', 'Perfiles', 'LumiFix'];
       tourTabs.forEach((tab, index) => { tab.textContent = labels[index]; });
       syncTourPlaybackControl();
       document.querySelector('.steps').setAttribute('aria-label', isEnglish ? 'Update process' : 'Proceso de actualización');
@@ -933,8 +971,8 @@
       activeTourIndex = (index + tourSteps[currentLanguage].length) % tourSteps[currentLanguage].length;
       const language = currentLanguage;
       const step = tourSteps[language][activeTourIndex];
-      const tourLabels = language === 'en' ? ['Home', 'Graphics', 'Profiles', 'LumiFix'] : ['Inicio', 'Gráficos', 'Perfiles', 'LumiFix'];
-      const screenshots = ['inicio-v015.png', 'configuracion-graficos-v015.png', 'historial-perfiles-v015.png', 'lumifix-v015-clean.png'];
+      const tourLabels = language === 'en' ? ['Home', 'Graphics profiles', 'Profiles', 'LumiFix'] : ['Inicio', 'Perfiles gráficos', 'Perfiles', 'LumiFix'];
+      const screenshots = ['inicio-v016.png', 'configuracion-graficos-v016.png', 'perfiles-v016.png', 'lumifix-v015-clean.png'];
       const imagePath = `assets/screenshots/${screenshots[activeTourIndex]}`;
       const image = document.getElementById('tour-image');
       const link = document.getElementById('tour-image-link');
