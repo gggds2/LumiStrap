@@ -1482,4 +1482,142 @@ Defaulting to {1}.</value>
   <data name="Menu.Profiles.Empty" xml:space="preserve">
     <value>No profiles yet. Save your current setup to create one.</value>
   </data>
+  <data name="Menu.Search.LumiFix" xml:space="preserve">
+    <value>LumiFix — check, repair Roblox files and clear download cache</value>
+  </data>
+  <data name="Menu.LumiFix.Title" xml:space="preserve">
+    <value>LumiFix</value>
+  </data>
+  <data name="Menu.LumiFix.Description" xml:space="preserve">
+    <value>Check Roblox files, repair the current client or clear LumiStrap's download cache.</value>
+  </data>
+  <data name="Menu.LumiFix.Check" xml:space="preserve">
+    <value>Check installation</value>
+  </data>
+  <data name="Menu.LumiFix.Repair" xml:space="preserve">
+    <value>Repair Roblox files</value>
+  </data>
+  <data name="Menu.LumiFix.ClearCache" xml:space="preserve">
+    <value>Clear download cache</value>
+  </data>
+  <data name="Menu.LumiFix.Status.Idle" xml:space="preserve">
+    <value>Check your Roblox installation or choose a maintenance action.</value>
+  </data>
+  <data name="Menu.LumiFix.Status.Checking" xml:space="preserve">
+    <value>Checking the Roblox installation...</value>
+  </data>
+  <data name="Menu.LumiFix.Status.DownloadingManifest" xml:space="preserve">
+    <value>Getting the official file list...</value>
+  </data>
+  <data name="Menu.LumiFix.Status.Progress" xml:space="preserve">
+    <value>Checking files: {0}/{1}</value>
+  </data>
+  <data name="Menu.LumiFix.Status.NotInstalled" xml:space="preserve">
+    <value>Roblox Player is not installed through LumiStrap.</value>
+  </data>
+  <data name="Menu.LumiFix.Status.Healthy" xml:space="preserve">
+    <value>{0} Roblox files match the official manifest.</value>
+  </data>
+  <data name="Menu.LumiFix.Status.Issues" xml:space="preserve">
+    <value>LumiFix found {0} missing, {1} changed and {2} unreadable files. Repair Roblox to download a clean current client.</value>
+  </data>
+  <data name="Menu.LumiFix.CheckFailed" xml:space="preserve">
+    <value>The check could not finish: {0}</value>
+  </data>
+  <data name="Menu.LumiFix.RepairPrompt" xml:space="preserve">
+    <value>LumiFix will close this settings window and re-download the current Roblox Player files, replacing the existing version folder. LumiStrap settings and custom modifications will be kept. Roblox will not launch automatically. Continue?</value>
+  </data>
+  <data name="Menu.LumiFix.Repair.RobloxRunning" xml:space="preserve">
+    <value>Close Roblox Player before repairing its files.</value>
+  </data>
+  <data name="Menu.LumiFix.OtherInstanceRunning" xml:space="preserve">
+    <value>Another LumiStrap process is open. Close it before using LumiFix so both instances do not use the same files.</value>
+  </data>
+  <data name="Menu.LumiFix.RepairFailed" xml:space="preserve">
+    <value>LumiFix could not start the repair: {0}</value>
+  </data>
+  <data name="Menu.LumiFix.Cache.Empty" xml:space="preserve">
+    <value>The download cache is already empty.</value>
+  </data>
+  <data name="Menu.LumiFix.Cache.Prompt" xml:space="preserve">
+    <value>This will delete only {0} cached download files ({1:F1} MB) from LumiStrap. They can be downloaded again when needed. Continue?</value>
+  </data>
+  <data name="Menu.LumiFix.Cache.Cleared" xml:space="preserve">
+    <value>{0} cached files deleted; {1} could not be deleted.</value>
+  </data>
+  <data name="Menu.LumiFix.Cache.Failed" xml:space="preserve">
+    <value>LumiFix could not read the download cache: {0}</value>
+  </data>
+  <data name="ContextMenu.ServerInformation.Experience" xml:space="preserve">
+    <value>Experience</value>
+  </data>
+  <data name="ContextMenu.ServerInformation.Creator" xml:space="preserve">
+    <value>Creator</value>
+  </data>
+  <data name="ContextMenu.ServerInformation.PlaceId" xml:space="preserve">
+    <value>Place ID</value>
+  </data>
+  <data name="ContextMenu.ServerInformation.CopyDetails" xml:space="preserve">
+    <value>Copy session</value>
+  </data>
+  <data name="ContextMenu.ServerInformation.DetailsNotAvailable" xml:space="preserve">
+    <value>Not available</value>
+  </data>
+  <data name="Bootstrapper.Status.DownloadingPackages" xml:space="preserve">
+    <value>Downloading Roblox files…</value>
+  </data>
+  <data name="Bootstrapper.Status.DownloadSpeed" xml:space="preserve">
+    <value>Download speed: {0:F1} MB/s</value>
+  </data>
+  <data name="Bootstrapper.Download.ChecksumRetry" xml:space="preserve">
+    <value>Roblox package {0} did not match its official checksum after several attempts. Would you like LumiStrap to try downloading it again?</value>
+  </data>
+  <data name="Dialog.Exception.TechnicalDetails" xml:space="preserve">
+    <value>Technical details</value>
+  </data>
+  <data name="Dialog.Exception.LogCopied" xml:space="preserve">
+    <value>The log was copied. Include it when asking for help.</value>
+  </data>
+  <data name="Dialog.Exception.CopyLogFailed" xml:space="preserve">
+    <value>Could not copy the log to the clipboard.</value>
+  </data>
+  <data name="Dialog.Exception.Explain.Checksum" xml:space="preserve">
+    <value>A Roblox download did not match Roblox's expected file signature. LumiStrap stopped to avoid using a damaged file. You can retry; if it keeps happening, close other LumiStrap windows and check your connection.</value>
+  </data>
+  <data name="Dialog.Exception.Explain.Network" xml:space="preserve">
+    <value>LumiStrap could not reach a required service or received an invalid response. Check your connection and retry.</value>
+  </data>
+  <data name="Dialog.Exception.Explain.Permission" xml:space="preserve">
+    <value>Windows denied access to a file or folder. Close Roblox and any extra LumiStrap windows, then check the folder permissions.</value>
+  </data>
+  <data name="Dialog.Exception.Explain.File" xml:space="preserve">
+    <value>A file could not be read or written. Check free disk space, close Roblox, and try again.</value>
+  </data>
+  <data name="Dialog.Exception.Explain.Canceled" xml:space="preserve">
+    <value>The operation was canceled. You can restart it from LumiStrap.</value>
+  </data>
+  <data name="Dialog.Exception.Explain.General" xml:space="preserve">
+    <value>LumiStrap encountered an unexpected problem. Copy the log and include it when asking for help.</value>
+  </data>
+  <data name="ContextMenu.SessionDock.Title" xml:space="preserve">
+    <value>LumiStrap Session Dock</value>
+  </data>
+  <data name="ContextMenu.SessionDock.Open" xml:space="preserve">
+    <value>Open session panel</value>
+  </data>
+  <data name="ContextMenu.SessionDock.Experience" xml:space="preserve">
+    <value>Current experience</value>
+  </data>
+  <data name="ContextMenu.SessionDock.ServerInfo" xml:space="preserve">
+    <value>Session details</value>
+  </data>
+  <data name="ContextMenu.SessionDock.History" xml:space="preserve">
+    <value>Game history</value>
+  </data>
+  <data name="ContextMenu.SessionDock.Profiles" xml:space="preserve">
+    <value>Profiles</value>
+  </data>
+  <data name="ContextMenu.SessionDock.Help" xml:space="preserve">
+    <value>Help and support</value>
+  </data>
 </root>

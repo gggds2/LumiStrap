@@ -12,6 +12,7 @@
 #endif
 
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Data;
 using System.Windows;
 using System.Windows.Forms;
@@ -1506,6 +1507,8 @@ namespace Bloxstrap
             const int maxTries = 5;
 
             App.Logger.WriteLine(LOG_IDENT, "Downloading...");
+            if (Dialog is not null)
+                Dialog.Message = Strings.Bootstrapper_Status_DownloadingPackages;
 
             var buffer = new byte[4096];
 
@@ -1515,6 +1518,8 @@ namespace Bloxstrap
                     return;
 
                 int totalBytesRead = 0;
+                long lastSpeedSampleBytes = 0;
+                var speedTimer = Stopwatch.StartNew();
 
                 try
                 {
@@ -1542,6 +1547,16 @@ namespace Bloxstrap
 
                         _totalDownloadedBytes += bytesRead;
                         UpdateProgressBar();
+
+                        if (speedTimer.ElapsedMilliseconds >= 1000)
+                        {
+                            double megabytesPerSecond = (totalBytesRead - lastSpeedSampleBytes) / speedTimer.Elapsed.TotalSeconds / (1024d * 1024d);
+                            if (Dialog is not null)
+                                Dialog.Message = String.Format(Strings.Bootstrapper_Status_DownloadSpeed, megabytesPerSecond);
+
+                            lastSpeedSampleBytes = totalBytesRead;
+                            speedTimer.Restart();
+                        }
                     }
 
                     string hash = MD5Hash.FromStream(fileStream);
@@ -1559,6 +1574,22 @@ namespace Bloxstrap
 
                     if (ex.GetType() == typeof(ChecksumFailedException))
                     {
+                        if (i >= maxTries)
+                        {
+                            var result = Frontend.ShowMessageBox(
+                                String.Format(Strings.Bootstrapper_Download_ChecksumRetry, package.Name),
+                                MessageBoxImage.Warning,
+                                MessageBoxButton.YesNo,
+                                MessageBoxResult.No
+                            );
+
+                            if (result == MessageBoxResult.Yes)
+                            {
+                                App.Logger.WriteLine(LOG_IDENT, "User requested another download attempt after checksum verification failed");
+                                i = 0;
+                            }
+                            else
+                    {
                         App.SendStat("packageDownloadState", "httpFail");
 
                         Frontend.ShowConnectivityDialog(
@@ -1569,6 +1600,9 @@ namespace Bloxstrap
                         );
 
                         App.Terminate(ErrorCode.ERROR_CANCELLED);
+                                return;
+                            }
+                        }
                     }
                     else if (i >= maxTries)
                         throw;

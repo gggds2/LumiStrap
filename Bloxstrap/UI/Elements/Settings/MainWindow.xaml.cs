@@ -17,8 +17,11 @@ namespace Bloxstrap.UI.Elements.Settings
     {
         private Models.Persistable.WindowState _state => App.State.Prop.SettingsWindow;
 
-        public MainWindow(bool showAlreadyRunningWarning)
+        private readonly bool _keepProcessAlive;
+
+        public MainWindow(bool showAlreadyRunningWarning, bool keepProcessAlive = false)
         {
+            _keepProcessAlive = keepProcessAlive;
             var viewModel = new MainWindowViewModel();
 
             viewModel.RequestSaveNoticeEvent += (_, _) => SettingsSavedSnackbar.Show();
@@ -27,18 +30,6 @@ namespace Bloxstrap.UI.Elements.Settings
             DataContext = viewModel;
             
             InitializeComponent();
-
-            SettingsSearchBox.ItemsSource = new[]
-            {
-                Strings.Menu_Search_Home,
-                Strings.Menu_Search_Integrations,
-                Strings.Menu_Search_Behaviour,
-                Strings.Menu_Search_FastFlags,
-                Strings.Menu_Search_Appearance,
-                Strings.Menu_Search_Profiles,
-                Strings.Menu_Search_Shortcuts,
-                Strings.Menu_Search_LumiStrap
-            };
 
             App.Logger.WriteLine("MainWindow", "Initializing settings window");
 
@@ -92,29 +83,38 @@ namespace Bloxstrap.UI.Elements.Settings
 
         #endregion INavigationWindow methods
 
-        private void SettingsSearchBox_SuggestionChosen(object sender, RoutedEventArgs e)
+        private void SettingsSearchBox_KeyDown(object sender, KeyEventArgs e)
         {
-            if (sender is not Wpf.Ui.Controls.AutoSuggestBox searchBox)
+            if (e.Key != Key.Enter)
                 return;
 
-            Type? pageType = searchBox.Text switch
+            string query = SettingsSearchBox.Text.Trim();
+            if (query.Length == 0)
+                return;
+
+            (string Name, Type PageType)[] pages =
             {
-                var value when value == Strings.Menu_Search_Home => typeof(Pages.HomePage),
-                var value when value == Strings.Menu_Search_Integrations => typeof(Pages.IntegrationsPage),
-                var value when value == Strings.Menu_Search_Behaviour => typeof(Pages.BehaviourPage),
-                var value when value == Strings.Menu_Search_FastFlags => typeof(Pages.FastFlagsPage),
-                var value when value == Strings.Menu_Search_Appearance => typeof(Pages.AppearancePage),
-                var value when value == Strings.Menu_Search_Profiles => typeof(Pages.ProfilesPage),
-                var value when value == Strings.Menu_Search_Shortcuts => typeof(Pages.ShortcutsPage),
-                var value when value == Strings.Menu_Search_LumiStrap => typeof(Pages.BloxstrapPage),
-                _ => null
+                (Strings.Menu_Search_Home, typeof(Pages.HomePage)),
+                (Strings.Menu_Search_Integrations, typeof(Pages.IntegrationsPage)),
+                (Strings.Menu_Search_Behaviour, typeof(Pages.BehaviourPage)),
+                (Strings.Menu_Search_FastFlags, typeof(Pages.FastFlagsPage)),
+                (Strings.Menu_Search_Appearance, typeof(Pages.AppearancePage)),
+                (Strings.Menu_Search_Profiles, typeof(Pages.ProfilesPage)),
+                (Strings.Menu_Search_Shortcuts, typeof(Pages.ShortcutsPage)),
+                (Strings.Menu_Search_LumiStrap, typeof(Pages.BloxstrapPage)),
+                (Strings.Menu_Search_LumiFix, typeof(Pages.BloxstrapPage))
             };
 
-            if (pageType is not null)
-                Navigate(pageType);
+            foreach ((string name, Type pageType) in pages)
+            {
+                if (!name.Contains(query, StringComparison.CurrentCultureIgnoreCase))
+                    continue;
 
-            searchBox.Text = String.Empty;
-            searchBox.IsSuggestionListOpen = false;
+                Navigate(pageType);
+                SettingsSearchBox.Clear();
+                e.Handled = true;
+                return;
+            }
         }
 
         private void WpfUiWindow_PreviewKeyDown(object sender, KeyEventArgs e)
@@ -147,6 +147,9 @@ namespace Bloxstrap.UI.Elements.Settings
 
         private void WpfUiWindow_Closed(object sender, EventArgs e)
         {
+            if (_keepProcessAlive)
+                return;
+
             if (App.LaunchSettings.TestModeFlag.Active)
                 LaunchHandler.LaunchRoblox(LaunchMode.Player);
             else
